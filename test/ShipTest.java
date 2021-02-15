@@ -4,14 +4,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ShipTest{
     @Test
-    public void testName(){
-        assertEquals(1, 1);
+    public void createShip(){
+        Ship ship1 = new Ship();
     }
 
     @Test
-    public void testShipName(){
+    public void testNameOfShip(){
         Ship ship1 = new Ship();
         ship1.setName("Battleship");
-        assertEquals("Minesweeper", ship1.getName());
+        String name = ship1.getName();
+        assertEquals(name, "Battleship");
     }
+
+
 }

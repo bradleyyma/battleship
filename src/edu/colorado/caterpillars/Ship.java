@@ -12,9 +12,7 @@ public class Ship {
     // TODO: create appropriate getter and setter methods
     // TODO: Understand encapsulation
     // TODO: Understand what these todo comments mean
-    public void setName(String name){
-        this.name = name;
-    }
+
 
     public String getName(){
         return this.name;
