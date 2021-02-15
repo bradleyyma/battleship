@@ -6,6 +6,10 @@ public class Ship {
     //Team caterpillars, pair 2 was here
     
     private String name;
+    private int size;
+    private int numHits;
+    private boolean sunk = false;
+
 
     //Team caterpillars, pair 1 is here.
 
@@ -17,7 +21,25 @@ public class Ship {
         this.name = name;
     }
     public String getName(){
-        return this.name;
+        return name;
+    }
+    public void setSize(int size){
+        this.size = size;
+    }
+    public int getSize(){
+        return this.size;
+    }
+    public void hit(){
+        this.numHits++;
+        if(this.numHits == this.size){
+            this.sunk = true;
+        }
+    }
+    public int getNumHits(){
+        return this.numHits;
+    }
+    public boolean sunkStatus(){
+        return this.sunk;
     }
 
 

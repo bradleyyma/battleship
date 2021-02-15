@@ -31,12 +31,13 @@ public class ShipTest{
         assertEquals(1, ship1.getNumHits());
     }
 
+    @Test
     public void testSunk(){
         Ship ship1 = new Ship();
         ship1.setSize(2);
         ship1.hit();
         ship1.hit();
-        assertEquals(true, ship1.sunkStatus())
+        assertEquals(true, ship1.sunkStatus());
     }
 
 
