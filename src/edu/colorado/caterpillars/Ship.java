@@ -13,10 +13,14 @@ public class Ship {
     // TODO: Understand encapsulation
     // TODO: Understand what these todo comments mean
 
-
+    public void setName(String name){
+        this.name = name;
+    }
     public String getName(){
         return this.name;
     }
+
+
     public  void show()     {     // dunno why this is here maybe it is just an example method
         System.out.println("IF you can't see this then something is severely wrong!!");
     }
