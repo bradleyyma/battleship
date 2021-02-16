@@ -20,7 +20,7 @@ public class ShipTest{
     @Test
     public void testSizeOfShip(){
         int size = ship.getSize();
-        assertEquals(2, size);
+        assertEquals(3, size);
     }
 
     @Test
@@ -31,10 +31,12 @@ public class ShipTest{
 
     @Test
     public void testSunk(){
-        ship.setSize(2);
         ship.hit();
+        assertEquals(false, ship.isSunk());
         ship.hit();
-        assertEquals(true, ship.sunkStatus());
+        assertEquals(false, ship.isSunk());
+        ship.hit();
+        assertEquals(true, ship.isSunk());
     }
 
 

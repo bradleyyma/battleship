@@ -8,8 +8,16 @@ public class Ship {
     private String name;
     private int size;
     private int numHits;
-    private boolean sunk = false;
+    private boolean sunk;
     public int id;
+
+    public Ship(int id, String name, int size) {
+        this.id = id;
+        this.name = name;
+        this.size = size;
+        numHits = 0;
+        sunk = false;
+    }
 
 
     //Team caterpillars, pair 1 is here.
@@ -18,14 +26,9 @@ public class Ship {
     // TODO: Understand encapsulation
     // TODO: Understand what these todo comments mean
 
-    public void setName(String name){
-        this.name = name;
-    }
+
     public String getName(){
         return name;
-    }
-    public void setSize(int size){
-        this.size = size;
     }
     public int getSize(){
         return this.size;
@@ -39,7 +42,7 @@ public class Ship {
     public int getNumHits(){
         return this.numHits;
     }
-    public boolean sunkStatus(){
+    public boolean isSunk(){
         return this.sunk;
     }
 
