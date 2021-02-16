@@ -21,4 +21,33 @@ public class Grid {
         return new int[0][0];
     }
 
+    public void addShip(int playerNum,Ship ship,int row,int col, String direction){
+        int[][] grid;
+        if (playerNum == 1){
+            grid = gridP1Lower;
+        }
+        else if (playerNum == 2){
+            grid = gridP2Lower;
+        }
+        else{
+            grid = new int[0][];
+        }
+        for(int i = 0; i < ship.getSize(); i++){
+            if (direction == "N"){
+                grid[row++][col] = ship.id;
+            }
+            else if (direction == "S"){
+                grid[row--][col] = ship.id;
+            }
+            else if (direction == "W"){
+                grid[row][col++] = ship.id;
+            }
+            else if (direction == "E"){
+                grid[row][col--] = ship.id;
+            }
+            else{
+                System.out.println("addShip is broken");
+            }
+        }
+    }
 }

@@ -9,6 +9,7 @@ public class Ship {
     private int size;
     private int numHits;
     private boolean sunk = false;
+    public int id;
 
 
     //Team caterpillars, pair 1 is here.
