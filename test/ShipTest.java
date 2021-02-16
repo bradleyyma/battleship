@@ -1,43 +1,40 @@
 import edu.colorado.caterpillars.Ship;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShipTest{
-    @Test
+    private Ship ship;
+
+    @BeforeEach
     public void createShip(){
-        Ship ship1 = new Ship();
+        ship = new Ship(1, "Battleship", 3);
     }
 
     @Test
     public void testNameOfShip(){
-        Ship ship1 = new Ship();
-        ship1.setName("Battleship");
-        String name = ship1.getName();
-        assertEquals(name, "Battleship");
+        String name = ship.getName();
+        assertEquals("Battleship", name);
     }
 
     @Test
     public void testSizeOfShip(){
-        Ship ship1 = new Ship();
-        ship1.setSize(2);
-        int size = ship1.getSize();
-        assertEquals(size, 2);
+        int size = ship.getSize();
+        assertEquals(2, size);
     }
 
     @Test
     public void testHit(){
-        Ship ship1 = new Ship();
-        ship1.hit();
-        assertEquals(1, ship1.getNumHits());
+        ship.hit();
+        assertEquals(1, ship.getNumHits());
     }
 
     @Test
     public void testSunk(){
-        Ship ship1 = new Ship();
-        ship1.setSize(2);
-        ship1.hit();
-        ship1.hit();
-        assertEquals(true, ship1.sunkStatus());
+        ship.setSize(2);
+        ship.hit();
+        ship.hit();
+        assertEquals(true, ship.sunkStatus());
     }
 
 
