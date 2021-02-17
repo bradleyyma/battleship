@@ -10,7 +10,7 @@ public class FleetTest {
     public void createShip(){
         Fleet fleet = new Fleet();
     }
-
+    
     @Test
     public void testFleetOfThreeBattleships(){
         Ship ship1 = new Ship(1, "Battleship", 3);
