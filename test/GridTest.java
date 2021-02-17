@@ -32,4 +32,10 @@ public class GridTest {
         int[][] gridTest = new int[10][10];
         assertArrayEquals(gridTest, grid1.displayOpponentFleet(2));
     }
+    @Test
+    public void testDisplayPlayerFleet(){
+        Grid grid1 = new Grid();
+        int[][] gridTest = new int[10][10];
+        assertArrayEquals(gridTest, grid1.displayPlayerFleet(1));
+    }
 }
