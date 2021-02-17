@@ -20,4 +20,12 @@ public class GridTest {
         grid1.addShip(2,ship1,2,4,"S");
         assertArrayEquals(gridTest, grid1.getGrid("gridP2Lower"));
     }
+    @Test
+    public void testHitOrMiss(){
+        Grid grid1 = new Grid();
+        int hitOrMiss = grid1.hitOrMiss(2,4);
+        assertEquals(0,hitOrMiss );
+
+
+    }
 }
