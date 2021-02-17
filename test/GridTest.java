@@ -25,7 +25,11 @@ public class GridTest {
         Grid grid1 = new Grid();
         String hitOrMiss = grid1.hitOrMiss(2,4,2);
         assertEquals("MISS",hitOrMiss);
-
-
+    }
+    @Test
+    public void testDisplayOpponentFleet(){
+        Grid grid1 = new Grid;
+        int[][] gridTest = new int[10][10];
+        assertArrayEquals(gridTest, grid1.displayOpponentFleet(2));
     }
 }
