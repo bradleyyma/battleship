@@ -86,10 +86,23 @@ public class Grid {
             grid = gridP1Upper;
         else if(playerNum == 2)
             grid = gridP2Upper;
+        else
+            System.out.println("Invalid Player Number.");
 
         return grid;
     }
 
+    public int[][] displayPlayerFleet(int playerNum) {
+        int[][] grid = new int [10][10];
 
+        if(playerNum == 1)
+            grid = gridP1Lower;
+        else if(playerNum == 2)
+            grid = gridP2Lower;
+        else
+            System.out.println("Invalid Player Number.");
+
+        return grid;
+    }
 
 }
