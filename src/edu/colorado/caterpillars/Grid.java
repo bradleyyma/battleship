@@ -51,32 +51,32 @@ public class Grid {
         }
     }
     public String hitOrMiss(int row, int col, int playerNum){
-        String hitormiss = "MISS";
+        String hitOrMiss = "MISS";
 
         if(playerNum == 1) {
             if(gridP2Lower[row][col] > 0) {
                 gridP2Lower[row][col] = gridP1Upper[row][col] = (-1 * gridP2Lower[row][col]);
-                hitormiss = "HIT";
+                hitOrMiss = "HIT";
             }
             else {
                 gridP2Lower[row][col] = gridP1Upper[row][col] = -1;
-                hitormiss = "MISS";
+                hitOrMiss = "MISS";
             }
         }
 
         else if (playerNum == 2) {
             if (gridP1Lower[row][col] > 0) {
                 gridP1Lower[row][col] = gridP2Upper[row][col] = (-1 * gridP1Lower[row][col]);
-                hitormiss = "HIT";
+                hitOrMiss = "HIT";
             }
             else {
                 gridP1Lower[row][col] = gridP2Upper[row][col] = -1;
-                hitormiss = "MISS";
+                hitOrMiss = "MISS";
             }
         }
         else
             System.out.println("Invalid Player Number.");
-        return hitormiss;
+        return hitOrMiss;
     }
 
     public int[][] displayOpponentFleet(int playerNum) {
