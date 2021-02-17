@@ -28,7 +28,7 @@ public class GridTest {
     }
     @Test
     public void testDisplayOpponentFleet(){
-        Grid grid1 = new Grid;
+        Grid grid1 = new Grid();
         int[][] gridTest = new int[10][10];
         assertArrayEquals(gridTest, grid1.displayOpponentFleet(2));
     }

@@ -52,7 +52,6 @@ public class Grid {
     }
     public String hitOrMiss(int row, int col, int playerNum){
         String hitormiss = "MISS";
-        int[][] grid;
 
         if(playerNum == 1) {
             if(gridP2Lower[row][col] > 0) {
@@ -78,6 +77,17 @@ public class Grid {
         else
             System.out.println("Invalid Player Number.");
         return hitormiss;
+    }
+
+    public int[][] displayOpponentFleet(int playerNum) {
+        int[][] grid = new int [10][10];
+
+        if(playerNum == 1)
+            grid = gridP1Upper;
+        else if(playerNum == 2)
+            grid = gridP2Upper;
+
+        return grid;
     }
 
 }
