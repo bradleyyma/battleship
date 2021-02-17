@@ -30,7 +30,7 @@ public class Grid {
             grid = gridP2Lower;
         }
         else{
-            grid = new int[0][];
+            grid = new int[0][0];
         }
         for(int i = 0; i < ship.getSize(); i++){
             if (direction == "N"){
@@ -49,6 +49,35 @@ public class Grid {
                 System.out.println("addShip is broken");
             }
         }
+    }
+    public String hitOrMiss(int row, int col, int playerNum){
+        String hitormiss = "MISS";
+        int[][] grid;
+
+        if(playerNum == 1) {
+            if(gridP2Lower[row][col] > 0) {
+                gridP2Lower[row][col] = gridP1Upper[row][col] = (-1 * gridP2Lower[row][col]);
+                hitormiss = "HIT";
+            }
+            else {
+                gridP2Lower[row][col] = gridP1Upper[row][col] = -1;
+                hitormiss = "MISS";
+            }
+        }
+
+        else if (playerNum == 2) {
+            if (gridP1Lower[row][col] > 0) {
+                gridP1Lower[row][col] = gridP2Upper[row][col] = (-1 * gridP1Lower[row][col]);
+                hitormiss = "HIT";
+            }
+            else {
+                gridP1Lower[row][col] = gridP2Upper[row][col] = -1;
+                hitormiss = "MISS";
+            }
+        }
+        else
+            System.out.println("Invalid Player Number.");
+        return hitormiss;
     }
 
 }
