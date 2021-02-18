@@ -40,15 +40,10 @@ public class GridTest {
         assertEquals("MISS",hitOrMiss);
     }
     @Test
-    public void testDisplayUpper(){
+    public void testDisplayGrid(){
         Grid grid1 = new Grid();
         int[][] gridTest = new int[10][10];
         assertArrayEquals(gridTest, grid1.getGrid("gridP2Upper"));
     }
-    @Test
-    public void testDisplayUpper(){
-        Grid grid1 = new Grid();
-        int[][] gridTest = new int[10][10];
-        assertArrayEquals(gridTest,grid1.getGrid("gridP2Lower"));
-    }
+
 }

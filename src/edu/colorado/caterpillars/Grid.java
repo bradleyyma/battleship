@@ -81,7 +81,7 @@ public class Grid {
         return hitOrMiss;
     }
 
-    public void displayupper(int playerNum) {
+    public void displayUpper(int playerNum) {
         int[][] grid = new int [10][10];
 
         if(playerNum == 1)
@@ -94,7 +94,7 @@ public class Grid {
         System.out.println(Arrays.deepToString(grid));
     }
 
-    public void displaylower(int playerNum) {
+    public void displayLower(int playerNum) {
         int[][] grid = new int [10][10];
 
         if(playerNum == 1)
