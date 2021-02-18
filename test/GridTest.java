@@ -14,10 +14,10 @@ public class GridTest {
     public void testShipInGrid(){
         Grid grid1 = new Grid();
         int[][] gridTest = new int[10][10];
-        gridTest[2][4] = 2;
-        gridTest[2][5] = 2;
+        gridTest[2][4] = 1;
+        gridTest[2][5] = 1;
         Ship ship1 = new Ship(1, "Battleship", 2);
-        grid1.addShip(2, ship1 ,2,4,"S");
+        grid1.addShip(2, ship1 ,2,4,"W");
         assertArrayEquals(gridTest, grid1.getGrid("gridP2Lower"));
     }
     @Test
