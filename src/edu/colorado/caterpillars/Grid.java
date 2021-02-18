@@ -1,5 +1,7 @@
 package edu.colorado.caterpillars;
 
+import java.util.Arrays;
+
 public class Grid {
 
     private int[][] gridP1Upper = new int[10][10];
@@ -79,7 +81,7 @@ public class Grid {
         return hitOrMiss;
     }
 
-    public int[][] displayOpponentFleet(int playerNum) {
+    public void displayOpponentFleet(int playerNum) {
         int[][] grid = new int [10][10];
 
         if(playerNum == 1)
@@ -89,10 +91,10 @@ public class Grid {
         else
             System.out.println("Invalid Player Number.");
 
-        return grid;
+        System.out.println(Arrays.deepToString(grid));
     }
 
-    public int[][] displayPlayerFleet(int playerNum) {
+    public void displayPlayerFleet(int playerNum) {
         int[][] grid = new int [10][10];
 
         if(playerNum == 1)
@@ -102,7 +104,7 @@ public class Grid {
         else
             System.out.println("Invalid Player Number.");
 
-        return grid;
+        System.out.println(Arrays.deepToString(grid));
     }
 
 }

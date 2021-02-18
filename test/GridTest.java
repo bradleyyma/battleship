@@ -1,9 +1,22 @@
 import edu.colorado.caterpillars.Grid;
 import edu.colorado.caterpillars.Ship;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GridTest {
+
+    @BeforeEach
+    public void createGridForEachPlayer() {
+        Grid gridP1Upper = new Grid();
+        Grid gridP2Upper = new Grid();
+        Grid gridP1Lower = new Grid();
+        Grid gridP2Lower = new Grid();
+    }
+
     @Test
     public void testGrid(){
         Grid grid1 = new Grid();
@@ -30,12 +43,12 @@ public class GridTest {
     public void testDisplayOpponentFleet(){
         Grid grid1 = new Grid();
         int[][] gridTest = new int[10][10];
-        assertArrayEquals(gridTest, grid1.displayOpponentFleet(2));
+        assertArrayEquals(gridTest, grid1.getGrid("gridP2Upper"));
     }
     @Test
     public void testDisplayPlayerFleet(){
         Grid grid1 = new Grid();
         int[][] gridTest = new int[10][10];
-        assertArrayEquals(gridTest, grid1.displayPlayerFleet(1));
+        assertArrayEquals(gridTest,grid1.getGrid("gridP2Lower"));
     }
 }
