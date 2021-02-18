@@ -14,8 +14,8 @@ public class Fleet {
 
     public int getNumSurvivingShips(){
         int survivingShips = 0;
-        for(int i = 0; i < shipArray.length; i++){
-            if(!shipArray[i].isSunk()){
+        for (Ship ship : shipArray) {
+            if (!ship.isSunk()) {
                 survivingShips++;
             }
         }
@@ -23,9 +23,9 @@ public class Fleet {
     }
 
     public Ship getShipById(int id){
-        for(int i = 0; i < shipArray.length; i++) {
-            if (shipArray[i].id == id) {
-                return shipArray[i];
+        for (Ship ship : shipArray) {
+            if (ship.id == id) {
+                return ship;
             }
         }
         throw new IllegalArgumentException("ID not found in fleet");

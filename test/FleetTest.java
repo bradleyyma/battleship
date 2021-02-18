@@ -31,7 +31,17 @@ public class FleetTest {
     }
 
     @Test
-    public void testSinkThreeShips(){
+    public void testAccessNonexistentShip() {
+        try {
+            fleet.getShipById(-1); // should throw exception
+            assertEquals(-1,1);
+        } catch (Throwable t) {
+            assert(t instanceof IllegalArgumentException);
+        }
+    }
+
+    @Test
+    public void testSinkThreeShipFleet(){
         assertEquals(3,fleet.getNumSurvivingShips());
 
         Ship fleetShipId4 = fleet.getShipById(4);
