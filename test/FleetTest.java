@@ -15,10 +15,10 @@ public class FleetTest {
 
     @BeforeEach
     public void createFleet(){
-        Fleet fleet = new Fleet();
-        Ship ship1 = new Ship(4, "Battleship", 4);
-        Ship ship2 = new Ship(2, "Minesweeper", 2);
-        Ship ship3 = new Ship(3, "Destroyer", 3);
+        fleet = new Fleet();
+        ship1 = new Ship(4, "Battleship", 4);
+        ship2 = new Ship(2, "Minesweeper", 2);
+        ship3 = new Ship(3, "Destroyer", 3);
         fleet.addShip(ship1);
         fleet.addShip(ship2);
         fleet.addShip(ship3);
@@ -33,11 +33,23 @@ public class FleetTest {
     @Test
     public void testSinkThreeShips(){
         assertEquals(3,fleet.getNumSurvivingShips());
-        fleet.getShipById(4).hit().hit().hit().hit();
+
+        Ship fleetShipId4 = fleet.getShipById(4);
+        fleetShipId4.hit();
+        fleetShipId4.hit();
+        fleetShipId4.hit();
+        fleetShipId4.hit();
         assertEquals(2,fleet.getNumSurvivingShips());
-        fleet.getShipById(2).hit().hit();
+
+        Ship fleetShipId2 = fleet.getShipById(2);
+        fleetShipId2.hit();
+        fleetShipId2.hit();
         assertEquals(1,fleet.getNumSurvivingShips());
-        fleet.getShipById(3).hit().hit().hit();
+
+        Ship fleetShipId3 = fleet.getShipById(3);
+        fleetShipId3.hit();
+        fleetShipId3.hit();
+        fleetShipId3.hit();
         assertEquals(0,fleet.getNumSurvivingShips());
     }
 }

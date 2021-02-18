@@ -21,4 +21,14 @@ public class Fleet {
         }
         return survivingShips;
     }
+
+    public Ship getShipById(int id){
+        for(int i = 0; i < shipArray.length; i++) {
+            if (shipArray[i].id == id) {
+                return shipArray[i];
+            }
+        }
+        throw new IllegalArgumentException("ID not found in fleet");
+
+    }
 }
