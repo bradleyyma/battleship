@@ -52,7 +52,7 @@ public class Grid {
             }
         }
     }
-    public String hitOrMiss(int row, int col, int playerNum){
+    public String attack(int row, int col, int playerNum){
         String hitOrMiss = "MISS";
 
         if(playerNum == 1) {
@@ -81,7 +81,7 @@ public class Grid {
         return hitOrMiss;
     }
 
-    public void displayOpponentFleet(int playerNum) {
+    public void displayupper(int playerNum) {
         int[][] grid = new int [10][10];
 
         if(playerNum == 1)
@@ -94,7 +94,7 @@ public class Grid {
         System.out.println(Arrays.deepToString(grid));
     }
 
-    public void displayPlayerFleet(int playerNum) {
+    public void displaylower(int playerNum) {
         int[][] grid = new int [10][10];
 
         if(playerNum == 1)

@@ -34,19 +34,19 @@ public class GridTest {
         assertArrayEquals(gridTest, grid1.getGrid("gridP2Lower"));
     }
     @Test
-    public void testHitOrMiss(){
+    public void testAttack(){
         Grid grid1 = new Grid();
-        String hitOrMiss = grid1.hitOrMiss(2,4,2);
+        String hitOrMiss = grid1.attack(2,4,2);
         assertEquals("MISS",hitOrMiss);
     }
     @Test
-    public void testDisplayOpponentFleet(){
+    public void testDisplayUpper(){
         Grid grid1 = new Grid();
         int[][] gridTest = new int[10][10];
         assertArrayEquals(gridTest, grid1.getGrid("gridP2Upper"));
     }
     @Test
-    public void testDisplayPlayerFleet(){
+    public void testDisplayUpper(){
         Grid grid1 = new Grid();
         int[][] gridTest = new int[10][10];
         assertArrayEquals(gridTest,grid1.getGrid("gridP2Lower"));
