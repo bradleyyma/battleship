@@ -69,4 +69,18 @@ public class GridTest {
         assertEquals("SUNK Minesweeper", grid.attack(0,1, 1));
     }
 
+    @Test
+    public void testOutOfBoundsShip(){
+        Ship ship1 = new Ship(2, "Minesweeper", 2);
+        assertThrows(Exception.class, () -> grid.addShip(1, ship1, 0, 0, "N"));
+    }
+
+    @Test
+    public void testOverlappingShip(){
+        Ship ship1 = new Ship(2, "Minesweeper", 2);
+        Ship ship2 = new Ship(3, "Destroyer", 3);
+        grid.addShip(1, ship1, 0, 0, "S");
+        assertThrows(Exception.class, () -> grid.addShip(1, ship2, 0, 0, "E"));
+    }
+
 }
