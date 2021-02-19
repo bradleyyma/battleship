@@ -62,11 +62,16 @@ public class GridTest {
     }
     
     @Test
-    public void testSunk(){
+    public void testSunkAndSurrender(){
         Ship ship = new Ship(2, "Minesweeper", 2);
+        Ship ship2 = new Ship(3, "Destroyer", 3);
         grid.addShip(1, ship, 0, 0, "E");
+        grid.addShip(1, ship2, 1, 0, "E");
         assertEquals("HIT", grid.attack(0,0, 1));
         assertEquals("SUNK Minesweeper", grid.attack(0,1, 1));
+        assertEquals("HIT", grid.attack(1,0, 1));
+        assertEquals("HIT", grid.attack(1,1, 1));
+        assertEquals("SURRENDER", grid.attack(1,2, 1));
     }
 
     @Test
@@ -82,5 +87,6 @@ public class GridTest {
         grid.addShip(1, ship1, 0, 0, "S");
         assertThrows(Exception.class, () -> grid.addShip(1, ship2, 0, 0, "E"));
     }
+
 
 }
