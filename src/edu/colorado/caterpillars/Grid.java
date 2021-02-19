@@ -46,6 +46,9 @@ public class Grid {
         else{
             throw new IllegalArgumentException("Invalid playerNum");
         }
+        if(doesOverlap(grid, ship, row, col, direction))
+            throw new IllegalArgumentException("Ships cannot overlap!");
+
         for(int i = 0; i < ship.getSize(); i++){
             if (direction == "N"){
                 grid[row--][col] = ship.id;
@@ -64,6 +67,32 @@ public class Grid {
             }
         }
         fleet.addShip(ship);
+    }
+
+    private boolean doesOverlap(int [][] grid,Ship ship,int row,int col, String direction){
+        for(int i = 0; i < ship.getSize(); i++){
+            if (direction == "N"){
+                if(grid[row--][col] != 0)
+                    return true;
+            }
+            else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
+                if(grid[row++][col] != 0)
+                    return true;
+            }
+            else if (direction == "E"){
+                if(grid[row][col++] != 0)
+                    return true;
+            }
+            else if (direction == "W"){
+                if(grid[row][col--] != 0)
+                    return true;
+            }
+            else{
+                // TODO: throw exception for invalid direction
+                return false;
+            }
+        }
+        return false;
     }
 
     public String attack(int row, int col, int playerNum){
