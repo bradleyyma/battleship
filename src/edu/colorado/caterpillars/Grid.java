@@ -124,6 +124,8 @@ public class Grid {
             targetShip.hit();
             if(targetShip.isSunk()){
                 result = "SUNK " + targetShip.getName();
+                if(fleet.getNumSurvivingShips() == 0)
+                    result = "SURRENDER";
             }
 
         }
