@@ -3,7 +3,13 @@ package edu.colorado.caterpillars;
 import java.util.Arrays;
 
 public class Grid {
-
+    /* For each grid:
+        0 represents nothing (no hits no misses, initial)
+        -1 represents a miss (on both lower and upper grids)
+        1 represents a hit (on upper grids)
+        > 1 represents ship.id(on lower grids)
+        < -1 represents hit on ship.id(on lower grids)
+    */
     private int[][] gridP1Upper = new int[10][10];
     private int[][] gridP1Lower = new int[10][10];
     private int[][] gridP2Upper = new int[10][10];
@@ -21,19 +27,8 @@ public class Grid {
                 return gridP1Lower;
             case "gridP2Lower":
                 return gridP2Lower;
-        }
-        return new int[0][0];
-    }
-
-    public Fleet getFleet(int playerNum){
-        if(playerNum == 1){
-            return fleet1;
-        }
-        else if(playerNum == 2){
-            return fleet2;
-        }
-        else{
-            throw new IllegalArgumentException ("Invalid playerNum");
+            default:
+                throw new IllegalArgumentException("Invalid grid name: " + name);
         }
     }
 
@@ -72,8 +67,7 @@ public class Grid {
     }
 
     public String attack(int row, int col, int playerNum){
-
-        String hitOrMiss = "MISS";
+        String result;
         int [][] lower;
         int [][] upper;
         Fleet fleet;
@@ -82,53 +76,33 @@ public class Grid {
             upper = gridP2Upper;
             fleet = fleet1;
         }
-        else{
+        else if(playerNum == 2){
             lower = gridP2Lower;
             upper = gridP1Upper;
             fleet = fleet2;
+        }
+        else{
+            throw new IllegalArgumentException("Invalid playerNum");
         }
         if(lower[row][col] > 0){ // indicates ship is at location ( a hit)
             int id = lower[row][col];
             lower[row][col] *= -1; // cannot be -1 (ship.id's will start at 2)
             upper[row][col] = 1; //indicates hit
-            hitOrMiss = "HIT";
+            result = "HIT";
             // Interact with fleet and update ship info
             // TODO: Put in try catch
             Ship targetShip = fleet.getShipById(id);
             targetShip.hit();
             if(targetShip.isSunk()){
-                hitOrMiss = "SUNK " + targetShip.getName();
+                result = "SUNK " + targetShip.getName();
             }
 
         }
         else{ // indicates a miss
             lower[row][col] = upper[row][col] = -1;
-            hitOrMiss = "MISS";
+            result = "MISS";
         }
-//        if(playerNum == 1) {
-//            if(gridP2Lower[row][col] > 0) {
-//                gridP2Lower[row][col] = gridP1Upper[row][col] = (-1 * gridP2Lower[row][col]);
-//                hitOrMiss = "HIT";
-//            }
-//            else {
-//                gridP2Lower[row][col] = gridP1Upper[row][col] = -1;
-//                hitOrMiss = "MISS";
-//            }
-//        }
-//
-//        else if (playerNum == 2) {
-//            if (gridP1Lower[row][col] > 0) {
-//                gridP1Lower[row][col] = gridP2Upper[row][col] = (-1 * gridP1Lower[row][col]);
-//                hitOrMiss = "HIT";
-//            }
-//            else {
-//                gridP1Lower[row][col] = gridP2Upper[row][col] = -1;
-//                hitOrMiss = "MISS";
-//            }
-//        }
-//        else
-//            System.out.println("Invalid Player Number.");
-        return hitOrMiss;
+        return result;
     }
 
     public void displayUpper(int playerNum) {
