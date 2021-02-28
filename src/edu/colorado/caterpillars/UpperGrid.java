@@ -1,2 +1,4 @@
-package edu.colorado.caterpillars;public class UpperGrid {
+package edu.colorado.caterpillars;
+
+public class UpperGrid extends Grid{
 }
