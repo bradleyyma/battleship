@@ -17,48 +17,7 @@ public class Grid {
     }
 
 
-//
-//    public String attack(int row, int col, int playerNum){
-//        String result;
-//        int [][] lower;
-//        int [][] upper;
-//        Fleet fleet;
-//        if (playerNum == 1){
-//            lower = gridP1Lower;
-//            upper = gridP2Upper;
-//            fleet = fleet1;
-//        }
-//        else if(playerNum == 2){
-//            lower = gridP2Lower;
-//            upper = gridP1Upper;
-//            fleet = fleet2;
-//        }
-//        else{
-//            throw new IllegalArgumentException("Invalid playerNum");
-//        }
-//        if(lower[row][col] > 0){ // indicates ship is at location ( a hit)
-//            int id = lower[row][col];
-//            lower[row][col] *= -1; // cannot be -1 (ship.id's will start at 2)
-//            upper[row][col] = 1; //indicates hit
-//            result = "HIT";
-//            // Interact with fleet and update ship info
-//            // TODO: Put in try catch
-//            Ship targetShip = fleet.getShipById(id);
-//            targetShip.hit();
-//            if(targetShip.isSunk()){
-//                result = "SUNK " + targetShip.getName();
-//                if(fleet.getNumSurvivingShips() == 0)
-//                    result = "SURRENDER";
-//            }
-//
-//        }
-//        else{ // indicates a miss
-//            lower[row][col] = upper[row][col] = -1;
-//            result = "MISS";
-//        }
-//        return result;
-//    }
-//
+
 //    public void displayUpper(int playerNum) {
 //        int[][] grid = new int [10][10];
 //
