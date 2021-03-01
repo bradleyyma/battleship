@@ -51,11 +51,11 @@ public class LowerGrid extends Grid{
     }
 
     public String receiveAttack(int row, int col){
-        String result;
         if(grid[row][col] > 0){
             int id = grid[row][col];
             Ship targetShip = fleet.getShipById(id);
             targetShip.hit();
+            grid[row][col] = -id; //-ship.id represents a ship coord that has been hit (should be <= -2)
             if(targetShip.isSunk()){
                 if(fleet.getNumSurvivingShips() == 0)
                     return "SURRENDER";
@@ -64,34 +64,9 @@ public class LowerGrid extends Grid{
             return "HIT";
         }
         else{
+            grid[row][col] = -1; // -1 should indicate miss
             return "MISS";
         }
     }
-
-
-//    public String attack(int row, int col, int playerNum){
-//
-//        if(lower[row][col] > 0){ // indicates ship is at location ( a hit)
-//            int id = lower[row][col];
-//            lower[row][col] *= -1; // cannot be -1 (ship.id's will start at 2)
-//            upper[row][col] = 1; //indicates hit
-//            result = "HIT";
-//            // Interact with fleet and update ship info
-//            // TODO: Put in try catch
-//            Ship targetShip = fleet.getShipById(id);
-//            targetShip.hit();
-//            if(targetShip.isSunk()){
-//                result = "SUNK " + targetShip.getName();
-//                if(fleet.getNumSurvivingShips() == 0)
-//                    result = "SURRENDER";
-//            }
-//
-//        }
-//        else{ // indicates a miss
-//            lower[row][col] = upper[row][col] = -1;
-//            result = "MISS";
-//        }
-//        return result;
-//    }
 
 }
