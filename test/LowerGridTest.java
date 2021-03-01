@@ -76,6 +76,24 @@ public class LowerGridTest {
         assertEquals("SURRENDER", grid.receiveAttack(1,2));
     }
 
+    @Test
+    public void testLowerGridValues(){
+        int [][] testGrid = new int[10][10];
+        int shipId = 2;
+        Ship ship1 = new Ship(shipId, "Minesweeper", 2);
+        grid.addShip(ship1, 0, 0, "E"); //ship is at (0, 0) and (0, 1)
+        testGrid[0][0] = testGrid[0][1] = shipId;
+        assertArrayEquals(testGrid, grid.getGrid());
+        // This is a hit
+        grid.receiveAttack(0, 0);
+        testGrid[0][0] = -shipId;
+        assertArrayEquals(testGrid, grid.getGrid());
+        //This is a miss
+        grid.receiveAttack(1, 0);
+        testGrid[1][0] = -1;
+        assertArrayEquals(testGrid, grid.getGrid());
+    }
+
 
 
 }
