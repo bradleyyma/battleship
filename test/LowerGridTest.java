@@ -49,4 +49,33 @@ public class LowerGridTest {
     }
 
 
+    @Test
+    public void testAttack(){
+        Ship ship = new Ship(2, "Sweeps", 2);
+        grid.addShip(ship, 0, 0, "E");
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                if(i == 0 && j == 0 || i == 0 && j == 1) // where the ship is placed
+                    assertNotEquals("MISS", grid.receiveAttack(i, j));
+                else // anything else should MISS
+                    assertEquals("MISS", grid.receiveAttack(i, j));
+            }
+        }
+    }
+
+    @Test
+    public void testSunkAndSurrender(){
+        Ship ship = new Ship(2, "Minesweeper", 2);
+        Ship ship2 = new Ship(3, "Destroyer", 3);
+        grid.addShip(ship, 0, 0, "E");
+        grid.addShip(ship2, 1, 0, "E");
+        assertEquals("HIT", grid.receiveAttack(0,0));
+        assertEquals("SUNK Minesweeper", grid.receiveAttack(0,1));
+        assertEquals("HIT", grid.receiveAttack(1,0));
+        assertEquals("HIT", grid.receiveAttack(1,1));
+        assertEquals("SURRENDER", grid.receiveAttack(1,2));
+    }
+
+
+
 }
