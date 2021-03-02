@@ -39,5 +39,14 @@ public class ShipTest{
         assertEquals(true, ship.isSunk());
     }
 
+    @Test
+    public void testGetSetIds(){
+        ship.setID(1);
+        assertEquals(1, ship.getID());
+        ship.setCID(2);
+        assertEquals(2, ship.getCID());
+    }
+
+
 
 }
