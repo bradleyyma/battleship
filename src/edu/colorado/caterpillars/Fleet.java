@@ -5,10 +5,13 @@ import java.util.Arrays;
 public class Fleet {
 
     private Ship[] shipArray = new Ship[0];
+    private int nextAvailId = 2;
 
     public void addShip(Ship ship){
         // Append ship to shipArray
         shipArray = Arrays.copyOf(shipArray, shipArray.length + 1);
+        ship.setID(nextAvailId++);
+        ship.setCID(nextAvailId++);
         shipArray[shipArray.length - 1] = ship;
     }
 
