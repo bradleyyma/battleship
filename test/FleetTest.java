@@ -62,4 +62,24 @@ public class FleetTest {
         fleetShipId3.hit();
         assertEquals(0,fleet.getNumSurvivingShips());
     }
+
+    @Test
+    public void testSinkFleetHitById(int id){
+        assertEquals(3,fleet.getNumSurvivingShips());
+
+        fleet.hitShipById(4);
+        fleet.hitShipById(4);
+        fleet.hitShipById(4);
+        fleet.hitShipById(4);
+        assertEquals(2,fleet.getNumSurvivingShips());
+
+        fleet.hitShipById(2);
+        fleet.hitShipById(2);
+        assertEquals(1,fleet.getNumSurvivingShips());
+
+        fleet.hitShipById(3);
+        fleet.hitShipById(3);
+        fleet.hitShipById(3);
+        assertEquals(0,fleet.getNumSurvivingShips());
+    }
 }
