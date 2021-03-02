@@ -7,6 +7,7 @@ public class LowerGrid extends Grid{
     public void addShip(Ship ship, int row, int col, String direction){
         if(isInvalidPlacement(ship, row, col, direction)) // checks for overlap, out of bounds, and invalid direction
             throw new IllegalArgumentException("Ships cannot overlap!");
+        fleet.addShip(ship);
         int id = ship.getID();
         for(int i = 0; i < ship.getSize(); i++){
             if (direction == "N"){
@@ -22,7 +23,7 @@ public class LowerGrid extends Grid{
                 grid[row][col--] = id;
             }
         }
-        fleet.addShip(ship);
+
     }
 
     private boolean isInvalidPlacement(Ship ship, int row, int col, String direction){
