@@ -55,7 +55,7 @@ public class LowerGrid extends Grid{
             int id = grid[row][col];
             Ship targetShip = fleet.getShipById(id);
             targetShip.hit();
-            grid[row][col] = -id; //-ship.id represents a ship coord that has been hit (should be <= -2)
+            grid[row][col] = -id; // -ship.id represents a ship coord that has been hit (should be <= -2)
             if(targetShip.isSunk()){
                 if(fleet.getNumSurvivingShips() == 0)
                     return "SURRENDER";
