@@ -4,15 +4,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SonarPulseTest {
-    @Test
+
+    private SonarPulse pulse;
+    private LowerGrid grid;
+
+    @BeforeEach
     public void createSonarPulse(){
-        SonarPulse pulse = new SonarPulse();
+        grid = new LowerGrid();
+        pulse = new SonarPulse(grid);
     }
 
     @Test
-    public void testUse(){
-        SonarPulse pulse = new SonarPulse();
-        LowerGrid grid = new LowerGrid();
+    public void testFire(){
         int [][] testGrid = {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -26,5 +29,9 @@ public class SonarPulseTest {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         };
         assertArrayEquals(testGrid, pulse.fire(5,5));
+    }
+    @Test
+    public void testFireWithShip(){
+
     }
 }
