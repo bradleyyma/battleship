@@ -1,2 +1,7 @@
-package edu.colorado.caterpillars;public class Minesweeper {
+package edu.colorado.caterpillars;
+
+public class Minesweeper extends Ship{
+    public Minesweeper(){
+        super(0, "Minesweeper", 2);
+    }
 }
