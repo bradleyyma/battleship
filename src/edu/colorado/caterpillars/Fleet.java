@@ -31,4 +31,17 @@ public class Fleet {
         throw new IllegalArgumentException("ID not found in fleet");
 
     }
+
+    public String hitShipById(int id){
+        Ship ship = getShipById(id);
+        int priorShips = getNumSurvivingShips();
+        ship.hit();
+        if(priorShips != getNumSurvivingShips()){
+            return("SUNK");
+        }else{
+            return ("HIT");
+        }//surrender
+
+
+    }
 }

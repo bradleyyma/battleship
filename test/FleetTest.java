@@ -64,7 +64,7 @@ public class FleetTest {
     }
 
     @Test
-    public void testSinkFleetHitById(int id){
+    public void testSinkFleetHitById(){
         assertEquals(3,fleet.getNumSurvivingShips());
 
         fleet.hitShipById(4);
