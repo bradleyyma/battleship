@@ -58,8 +58,4 @@ public class Ship {
         this.cid = cid;
     }
 
-
-    public  void show()     {     // dunno why this is here maybe it is just an example method
-        System.out.println("IF you can't see this then something is severely wrong!!");
-    }
 }

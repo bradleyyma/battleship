@@ -30,7 +30,7 @@ public class LowerGrid extends Grid{
         for(int i = 0; i < ship.getSize(); i++){
             if (direction == "N"){
                 if(grid[row--][col] != 0)
-                    return false;
+                    return true;
             }
             else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
                 if(grid[row++][col] != 0)
