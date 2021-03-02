@@ -43,7 +43,10 @@ public class LowerGridTest {
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Destroyer();
         grid.addShip(ship1, 0, 0, "S");
+        assertThrows(Exception.class, () -> grid.addShip(ship2, 3, 0, "N"));
         assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 0, "E"));
+        assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 0, "S"));
+        assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 2, "W"));
         // Also check that the grid is correct (no partial ship2 were added)
         int[][] gridTest = new int[10][10];
         gridTest[0][0] = gridTest[1][0] = 2; // Only ship1 should've been added
@@ -54,7 +57,7 @@ public class LowerGridTest {
     @Test
     public void testAttack(){
         Ship ship = new Minesweeper();
-        grid.addShip(ship, 0, 0, "E");
+        grid.addShip(ship, 0, 1, "W");
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
                 if(i == 0 && j == 0 || i == 0 && j == 1) // where the ship is placed
