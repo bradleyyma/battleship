@@ -9,7 +9,8 @@ public class Ship {
     private int size;
     private int numHits;
     private boolean sunk;
-    public int id;
+    private int id;
+    private int cid;
 
     public Ship(int id, String name, int size) {
         this.id = id;
@@ -21,11 +22,6 @@ public class Ship {
 
 
     //Team caterpillars, pair 1 is here.
-
-    // TODO: create appropriate getter and setter methods
-    // TODO: Understand encapsulation
-    // TODO: Understand what these todo comments mean
-
 
     public String getName(){
         return name;
@@ -44,6 +40,22 @@ public class Ship {
     }
     public boolean isSunk(){
         return this.sunk;
+    }
+
+    public int getID(){
+        return id;
+    }
+
+    public void setID(int id){
+        this.id = id;
+    }
+
+    public int getCID(){
+        return cid;
+    }
+
+    public void setCID(int cid){
+        this.cid = cid;
     }
 
 

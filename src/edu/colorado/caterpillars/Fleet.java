@@ -24,7 +24,7 @@ public class Fleet {
 
     public Ship getShipById(int id){
         for (Ship ship : shipArray) {
-            if (ship.id == id) {
+            if (ship.getID() == id) {
                 return ship;
             }
         }

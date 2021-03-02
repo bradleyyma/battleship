@@ -7,19 +7,19 @@ public class LowerGrid extends Grid{
     public void addShip(Ship ship, int row, int col, String direction){
         if(isInvalidPlacement(ship, row, col, direction)) // checks for overlap, out of bounds, and invalid direction
             throw new IllegalArgumentException("Ships cannot overlap!");
-
+        int id = ship.getID();
         for(int i = 0; i < ship.getSize(); i++){
             if (direction == "N"){
-                grid[row--][col] = ship.id;
+                grid[row--][col] = id;
             }
             else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
-                grid[row++][col] = ship.id;
+                grid[row++][col] = id;
             }
             else if (direction == "E"){
-                grid[row][col++] = ship.id;
+                grid[row][col++] = id;
             }
             else if (direction == "W"){
-                grid[row][col--] = ship.id;
+                grid[row][col--] = id;
             }
         }
         fleet.addShip(ship);
