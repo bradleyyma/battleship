@@ -18,8 +18,10 @@ public class LowerGridTest {
         Ship ship2 = new Destroyer();
         grid.addShip(ship1 ,2,4,"E");
         grid.addShip(ship2, 9, 9, "N");
-        gridTest[2][4] = gridTest[2][5] = 2; // id of first ship added
-        gridTest[9][9] = gridTest[8][9] = gridTest[7][9] = 4; //id of second ship added
+        gridTest[2][4] = 3; // cid of first ship added
+        gridTest[2][5] = 2; // sid of first ship added
+        gridTest[8][9] = 5; // cid of second ship added
+        gridTest[9][9]  = gridTest[7][9] = 4; //sid of second ship added
         assertArrayEquals(gridTest, grid.getGrid());
     }
 
