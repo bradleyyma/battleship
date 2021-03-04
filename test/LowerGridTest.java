@@ -36,7 +36,8 @@ public class LowerGridTest {
         assertArrayEquals(gridTest, grid.getGrid());
         // Now check we can re add the ship(validly) correctly
         grid.addShip(ship1, 0, 0, "E");
-        gridTest[0][0] = gridTest[0][1] = gridTest[0][2] = 2;
+        gridTest[0][1] = 3;
+        gridTest[0][0] = gridTest[0][2] = 2;
         assertArrayEquals(gridTest, grid.getGrid());
     }
 
@@ -51,7 +52,8 @@ public class LowerGridTest {
         assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 2, "W"));
         // Also check that the grid is correct (no partial ship2 were added)
         int[][] gridTest = new int[10][10];
-        gridTest[0][0] = gridTest[1][0] = 2; // Only ship1 should've been added
+        gridTest[0][0] = 3;
+        gridTest[1][0] = 2; // Only ship1 should've been added
         assertArrayEquals(gridTest, grid.getGrid());
     }
 
@@ -76,24 +78,25 @@ public class LowerGridTest {
         Ship ship2 = new Destroyer();
         grid.addShip(ship, 0, 0, "E");
         grid.addShip(ship2, 1, 0, "E");
-        assertEquals("HIT", grid.receiveAttack(0,0));
-        assertEquals("SUNK Minesweeper", grid.receiveAttack(0,1));
+        assertEquals("SUNK Minesweeper", grid.receiveAttack(0,0));
         assertEquals("HIT", grid.receiveAttack(1,0));
-        assertEquals("HIT", grid.receiveAttack(1,1));
-        assertEquals("SURRENDER", grid.receiveAttack(1,2));
+        assertEquals("MISS", grid.receiveAttack(1,1));
+        assertEquals("SURRENDER", grid.receiveAttack(1,1));
     }
 
     @Test
     public void testLowerGridValues(){
         int [][] testGrid = new int[10][10];
         int shipId = 2;
+        int capId = 3;
         Ship ship1 = new Minesweeper();
         grid.addShip(ship1, 0, 0, "E"); //ship is at (0, 0) and (0, 1)
-        testGrid[0][0] = testGrid[0][1] = shipId;
+        testGrid[0][0] = capId;
+        testGrid[0][1] = shipId;
         assertArrayEquals(testGrid, grid.getGrid());
         // This is a hit
         grid.receiveAttack(0, 0);
-        testGrid[0][0] = -shipId;
+        testGrid[0][0] = -capId;
         assertArrayEquals(testGrid, grid.getGrid());
         //This is a miss
         grid.receiveAttack(1, 0);

@@ -32,11 +32,10 @@ public class UpperGridTest {
     public void testSunkAndSurrender(){
         Ship ship2 = new Destroyer();
         lowerGrid.addShip(ship2, 1, 0, "E");
-        assertEquals("HIT", upperGrid.sendAttack(0,0));
-        assertEquals("SUNK Minesweeper", upperGrid.sendAttack(0,1));
+        assertEquals("SUNK Minesweeper", upperGrid.sendAttack(0,0));
         assertEquals("HIT", upperGrid.sendAttack(1,0));
-        assertEquals("HIT", upperGrid.sendAttack(1,1));
-        assertEquals("SURRENDER", upperGrid.sendAttack(1,2));
+        assertEquals("MISS", upperGrid.sendAttack(1,1));
+        assertEquals("SURRENDER", upperGrid.sendAttack(1,1));
     }
 
     @Test
