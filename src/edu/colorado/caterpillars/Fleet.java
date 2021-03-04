@@ -62,12 +62,21 @@ public class Fleet {
     public String hitShipById(int id){
         Ship ship = getShipById(id);
         int priorShips = getNumSurvivingShips();
-        ship.hit();
-        if(priorShips != getNumSurvivingShips()){
-            return("SUNK");
+        if(inSidArray(id)) {
+            ship.hit();
+            if (priorShips != getNumSurvivingShips()) {
+                return ("SUNK");
+            } else {
+                return ("HIT");
+            }
         }else{
-            return ("HIT");
-        }//surrender
+            ship.hitCaptainQuarters();
+            if (priorShips != getNumSurvivingShips()) {
+                return ("SUNK");
+            } else {
+                return ("MISS");
+            }
+        }
 
 
     }
