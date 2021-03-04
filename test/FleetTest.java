@@ -100,4 +100,21 @@ public class FleetTest {
         fleet.hitShipById(7);
         assertEquals(0,fleet.getNumSurvivingShips());
     }
+
+    @Test
+    public void testIdArrays(){
+        assertTrue(fleet.inSidArray(2));
+        assertTrue(fleet.inSidArray(4));
+        assertTrue(fleet.inSidArray(6));
+        assertTrue(fleet.inCidArray(3));
+        assertTrue(fleet.inCidArray(5));
+        assertTrue(fleet.inCidArray(7));
+
+        assertFalse(fleet.inSidArray(3));
+        assertFalse(fleet.inSidArray(5));
+        assertFalse(fleet.inSidArray(7));
+        assertFalse(fleet.inCidArray(2));
+        assertFalse(fleet.inCidArray(4));
+        assertFalse(fleet.inCidArray(6));
+    }
 }
