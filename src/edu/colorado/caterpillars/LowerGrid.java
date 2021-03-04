@@ -9,18 +9,35 @@ public class LowerGrid extends Grid{
             throw new IllegalArgumentException("Ships cannot overlap!");
         fleet.addShip(ship);
         int id = ship.getID();
+        int cid = ship.getCID();
         for(int i = 0; i < ship.getSize(); i++){
             if (direction == "N"){
-                grid[row--][col] = id;
+                if(i == ship.getcIndex()){
+                    grid[row--][col] = cid;
+                }else {
+                    grid[row--][col] = id;
+                }
             }
             else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
-                grid[row++][col] = id;
+                if(i == ship.getcIndex()){
+                    grid[row++][col] = cid;
+                }else {
+                    grid[row++][col] = id;
+                }
             }
             else if (direction == "E"){
-                grid[row][col++] = id;
+                if(i == ship.getcIndex()){
+                    grid[row][col++] = cid;
+                }else {
+                    grid[row][col++] = id;
+                }
             }
             else if (direction == "W"){
-                grid[row][col--] = id;
+                if(i == ship.getcIndex()){
+                    grid[row][col--] = cid;
+                }else {
+                    grid[row][col--] = id;
+                }
             }
         }
 
@@ -54,15 +71,11 @@ public class LowerGrid extends Grid{
     public String receiveAttack(int row, int col){
         if(grid[row][col] > 0){
             int id = grid[row][col];
-            Ship targetShip = fleet.getShipById(id);
-            targetShip.hit();
-            grid[row][col] = -id; // -ship.id represents a ship coord that has been hit (should be <= -2)
-            if(targetShip.isSunk()){
-                if(fleet.getNumSurvivingShips() == 0)
-                    return "SURRENDER";
-                return "SUNK " + targetShip.getName();
+            String result = fleet.hitShipById(id);
+            if(!result.equals("MISS")){
+                grid[row][col] = -id; // -ship.id represents a ship coord that has been hit (should be <= -2)
             }
-            return "HIT";
+            return result;
         }
         else{
             grid[row][col] = -1; // -1 should indicate miss
