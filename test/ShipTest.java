@@ -31,17 +31,17 @@ public class ShipTest{
         assertEquals(1, ship.getNumHits());
     }
 
-    @Test
-    public void testSunk(){
-        ship.hit();
-        assertFalse(ship.isSunk());
-        ship.hit();
-        assertFalse(ship.isSunk());
-        ship.hit();
-        assertFalse(ship.isSunk());
-        ship.hit();
-        assertTrue(ship.isSunk());
-    }
+//    @Test
+//    public void testSunk(){
+//        ship.hit();
+//        assertFalse(ship.isSunk());
+//        ship.hit();
+//        assertFalse(ship.isSunk());
+//        ship.hit();
+//        assertFalse(ship.isSunk());
+//        ship.hit();
+//        assertTrue(ship.isSunk());
+//    }
 
     @Test
     public void testGetSetIds(){
@@ -64,6 +64,18 @@ public class ShipTest{
         Ship ship2 = new Minesweeper();
         ship2.hitCaptainQuarters();
         assertTrue(ship2.isSunk());
+    }
+
+    @Test
+    public void testArmorProtectSink(){
+        ship.hit();
+        assertFalse(ship.isSunk());
+        ship.hit();
+        assertFalse(ship.isSunk());
+        ship.hit();
+        assertFalse(ship.isSunk());
+        ship.hit();
+        assertFalse(ship.isSunk());
     }
 
 
