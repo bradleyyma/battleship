@@ -26,10 +26,16 @@ public class FleetTest {
     public void testGetShipById(){
         Ship fleetShipId2 = fleet.getShipById(2);
         assertSame(ship1,fleetShipId2); // ship1 should get id = 2 and cid = 3
+        Ship fleetCapId3 = fleet.getShipById(3);
+        assertSame(ship1,fleetCapId3); // ship1 should get id = 2 and cid = 3
         Ship fleetShipId4 = fleet.getShipById(4);
         assertSame(ship2,fleetShipId4); // ship2 should get id = 4 and cid = 5
+        Ship fleetCapId5 = fleet.getShipById(5);
+        assertSame(ship2,fleetCapId5); // ship2 should get id = 4 and cid = 5
         Ship fleetShipId6 = fleet.getShipById(6);
         assertSame(ship3,fleetShipId6); // ship3 should get id = 6 and cid = 7
+        Ship fleetCapId7 = fleet.getShipById(7);
+        assertSame(ship3,fleetCapId7); // ship3 should get id = 6 and cid = 7
     }
 
     @Test
@@ -78,6 +84,20 @@ public class FleetTest {
         fleet.hitShipById(6);
         fleet.hitShipById(6);
         fleet.hitShipById(6);
+        assertEquals(0,fleet.getNumSurvivingShips());
+    }
+
+    @Test
+    public void testHitCapQuarters(){
+        fleet.hitShipById(3);
+        assertEquals(3,fleet.getNumSurvivingShips());
+        fleet.hitShipById(3);
+        assertEquals(2,fleet.getNumSurvivingShips());
+        fleet.hitShipById(5);
+        assertEquals(1,fleet.getNumSurvivingShips());
+        fleet.hitShipById(7);
+        assertEquals(1,fleet.getNumSurvivingShips());
+        fleet.hitShipById(7);
         assertEquals(0,fleet.getNumSurvivingShips());
     }
 }
