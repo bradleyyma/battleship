@@ -49,55 +49,53 @@ public class FleetTest {
         assertEquals(3,fleet.getNumSurvivingShips());
 
         Ship fleetShipId4 = fleet.getShipById(2); // Battleship ( size 4 )
-        fleetShipId4.hit();
-        fleetShipId4.hit();
-        fleetShipId4.hit();
-        fleetShipId4.hit();
+        fleetShipId4.hitCaptainQuarters();
+        assertEquals(3,fleet.getNumSurvivingShips());
+        fleetShipId4.hitCaptainQuarters();
         assertEquals(2,fleet.getNumSurvivingShips());
 
         Ship fleetShipId2 = fleet.getShipById(4); //Minesweeper ( size 2 )
-        fleetShipId2.hit();
-        fleetShipId2.hit();
+        fleetShipId2.hitCaptainQuarters();
         assertEquals(1,fleet.getNumSurvivingShips());
 
         Ship fleetShipId3 = fleet.getShipById(6); //Destroyer ( size 3 )
-        fleetShipId3.hit();
-        fleetShipId3.hit();
-        fleetShipId3.hit();
-        assertEquals(0,fleet.getNumSurvivingShips());
-    }
-
-    @Test
-    public void testSinkFleetHitById(){
-        assertEquals(3,fleet.getNumSurvivingShips());
-
-        fleet.hitShipById(2);
-        fleet.hitShipById(2);
-        fleet.hitShipById(2);
-        fleet.hitShipById(2);
-        assertEquals(2,fleet.getNumSurvivingShips());
-
-        fleet.hitShipById(4);
-        fleet.hitShipById(4);
+        fleetShipId3.hitCaptainQuarters();
         assertEquals(1,fleet.getNumSurvivingShips());
-
-        fleet.hitShipById(6);
-        fleet.hitShipById(6);
-        fleet.hitShipById(6);
+        fleetShipId3.hitCaptainQuarters();
         assertEquals(0,fleet.getNumSurvivingShips());
     }
+
+//    @Test
+//    public void testSinkFleetHitById(){
+//        assertEquals(3,fleet.getNumSurvivingShips());
+//
+//        fleet.hitShipById(2);
+//        fleet.hitShipById(2);
+//        fleet.hitShipById(2);
+//        fleet.hitShipById(2);
+//        assertEquals(2,fleet.getNumSurvivingShips());
+//
+//        fleet.hitShipById(4);
+//        fleet.hitShipById(4);
+//        assertEquals(1,fleet.getNumSurvivingShips());
+//
+//        fleet.hitShipById(6);
+//        fleet.hitShipById(6);
+//        fleet.hitShipById(6);
+//        assertEquals(0,fleet.getNumSurvivingShips());
+//    }
 
     @Test
     public void testHitCapQuarters(){
-        fleet.hitShipById(3);
+        assertEquals("MISS",fleet.hitShipById(3));
         assertEquals(3,fleet.getNumSurvivingShips());
-        fleet.hitShipById(3);
+        assertEquals("SUNK Battleship",fleet.hitShipById(3));
         assertEquals(2,fleet.getNumSurvivingShips());
-        fleet.hitShipById(5);
+        assertEquals("SUNK Minesweeper",fleet.hitShipById(5));
         assertEquals(1,fleet.getNumSurvivingShips());
-        fleet.hitShipById(7);
+        assertEquals("MISS",fleet.hitShipById(7));
         assertEquals(1,fleet.getNumSurvivingShips());
-        fleet.hitShipById(7);
+        assertEquals("SURRENDER",fleet.hitShipById(7));
         assertEquals(0,fleet.getNumSurvivingShips());
     }
 
