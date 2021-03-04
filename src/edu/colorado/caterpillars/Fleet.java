@@ -65,14 +65,22 @@ public class Fleet {
         if(inSidArray(id)) {
             ship.hit();
             if (priorShips != getNumSurvivingShips()) {
-                return ("SUNK");
+                if(getNumSurvivingShips() == 0){
+                    return ("SURRENDER");
+                }else {
+                    return ("SUNK " + ship.getName());
+                }
             } else {
                 return ("HIT");
             }
         }else{
             ship.hitCaptainQuarters();
             if (priorShips != getNumSurvivingShips()) {
-                return ("SUNK");
+                if(getNumSurvivingShips() == 0){
+                    return ("SURRENDER");
+                }else {
+                    return ("SUNK " + ship.getName());
+                }
             } else {
                 return ("MISS");
             }
