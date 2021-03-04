@@ -1,4 +1,5 @@
 import edu.colorado.caterpillars.Battleship;
+import edu.colorado.caterpillars.Minesweeper;
 import edu.colorado.caterpillars.Ship;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -56,6 +57,13 @@ public class ShipTest{
         assertFalse(ship.isSunk());
         ship.hitCaptainQuarters();
         assertTrue(ship.isSunk());
+    }
+
+    @Test
+    public void testMinesweeperArmor(){
+        Ship ship2 = new Minesweeper();
+        ship2.hitCaptainQuarters();
+        assertTrue(ship2.isSunk());
     }
 
 
