@@ -47,6 +47,14 @@ public class ShipTest{
         assertEquals(2, ship.getCID());
     }
 
+    @Test
+    public void testArmor(){
+        ship.hitCaptainQuarters();
+        assertFalse(ship.isSunk());
+        ship.hitCaptainQuarters();
+        assertTrue(ship.isSunk());
+    }
+
 
 
 }
