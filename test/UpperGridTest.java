@@ -12,7 +12,7 @@ public class UpperGridTest {
 
         lowerGrid = new LowerGrid();
         upperGrid = new UpperGrid(lowerGrid);
-        Ship ship = new Ship(2, "Minesweeper", 2);
+        Ship ship = new Minesweeper();
         lowerGrid.addShip(ship, 0, 0, "E"); //Ship is at (0,0) and (0,1)
     }
 
@@ -30,7 +30,7 @@ public class UpperGridTest {
 
     @Test
     public void testSunkAndSurrender(){
-        Ship ship2 = new Ship(3, "Destroyer", 3);
+        Ship ship2 = new Destroyer();
         lowerGrid.addShip(ship2, 1, 0, "E");
         assertEquals("HIT", upperGrid.sendAttack(0,0));
         assertEquals("SUNK Minesweeper", upperGrid.sendAttack(0,1));

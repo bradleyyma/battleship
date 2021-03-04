@@ -11,13 +11,15 @@ public class Ship {
     private boolean sunk;
     private int id;
     private int cid;
+    private boolean armored;
 
-    public Ship(int id, String name, int size) {
+    public Ship(int id, String name, int size, boolean armored) {
         this.id = id;
         this.name = name;
         this.size = size;
         numHits = 0;
         sunk = false;
+        this.armored = armored;
     }
 
 
@@ -29,12 +31,7 @@ public class Ship {
     public int getSize(){
         return this.size;
     }
-    public void hit(){
-        this.numHits++;
-        if(this.numHits == this.size){
-            this.sunk = true;
-        }
-    }
+
     public int getNumHits(){
         return this.numHits;
     }
@@ -57,5 +54,21 @@ public class Ship {
     public void setCID(int cid){
         this.cid = cid;
     }
+
+    public void hit(){
+        this.numHits++;
+        if(this.numHits == this.size){
+            this.sunk = true;
+        }
+    }
+
+    public void hitCaptainQuarters(){
+        if(armored){
+            armored = false;
+        }else {
+            sunk = true;
+        }
+    }
+
 
 }

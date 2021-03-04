@@ -1,3 +1,4 @@
+import edu.colorado.caterpillars.Battleship;
 import edu.colorado.caterpillars.Ship;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +9,7 @@ public class ShipTest{
 
     @BeforeEach
     public void createShip(){
-        ship = new Ship(1, "Battleship", 3);
+        ship = new Battleship();
     }
 
     @Test
@@ -20,7 +21,7 @@ public class ShipTest{
     @Test
     public void testSizeOfShip(){
         int size = ship.getSize();
-        assertEquals(3, size);
+        assertEquals(4, size);
     }
 
     @Test
@@ -32,11 +33,13 @@ public class ShipTest{
     @Test
     public void testSunk(){
         ship.hit();
-        assertEquals(false, ship.isSunk());
+        assertFalse(ship.isSunk());
         ship.hit();
-        assertEquals(false, ship.isSunk());
+        assertFalse(ship.isSunk());
         ship.hit();
-        assertEquals(true, ship.isSunk());
+        assertFalse(ship.isSunk());
+        ship.hit();
+        assertTrue(ship.isSunk());
     }
 
     @Test
