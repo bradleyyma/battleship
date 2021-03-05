@@ -15,6 +15,11 @@ public class SonarPulseTest {
     }
 
     @Test
+    public void testInvalidFire(){
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> pulse.fire(-1, 0));
+    }
+
+    @Test
     public void testFire(){
         int [][] testGrid = {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -34,8 +39,8 @@ public class SonarPulseTest {
     public void testFireWithShip(){
         Ship ship1 = new Battleship();
         Ship ship2 = new Battleship();
-        grid.addShip(ship1, 4, 5, "E"); //Ship is at (4,5), (4,6), and (4,7);
-        grid.addShip(ship2, 6, 4, "S"); //Ship is at (6,4), (7,4), and (8,4);
+        grid.addShip(ship1, 4, 5, "E"); //Ship is at (4,5), (4,6), (4,7), (4,8);
+        grid.addShip(ship2, 6, 4, "S"); //Ship is at (6,4), (7,4), (8,4), (9,4);
         int [][] testGrid = {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -50,4 +55,27 @@ public class SonarPulseTest {
         };
         assertArrayEquals(testGrid, pulse.fire(5,5));
     }
+
+    @Test
+    public void testUseReq(){
+        Ship ship1 = new Minesweeper();
+        Ship ship2 = new Minesweeper();
+        grid.addShip(ship1, 0, 0, "E"); // Ship is at (0,0), (0,1)
+        grid.addShip(ship2, 1, 0, "E"); // Ship is at (1, 0), (1, 0)
+        pulse = new SonarPulse(grid);
+        assertThrows(Exception.class, () -> pulse.use(5, 5)); // first ship has not been sunk
+        grid.receiveAttack(0,1);
+        assertThrows(Exception.class, () -> pulse.use(5, 5)); // first ship has not been sunk
+        grid.receiveAttack(0,0);
+        pulse.use(5, 5); // first ship was sunk, this should have no issues being called
+
+        pulse.use(5, 5);
+        assertThrows(Exception.class, () -> pulse.use(5, 5)); // only have 2 usages
+
+
+    }
+
+
+
+
 }
