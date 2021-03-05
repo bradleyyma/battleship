@@ -36,4 +36,32 @@ public class SunkDataTest {
         observable.setNumSunk(2);
         assertEquals(1, observer.numSunk);
     }
+
+    @Test
+    public void testCheckForUpdate(){
+        LowerGrid grid = new LowerGrid();
+        Ship ship1 = new Minesweeper();
+        Ship ship2 = new Destroyer();
+        grid.addShip(ship1, 0, 0, "E");
+        grid.addShip(ship2, 1, 0, "S");
+        observable.setFleet(grid.getFleet());
+        Observer observer = new Observer();
+        observable.addListener(observer);
+
+        assertEquals(0, observer.numSunk);
+        grid.receiveAttack(1, 0);
+        observable.checkForUpdates();
+        assertEquals(0, observer.numSunk);
+        grid.receiveAttack(0, 0);
+        observable.checkForUpdates();
+        assertEquals(1, observer.numSunk);
+        grid.receiveAttack(2, 0);
+        observable.checkForUpdates();
+        grid.receiveAttack(2, 0);
+        observable.checkForUpdates();
+        assertEquals(2, observer.numSunk);
+
+
+
+    }
 }
