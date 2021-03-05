@@ -5,9 +5,7 @@ import java.beans.PropertyChangeEvent;
 public class SonarPulse extends Weapon{
 
     private int [][] grid;
-    private boolean locked;
     private int sunkShipsReq;
-    private int uses;
     private SunkData sunkData;
 
     public SonarPulse(LowerGrid lower, SunkData sunkData){
@@ -77,7 +75,6 @@ public class SonarPulse extends Weapon{
     public void propertyChange(PropertyChangeEvent evt) {
         if((int) evt.getNewValue() >= sunkShipsReq){
             locked = !locked;
-            System.out.println(evt.getSource());
             sunkData.removeListener(this);
         }
     }
