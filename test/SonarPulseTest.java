@@ -19,7 +19,7 @@ public class SonarPulseTest {
 
     @Test
     public void testInvalidFire(){
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> pulse.fire(-1, 0));
+        assertThrows(IndexOutOfBoundsException.class, () -> pulse.fire(-1, 0));
     }
 
     @Test

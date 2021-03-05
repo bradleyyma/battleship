@@ -25,17 +25,18 @@ public class SonarPulse extends Weapon{
 
 
     public int [][] fire(int row, int col){
+        if(row < 0 || row >= 10 || col < 0 || col >= 10){
+            throw new IndexOutOfBoundsException("Not a valid area to fire SonarPulse!");
+        }
         int [][] result = new int [10][10];
         int startRow = row - 2;
         int endRow = row + 2;
-        int startCol = col - 2;
-        int endCol = col + 2;
         int topRow = startRow;
-
+        int startCol, endCol;
         if(startRow < 0){
             startRow = 0;
         }
-        if(endRow > 9){
+        if(endRow >= 10){
             endRow = 9;
         }
         int width[] = {1, 3, 5, 3, 1};
