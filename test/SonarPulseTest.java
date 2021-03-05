@@ -1,6 +1,9 @@
 import edu.colorado.caterpillars.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.beans.PropertyChangeSupport;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SonarPulseTest {
@@ -117,5 +120,13 @@ public class SonarPulseTest {
         };
         assertArrayEquals(testGrid, pulse.fire(8,8));
     }
+
+//    @Test
+//    public void testUpdate(){
+//        int numSunk = 1;
+//
+//        support.firePropertyChange("numSunk", 0, 1);
+//        assertFalse(pulse.isLocked());
+//    }
 
 }
