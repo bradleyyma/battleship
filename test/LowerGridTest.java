@@ -72,6 +72,7 @@ public class LowerGridTest {
         }
     }
 
+
     @Test
     public void testSunkAndSurrender(){
         Ship ship = new Minesweeper();
@@ -97,7 +98,9 @@ public class LowerGridTest {
         // This is a hit
         grid.receiveAttack(0, 0);
         testGrid[0][0] = -capId;
+        testGrid[0][1] = -shipId; // Whole ship should sink
         assertArrayEquals(testGrid, grid.getGrid());
+
         //This is a miss
         grid.receiveAttack(1, 0);
         testGrid[1][0] = -1;
