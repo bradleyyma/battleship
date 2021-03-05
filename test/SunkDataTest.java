@@ -5,13 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 
 public class SunkDataTest {
 
     private SunkData observable;
-    class Observer implements PropertyChangeListener {
+
+    //Temporary class to mock an observer to use in tests
+    static class Observer implements PropertyChangeListener {
         public int numSunk = 0;
 
         @Override
@@ -19,6 +20,7 @@ public class SunkDataTest {
             numSunk = (int) evt.getNewValue();
         }
     }
+
     @BeforeEach
     public void createObservable(){
         observable = new SunkData();
@@ -33,7 +35,7 @@ public class SunkDataTest {
         observable.setNumSunk(1);
         assertEquals(1, observer.numSunk);
         observable.removeListener(observer);
-        observable.setNumSunk(2);
+        observable.setNumSunk(2); // unsubscribed, should not get new value
         assertEquals(1, observer.numSunk);
     }
 
@@ -49,19 +51,17 @@ public class SunkDataTest {
         observable.addListener(observer);
 
         assertEquals(0, observer.numSunk);
-        grid.receiveAttack(1, 0);
-        observable.checkForUpdates();
+        grid.receiveAttack(1, 0); //hit, no sunk
+        observable.checkForUpdates(); // This should be called after every turn/move
         assertEquals(0, observer.numSunk);
-        grid.receiveAttack(0, 0);
+        grid.receiveAttack(0, 0); // hit and sunk
         observable.checkForUpdates();
         assertEquals(1, observer.numSunk);
-        grid.receiveAttack(2, 0);
+        grid.receiveAttack(2, 0); //"miss" due to armor
         observable.checkForUpdates();
-        grid.receiveAttack(2, 0);
+        grid.receiveAttack(2, 0); // hit and sunk on CQ
         observable.checkForUpdates();
         assertEquals(2, observer.numSunk);
-
-
 
     }
 }
