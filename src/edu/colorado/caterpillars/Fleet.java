@@ -4,10 +4,19 @@ import java.util.Arrays;
 
 public class Fleet {
 
-    private Ship[] shipArray = new Ship[0];
-    private int nextAvailId = 2;
-    private int[] sidArray = new int[0];
-    private int[] cidArray = new int[0];
+    private Ship[] shipArray;
+    private int nextAvailId;
+    private int[] sidArray;
+    private int[] cidArray;
+
+    public Fleet(){
+        shipArray = new Ship[0];
+        nextAvailId = 2;
+        sidArray = new int[0];
+        cidArray = new int[0];
+    }
+
+
 
     public void addShip(Ship ship){
         // Append ship to shipArray
@@ -29,6 +38,10 @@ public class Fleet {
             }
         }
         return survivingShips;
+    }
+
+    public int getTotalNumShips(){
+        return shipArray.length;
     }
 
     public Ship getShipById(int id){

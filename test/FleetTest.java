@@ -23,6 +23,11 @@ public class FleetTest {
     }
 
     @Test
+    public void testGetTotalShips(){
+        assertEquals(3, fleet.getTotalNumShips());
+    }
+
+    @Test
     public void testGetShipById(){
         Ship fleetShipId2 = fleet.getShipById(2);
         assertSame(ship1,fleetShipId2); // ship1 should get id = 2 and cid = 3
