@@ -18,12 +18,11 @@ public class UpperGridTest {
 
     @Test
     public void testSendAttack(){
+        assertEquals("SURRENDER", upperGrid.sendAttack(0, 0));
+        assertEquals("MISS", upperGrid.sendAttack(0, 1));
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
-                if(i == 0 && j == 0 || i == 0 && j == 1) // where the ship is placed
-                    assertNotEquals("MISS", upperGrid.sendAttack(i, j));
-                else // anything else should MISS
-                    assertEquals("MISS", upperGrid.sendAttack(i, j));
+                assertEquals("MISS", upperGrid.sendAttack(i, j));
             }
         }
     }

@@ -75,6 +75,24 @@ public class LowerGrid extends Grid{
             if(!result.equals("MISS")){
                 grid[row][col] = -id; // -ship.id represents a ship coord that has been hit (should be <= -2)
             }
+            if(result.contains("SUNK") || result.equals("SURRENDER")){
+                Ship ship = fleet.getShipById(id);
+                int sid = ship.getID();
+//                int cid = ship.getCID();
+                int h = grid.length;
+                int w = grid[0].length;
+                for(int i = 0; i < h; i++){
+                    for(int j = 0; j < w; j++){
+                        if(grid[i][j] == sid) {
+                            grid[i][j] = -sid;
+                        }
+//                        else if(grid[i][j] == cid){
+//                            grid[i][j] = -cid;
+//                        }
+                    }
+                }
+
+            }
             return result;
         }
         else{
