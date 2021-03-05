@@ -1,12 +1,28 @@
 package edu.colorado.caterpillars;
 
+import java.beans.PropertyChangeEvent;
+
 public class SonarPulse extends Weapon{
 
     private int [][] grid;
+    private boolean locked;
+    private int sunkShipsReq;
+    private int uses;
+    private SunkData sunkData;
 
-    public SonarPulse(LowerGrid lower){
+    public SonarPulse(LowerGrid lower, SunkData sunkData){
         grid = lower.getGrid();
+        locked = true;
+        sunkShipsReq = 1;
+        uses = 2;
+        this.sunkData = sunkData;
+        sunkData.addListener(this);
     }
+
+    public boolean isLocked(){
+        return locked;
+    }
+
 
     public int [][] fire(int row, int col){
         int [][] result = new int [10][10];
@@ -27,5 +43,25 @@ public class SonarPulse extends Weapon{
             }
         }
         return result;
+    }
+
+    public void use(int row, int col){
+        if(locked){
+            throw new RuntimeException("You need to sink one ship first!");
+        }
+        if(uses <= 0){
+            throw new RuntimeException("You don't have any Sonar Pulses left!");
+        }
+        fire(row, col);
+        uses--;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if((int) evt.getNewValue() >= sunkShipsReq){
+            locked = !locked;
+            System.out.println(evt.getSource());
+            sunkData.removeListener(this);
+        }
     }
 }

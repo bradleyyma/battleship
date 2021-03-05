@@ -1,4 +1,6 @@
 package edu.colorado.caterpillars;
 
-public class Weapon {
+import java.beans.PropertyChangeListener;
+
+public abstract class Weapon implements PropertyChangeListener{
 }

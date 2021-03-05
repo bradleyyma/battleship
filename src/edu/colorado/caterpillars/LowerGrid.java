@@ -4,6 +4,10 @@ public class LowerGrid extends Grid{
 
     private Fleet fleet = new Fleet();
 
+    public Fleet getFleet(){
+        return fleet;
+    }
+
     public void addShip(Ship ship, int row, int col, String direction){
         if(isInvalidPlacement(ship, row, col, direction)) // checks for overlap, out of bounds, and invalid direction
             throw new IllegalArgumentException("Ships cannot overlap!");
