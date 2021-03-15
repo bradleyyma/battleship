@@ -60,7 +60,7 @@ public class SonarPulse extends Weapon{
         return result;
     }
 
-    public void use(int row, int col){
+    public String use(int row, int col){
         if(locked){
             throw new RuntimeException("You need to sink one ship first!");
         }
@@ -69,6 +69,7 @@ public class SonarPulse extends Weapon{
         }
         fire(row, col);
         uses--;
+        return "Sonar Pulse Used";
     }
 
     @Override

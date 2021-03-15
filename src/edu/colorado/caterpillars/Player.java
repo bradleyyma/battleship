@@ -17,9 +17,10 @@ public class Player {
         return upper;
     }
 
-    public void setOpponent(Player opponent){
+    public void setOpponent(Player opponent, SunkData sunkData){
         this.opponent = opponent;
-        upper = new UpperGrid(this.opponent.getLower());
+        sunkData.setFleet(opponent.getLower().getFleet());
+        upper = new UpperGrid(this.opponent.getLower(), sunkData);
     }
 
     public void addShip(Ship ship, int row, int col, String dir){
