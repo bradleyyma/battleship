@@ -10,7 +10,7 @@ public class BasicAttack extends Weapon{
         fleet = lower.getFleet();
     }
 
-    public String use(int row, int co
+    public String use(int row, int col){
         if(grid[row][col] > 0){
             int id = grid[row][col];
             String result = fleet.hitShipById(id);
