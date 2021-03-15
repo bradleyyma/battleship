@@ -12,16 +12,20 @@ public class LowerGridTest {
     }
 
     @Test
-    public void testAddShip(){
+    public void testAddShips(){
         int[][] gridTest = new int[10][10];
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Destroyer();
+        Ship ship3 = new Submarine();
         grid.addShip(ship1 ,2,4,"E");
         grid.addShip(ship2, 9, 9, "N");
+        grid.addShip(ship3, 3, 3, "E");
         gridTest[2][4] = 3; // cid of first ship added
         gridTest[2][5] = 2; // sid of first ship added
         gridTest[8][9] = 5; // cid of second ship added
         gridTest[9][9]  = gridTest[7][9] = 4; //sid of second ship added
+        gridTest[4][6] = 7; // cid of third ship added
+        gridTest[4][3]  = gridTest[4][4] = gridTest[4][5] = gridTest[3][5] = 6; //sid of third ship added
         assertArrayEquals(gridTest, grid.getGrid());
     }
 
