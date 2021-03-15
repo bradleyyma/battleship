@@ -60,6 +60,8 @@ public class LowerGridTest {
 
     @Test
     public void testAttack(){
+        int[][] gridTest = new int[10][10];
+        assertArrayEquals(gridTest, grid.getGrid());
         Ship ship = new Minesweeper();
         grid.addShip(ship, 0, 1, "W");
         for(int i = 0; i < 10; i++){
@@ -86,27 +88,25 @@ public class LowerGridTest {
     }
 
     @Test
-    public void testLowerGridValues(){
-        int [][] testGrid = new int[10][10];
-        int shipId = 2;
-        int capId = 3;
+    public void testLowerGridValues() {
+        int[][] testGrid = new int[10][10];
+        int shipId1 = 2;
+        int capId1 = 3;
+        int shipId2 = 4;
+        int capId2 = 5;
         Ship ship1 = new Minesweeper();
+        Ship ship2 = new Minesweeper();
         grid.addShip(ship1, 0, 0, "E"); //ship is at (0, 0) and (0, 1)
-        testGrid[0][0] = capId;
-        testGrid[0][1] = shipId;
+        grid.addShip(ship2, 1, 0, "E"); //ship is at (1, 0) and (1, 1)
+        testGrid[0][0] = capId1;
+        testGrid[0][1] = shipId1;
+        testGrid[1][0] = capId2;
+        testGrid[1][1] = shipId2;
         assertArrayEquals(testGrid, grid.getGrid());
+
         // This is a hit
         grid.receiveAttack(0, 0);
-        testGrid[0][0] = -capId;
-        testGrid[0][1] = -shipId; // Whole ship should sink
-        assertArrayEquals(testGrid, grid.getGrid());
-
-        //This is a miss
-        grid.receiveAttack(1, 0);
-        testGrid[1][0] = -1;
-        assertArrayEquals(testGrid, grid.getGrid());
+        testGrid[0][0] = -capId1;
+        testGrid[0][1] = -shipId1; //
     }
-
-
-
 }

@@ -13,6 +13,6 @@ public class BattleshipTest {
     @Test
     public void testData(){
         assertEquals("Battleship", ship.getName());
-        assertEquals(4, ship.getSize());
+        assertEquals(4, ship.getDimension()[1]);
     }
 }

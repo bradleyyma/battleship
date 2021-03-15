@@ -10,63 +10,70 @@ public class LowerGrid extends Grid{
 
     public void addShip(Ship ship, int row, int col, String direction){
         if(isInvalidPlacement(ship, row, col, direction)) // checks for overlap, out of bounds, and invalid direction
-            throw new IllegalArgumentException("Ships cannot overlap!");
+            throw new IllegalArgumentException("Ships cannot overlap or hang off of grid!");
         fleet.addShip(ship);
         int id = ship.getID();
         int cid = ship.getCID();
-        for(int i = 0; i < ship.getSize(); i++){
-            if (direction == "N"){
-                if(i == ship.getcIndex()){
-                    grid[row--][col] = cid;
-                }else {
-                    grid[row--][col] = id;
+        for(int i = 0; i < ship.getDimension()[0]; i++){
+            for(int j = 0; j < ship.getDimension()[1]; j++){
+                if (direction == "N"){
+                    if(ship.getShape()[i][j] == 2){
+                        grid[row-j][col+i] = cid;
+                    }else if(ship.getShape()[i][j] == 1){
+                        grid[row-j][col+i] = id;
+                    }
                 }
-            }
-            else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
-                if(i == ship.getcIndex()){
-                    grid[row++][col] = cid;
-                }else {
-                    grid[row++][col] = id;
+                else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
+                    if(ship.getShape()[i][j] == 2){
+                        grid[row+j][col-i] = cid;
+                    }else if(ship.getShape()[i][j] == 1){
+                        grid[row+j][col-i] = id;
+                    }
                 }
-            }
-            else if (direction == "E"){
-                if(i == ship.getcIndex()){
-                    grid[row][col++] = cid;
-                }else {
-                    grid[row][col++] = id;
+                else if (direction == "E"){
+                    if(ship.getShape()[i][j] == 2){
+                        grid[row+i][col+j] = cid;
+                    }else if(ship.getShape()[i][j] == 1){
+                        grid[row+i][col+j] = id;
+                    }
                 }
-            }
-            else if (direction == "W"){
-                if(i == ship.getcIndex()){
-                    grid[row][col--] = cid;
-                }else {
-                    grid[row][col--] = id;
+                else if (direction == "W"){
+                    if(ship.getShape()[i][j] == 2){
+                        grid[row-i][col-j] = cid;
+                    }else if(ship.getShape()[i][j] == 1){
+                        grid[row-i][col-j] = id;
+                    }
                 }
             }
         }
-
     }
 
     private boolean isInvalidPlacement(Ship ship, int row, int col, String direction){
-        for(int i = 0; i < ship.getSize(); i++){
-            if (direction == "N"){
-                if(grid[row--][col] != 0)
-                    return true;
-            }
-            else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
-                if(grid[row++][col] != 0)
-                    return true;
-            }
-            else if (direction == "E"){
-                if(grid[row][col++] != 0)
-                    return true;
-            }
-            else if (direction == "W"){
-                if(grid[row][col--] != 0)
-                    return true;
-            }
-            else{
-                throw new IllegalArgumentException("Not a valid direction!");
+        for(int i = 0; i < ship.getDimension()[0]; i++){
+            for(int j = 0; j < ship.getDimension()[1]; j++){
+                if (direction == "N"){
+                    if(row-j >= 10 || row-j < 0 || col+i >= 10 ||
+                            col+i < 0 || grid[row-j][col+i] != 0)
+                        return true;
+                }
+                else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
+                    if(row+j >= 10 || row+j < 0 || col-i >= 10 ||
+                            col-i < 0 || grid[row+j][col-i] != 0)
+                        return true;
+                }
+                else if (direction == "E"){
+                    if(row+i >= 10 || row+i < 0 || col+j >= 10 ||
+                            col+j < 0 || grid[row+i][col+j] != 0)
+                        return true;
+                }
+                else if (direction == "W"){
+                    if(row-i >= 10 || row-i < 0 || col-j >= 10 ||
+                            col-j < 0 || grid[row-i][col-j] != 0)
+                        return true;
+                }
+                else{
+                    throw new IllegalArgumentException("Not a valid direction!");
+                }
             }
         }
         return false;

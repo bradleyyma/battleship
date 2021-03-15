@@ -6,7 +6,8 @@ public class Ship {
     //Team caterpillars, pair 2 was here
     
     private String name;
-    private int size;
+    private int [] dimension;
+    private int [][] shape;
     private int numHits;
     private boolean sunk;
     private int id;
@@ -15,14 +16,14 @@ public class Ship {
     private boolean armored;
 
 
-    public Ship(int id, String name, int size, boolean armored, int cIndex) {
+    public Ship(int id, String name, int [] dimension, int [][] shape, boolean armored) {
         this.id = id;
         this.name = name;
-        this.size = size;
+        this.dimension = dimension;
+        this.shape = shape;
         numHits = 0;
         sunk = false;
         this.armored = armored;
-        this.cIndex = cIndex;
     }
 
 
@@ -30,9 +31,6 @@ public class Ship {
 
     public String getName(){
         return name;
-    }
-    public int getSize(){
-        return this.size;
     }
 
     public int getNumHits(){
@@ -54,9 +52,9 @@ public class Ship {
         return cid;
     }
 
-    public int getcIndex(){
-        return cIndex;
-    }
+    public int[] getDimension() {return dimension;}
+
+    public int[][] getShape() {return  shape;}
 
     public void setCID(int cid){
         this.cid = cid;

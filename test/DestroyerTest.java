@@ -13,6 +13,6 @@ public class DestroyerTest {
     @Test
     public void testData(){
         assertEquals("Destroyer", ship.getName());
-        assertEquals(3, ship.getSize());
+        assertEquals(3, ship.getDimension()[1]);
     }
 }
