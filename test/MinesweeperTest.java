@@ -13,6 +13,6 @@ public class MinesweeperTest {
     @Test
     public void testData(){
         assertEquals("Minesweeper", ship.getName());
-        assertEquals(2, ship.getSize());
+        assertEquals(2, ship.getDimension()[1]);
     }
 }

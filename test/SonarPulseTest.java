@@ -42,8 +42,8 @@ public class SonarPulseTest {
     public void testFireWithShip(){
         Ship ship1 = new Battleship();
         Ship ship2 = new Battleship();
-        grid.addShip(ship1, 4, 5, "E"); //Ship is at (4,5), (4,6), (4,7), (4,8);
-        grid.addShip(ship2, 6, 4, "S"); //Ship is at (6,4), (7,4), (8,4), (9,4);
+        grid.addShip(ship1, 4, 5, "E",false); //Ship is at (4,5), (4,6), (4,7), (4,8);
+        grid.addShip(ship2, 6, 4, "S",false); //Ship is at (6,4), (7,4), (8,4), (9,4);
 
         int [][] testGrid = {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -64,8 +64,8 @@ public class SonarPulseTest {
     public void testFireOnTRCorner(){
         Ship ship1 = new Battleship();
         Ship ship2 = new Battleship();
-        grid.addShip(ship1, 0, 0, "E"); // Index starts at 0, Ship is at (4,5), (4,6), and (4,7);
-        grid.addShip(ship2, 2, 0, "S"); // Ship is at (6,4), (7,4), and (8,4);
+        grid.addShip(ship1, 0, 0, "E",false); // Index starts at 0, Ship is at (4,5), (4,6), and (4,7);
+        grid.addShip(ship2, 2, 0, "S",false); // Ship is at (6,4), (7,4), and (8,4);
         int [][] testGrid = {
                 {1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
                 {-1, -1, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -84,8 +84,8 @@ public class SonarPulseTest {
     public void testFireOnBLCorner(){
         Ship ship1 = new Battleship();
         Ship ship2 = new Minesweeper();
-        grid.addShip(ship1, 9, 6, "E"); // Index starts at 0, Ship is at (4,5), (4,6), and (4,7);
-        grid.addShip(ship2, 7, 8, "E"); // Ship is at (6,4), (7,4), and (8,4);
+        grid.addShip(ship1, 9, 6, "E",false); // Index starts at 0, Ship is at (4,5), (4,6), and (4,7);
+        grid.addShip(ship2, 7, 8, "E",false); // Ship is at (6,4), (7,4), and (8,4);
         int [][] testGrid = {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -134,8 +134,8 @@ public class SonarPulseTest {
         //SET UP
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Battleship();
-        grid.addShip(ship1, 0, 0, "E");
-        grid.addShip(ship2, 5, 5, "S");
+        grid.addShip(ship1, 0, 0, "E",false);
+        grid.addShip(ship2, 5, 5, "S",false);
         sunkData.setFleet(grid.getFleet()); // Needs Fleet for sunk data
         pulse = new SonarPulse(grid, sunkData); // sonar pulse object, needs LowerGrid for info
         //

@@ -23,8 +23,8 @@ public class Player {
         upper = new UpperGrid(this.opponent.getLower(), sunkData);
     }
 
-    public void addShip(Ship ship, int row, int col, String dir){
-        lower.addShip(ship, row, col, dir);
+    public void addShip(Ship ship, int row, int col, String dir,boolean submerge){
+        lower.addShip(ship, row, col, dir,submerge);
     }
 
     public String attack(int row, int col){

@@ -3,17 +3,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BattleshipTest {
+public class SubmarineTest {
     private Ship ship;
     @BeforeEach
     public void createShip(){
-        ship = new Battleship();
+        ship = new Submarine();
     }
 
     @Test
     public void testData(){
-        assertEquals("Battleship", ship.getName());
+        assertEquals("Submarine", ship.getName());
         assertEquals(4, ship.getDimension()[1]);
-        assertFalse(ship.canSubmerge());
+        assertEquals(2, ship.getDimension()[0]);
+        assertTrue(ship.canSubmerge());
     }
 }
