@@ -10,12 +10,12 @@ public class PlayerTest {
     public void createPlayer(){
         player1 = new Player();
         player2 = new Player();
-        player1.setOpponent(player2);
-        player2.setOpponent(player1);
         Ship mine1 = new Minesweeper();
         Ship mine2  = new Minesweeper();
         player1.addShip(mine1, 0, 0, "E");
         player2.addShip(mine2, 0, 9, "S");
+        player1.setOpponent(player2, new SunkData());
+        player2.setOpponent(player1, new SunkData());
     }
 
     @Test

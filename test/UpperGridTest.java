@@ -9,9 +9,10 @@ public class UpperGridTest {
 
     @BeforeEach
     public void createGrid() {
-
+        SunkData sunkData = new SunkData();
         lowerGrid = new LowerGrid();
-        upperGrid = new UpperGrid(lowerGrid);
+
+        upperGrid = new UpperGrid(lowerGrid, sunkData);
         Ship ship = new Minesweeper();
         lowerGrid.addShip(ship, 0, 0, "E"); //Ship is at (0,0) and (0,1)
     }
@@ -50,6 +51,12 @@ public class UpperGridTest {
         upperGrid.sendAttack(1, 0);
         testGrid[1][0] = -1;
         assertArrayEquals(testGrid, upperGrid.getGrid());
+    }
+
+    @Test
+    public void testSetAttackBehavior(){
+        AttackBehavior ab = new SendBasicAttack(lowerGrid);
+        upperGrid.setAttackBehavior(ab);
     }
 
 
