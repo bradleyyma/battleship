@@ -1,8 +1,9 @@
 package edu.colorado.caterpillars;
 
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
-public class SonarPulse extends Weapon{
+public class SonarPulse extends Weapon implements PropertyChangeListener {
 
     private int [][] grid;
     private int sunkShipsReq;
