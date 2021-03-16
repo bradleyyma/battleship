@@ -14,13 +14,15 @@ public class Ship {
     private int cid;
     private int cIndex;
     private boolean armored;
+    private boolean canSubmerge;
 
 
-    public Ship(int id, String name, int [] dimension, int [][] shape, boolean armored) {
+    public Ship(int id, String name, int [] dimension, int [][] shape, boolean armored, boolean canSubmerge) {
         this.id = id;
         this.name = name;
         this.dimension = dimension;
         this.shape = shape;
+        this.canSubmerge = canSubmerge;
         numHits = 0;
         sunk = false;
         this.armored = armored;
@@ -34,11 +36,12 @@ public class Ship {
     }
 
     public int getNumHits(){
-        return this.numHits;
+        return numHits;
     }
     public boolean isSunk(){
-        return this.sunk;
+        return sunk;
     }
+    public boolean canSubmerge() {return canSubmerge;}
 
     public int getID(){
         return id;
