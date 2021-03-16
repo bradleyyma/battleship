@@ -10,18 +10,36 @@ public class SendLaserAttackTest {
         LowerGrid lower = new LowerGrid();
         Ship bat = new Battleship();
         Ship sub = new Submarine();
-        lower.addShip(bat, 0, 0, "E", false);
-        lower.addShip(sub, 1, 4, "W", true);
         sendLaser = new SendLaserAttack(lower);
     }
 
     @Test
     public void testAttackMissSurfaceHitSub(){
+        LowerGrid lower = new LowerGrid();
+        Ship bat = new Battleship();
+        Ship sub = new Submarine();
+        lower.addShip(bat, 0, 0, "E", false);
+        lower.addShip(sub, 1, 4, "W", true);
         assertEquals("HIT", sendLaser.attack(1, 2));
     }
 
     @Test
     public void testAttackHitSurfaceMissSub(){
+        LowerGrid lower = new LowerGrid();
+        Ship bat = new Battleship();
+        Ship sub = new Submarine();
+        lower.addShip(bat, 0, 0, "E", false);
+        lower.addShip(sub, 1, 4, "W", true);
         assertEquals("HIT",sendLaser.attack(0,0));
+    }
+
+    @Test
+    public void testAttackMissSurfaceMissSub(){
+        LowerGrid lower = new LowerGrid();
+        Ship bat = new Battleship();
+        Ship sub = new Submarine();
+        lower.addShip(bat, 0, 0, "E", false);
+        lower.addShip(sub, 1, 4, "W", true);
+        assertEquals("MISS",sendLaser.attack(9,0));
     }
 }
