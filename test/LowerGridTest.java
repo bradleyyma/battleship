@@ -50,6 +50,12 @@ public class LowerGridTest {
     }
 
     @Test
+    public void testCantSubmergeDestroyer(){
+        Ship ship1 = new Destroyer();
+        assertThrows(Exception.class, () -> grid.addShip(ship1, 5, 5, "N",true));
+    }
+
+    @Test
     public void testOutOfBoundsShip(){
         Ship ship1 = new Destroyer();
         assertThrows(Exception.class, () -> grid.addShip(ship1, 1, 0, "N",false));

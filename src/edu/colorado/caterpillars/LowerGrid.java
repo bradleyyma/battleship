@@ -16,7 +16,12 @@ public class LowerGrid extends Grid{
     public void addShip(Ship ship, int row, int col, String direction,boolean submerge){
         int [][] g;
         if(submerge){
-            g = submergedGrid;
+            if(!ship.canSubmerge()){
+                throw new IllegalArgumentException("This ship cannot be submerged!");
+            }else {
+                g = submergedGrid;
+            }
+
         }else{
             g = grid;
         }
