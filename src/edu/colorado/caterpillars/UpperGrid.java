@@ -32,7 +32,7 @@ public class UpperGrid extends Grid implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if((int) evt.getNewValue() >= 1){
-            AttackBehavior newAb = new SendLaserAttack();
+            AttackBehavior newAb = new SendLaserAttack(opponentLower);
             setAttackBehavior(newAb);
             sunkData.removeListener(this);
         }

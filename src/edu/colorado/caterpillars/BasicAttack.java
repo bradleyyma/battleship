@@ -1,7 +1,5 @@
 package edu.colorado.caterpillars;
 
-import java.beans.PropertyChangeEvent;
-
 public class BasicAttack extends Weapon{
     private int [][] grid;
     private Fleet fleet;
@@ -41,10 +39,5 @@ public class BasicAttack extends Weapon{
             grid[row][col] = -1; // -1 should indicate miss
             return "MISS";
         }
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        return;
     }
 }

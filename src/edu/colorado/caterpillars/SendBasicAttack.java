@@ -6,7 +6,8 @@ public class SendBasicAttack implements AttackBehavior{
         opponentLower = lower;
     }
     public String attack(int row, int col){
-        String result = opponentLower.receiveAttack(row, col);
+        BasicAttack ba = new BasicAttack(opponentLower);
+        String result = opponentLower.receiveAttack(ba, row, col);
         return result;
     }
 }
