@@ -3,13 +3,18 @@ package edu.colorado.caterpillars;
 public class LowerGrid extends Grid{
 
     private Fleet fleet = new Fleet();
+    private  int[][] submergedGrid = new int[10][10];
 
     public Fleet getFleet(){
         return fleet;
     }
 
+    public int[][] getSubmergedGrid(){
+        return submergedGrid;
+    }
+
     public void addShip(Ship ship, int row, int col, String direction){
-        if(isInvalidPlacement(ship, row, col, direction)) // checks for overlap, out of bounds, and invalid direction
+        if(isInvalidPlacement(ship, row, col, direction,grid)) // checks for overlap, out of bounds, and invalid direction
             throw new IllegalArgumentException("Ships cannot overlap or hang off of grid!");
         fleet.addShip(ship);
         int id = ship.getID();
@@ -48,27 +53,67 @@ public class LowerGrid extends Grid{
         }
     }
 
-    private boolean isInvalidPlacement(Ship ship, int row, int col, String direction){
+    public void submergeShip(Ship ship, int row, int col, String direction){
+        if(isInvalidPlacement(ship, row, col, direction,submergedGrid)) // checks for overlap, out of bounds, and invalid direction
+            throw new IllegalArgumentException("Ships cannot overlap or hang off of grid!");
+        fleet.addShip(ship);
+        int id = ship.getID();
+        int cid = ship.getCID();
+        for(int i = 0; i < ship.getDimension()[0]; i++){
+            for(int j = 0; j < ship.getDimension()[1]; j++){
+                if (direction == "N"){
+                    if(ship.getShape()[i][j] == 2){
+                        submergedGrid[row-j][col+i] = cid;
+                    }else if(ship.getShape()[i][j] == 1){
+                        submergedGrid[row-j][col+i] = id;
+                    }
+                }
+                else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
+                    if(ship.getShape()[i][j] == 2){
+                        submergedGrid[row+j][col-i] = cid;
+                    }else if(ship.getShape()[i][j] == 1){
+                        submergedGrid[row+j][col-i] = id;
+                    }
+                }
+                else if (direction == "E"){
+                    if(ship.getShape()[i][j] == 2){
+                        submergedGrid[row+i][col+j] = cid;
+                    }else if(ship.getShape()[i][j] == 1){
+                        submergedGrid[row+i][col+j] = id;
+                    }
+                }
+                else if (direction == "W"){
+                    if(ship.getShape()[i][j] == 2){
+                        submergedGrid[row-i][col-j] = cid;
+                    }else if(ship.getShape()[i][j] == 1){
+                        submergedGrid[row-i][col-j] = id;
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean isInvalidPlacement(Ship ship, int row, int col, String direction,int[][] g){
         for(int i = 0; i < ship.getDimension()[0]; i++){
             for(int j = 0; j < ship.getDimension()[1]; j++){
                 if (direction == "N"){
                     if(row-j >= 10 || row-j < 0 || col+i >= 10 ||
-                            col+i < 0 || grid[row-j][col+i] != 0)
+                            col+i < 0 || g[row-j][col+i] != 0)
                         return true;
                 }
                 else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
                     if(row+j >= 10 || row+j < 0 || col-i >= 10 ||
-                            col-i < 0 || grid[row+j][col-i] != 0)
+                            col-i < 0 || g[row+j][col-i] != 0)
                         return true;
                 }
                 else if (direction == "E"){
                     if(row+i >= 10 || row+i < 0 || col+j >= 10 ||
-                            col+j < 0 || grid[row+i][col+j] != 0)
+                            col+j < 0 || g[row+i][col+j] != 0)
                         return true;
                 }
                 else if (direction == "W"){
                     if(row-i >= 10 || row-i < 0 || col-j >= 10 ||
-                            col-j < 0 || grid[row-i][col-j] != 0)
+                            col-j < 0 || g[row-i][col-j] != 0)
                         return true;
                 }
                 else{
