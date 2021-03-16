@@ -14,5 +14,6 @@ public class BattleshipTest {
     public void testData(){
         assertEquals("Battleship", ship.getName());
         assertEquals(4, ship.getDimension()[1]);
+        assertFalse(ship.canSubmerge());
     }
 }
