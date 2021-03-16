@@ -30,6 +30,26 @@ public class LowerGridTest {
     }
 
     @Test
+    public void testAddSubmergedShip(){
+        int[][] gridTest = new int[10][10];
+        int[][] gridTest2 = new int[10][10];
+        Ship ship1 = new Minesweeper();
+        Ship ship2 = new Destroyer();
+        Ship ship3 = new Submarine();
+        grid.addShip(ship1 ,2,4,"E");
+        grid.addShip(ship2, 9, 9, "N");
+        grid.submergeShip(ship3, 1, 4, "E");
+        gridTest[2][4] = 3; // cid of first ship added
+        gridTest[2][5] = 2; // sid of first ship added
+        gridTest[8][9] = 5; // cid of second ship added
+        gridTest[9][9]  = gridTest[7][9] = 4; //sid of second ship added
+        gridTest2[2][7] = 7; // cid of third ship added
+        gridTest2[2][4]  = gridTest2[2][5] = gridTest2[2][6] = gridTest2[1][6] = 6; //sid of third ship added
+        assertArrayEquals(gridTest, grid.getGrid());
+        assertArrayEquals(gridTest2, grid.getSubmergedGrid());
+    }
+
+    @Test
     public void testOutOfBoundsShip(){
         Ship ship1 = new Destroyer();
         assertThrows(Exception.class, () -> grid.addShip(ship1, 1, 0, "N"));
