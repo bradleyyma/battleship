@@ -44,8 +44,8 @@ public class SunkDataTest {
         LowerGrid grid = new LowerGrid();
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Destroyer();
-        grid.addShip(ship1, 0, 0, "E");
-        grid.addShip(ship2, 1, 0, "S");
+        grid.addShip(ship1, 0, 0, "E",false);
+        grid.addShip(ship2, 1, 0, "S",false);
         observable.setFleet(grid.getFleet());
         Observer observer = new Observer();
         observable.addListener(observer);

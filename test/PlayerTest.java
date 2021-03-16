@@ -14,8 +14,8 @@ public class PlayerTest {
         player2.setOpponent(player1);
         Ship mine1 = new Minesweeper();
         Ship mine2  = new Minesweeper();
-        player1.addShip(mine1, 0, 0, "E");
-        player2.addShip(mine2, 0, 9, "S");
+        player1.addShip(mine1, 0, 0, "E",false);
+        player2.addShip(mine2, 0, 9, "S",false);
     }
 
     @Test

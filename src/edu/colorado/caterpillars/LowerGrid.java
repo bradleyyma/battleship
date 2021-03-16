@@ -13,48 +13,14 @@ public class LowerGrid extends Grid{
         return submergedGrid;
     }
 
-    public void addShip(Ship ship, int row, int col, String direction){
-        if(isInvalidPlacement(ship, row, col, direction,grid)) // checks for overlap, out of bounds, and invalid direction
-            throw new IllegalArgumentException("Ships cannot overlap or hang off of grid!");
-        fleet.addShip(ship);
-        int id = ship.getID();
-        int cid = ship.getCID();
-        for(int i = 0; i < ship.getDimension()[0]; i++){
-            for(int j = 0; j < ship.getDimension()[1]; j++){
-                if (direction == "N"){
-                    if(ship.getShape()[i][j] == 2){
-                        grid[row-j][col+i] = cid;
-                    }else if(ship.getShape()[i][j] == 1){
-                        grid[row-j][col+i] = id;
-                    }
-                }
-                else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
-                    if(ship.getShape()[i][j] == 2){
-                        grid[row+j][col-i] = cid;
-                    }else if(ship.getShape()[i][j] == 1){
-                        grid[row+j][col-i] = id;
-                    }
-                }
-                else if (direction == "E"){
-                    if(ship.getShape()[i][j] == 2){
-                        grid[row+i][col+j] = cid;
-                    }else if(ship.getShape()[i][j] == 1){
-                        grid[row+i][col+j] = id;
-                    }
-                }
-                else if (direction == "W"){
-                    if(ship.getShape()[i][j] == 2){
-                        grid[row-i][col-j] = cid;
-                    }else if(ship.getShape()[i][j] == 1){
-                        grid[row-i][col-j] = id;
-                    }
-                }
-            }
+    public void addShip(Ship ship, int row, int col, String direction,boolean submerge){
+        int [][] g;
+        if(submerge){
+            g = submergedGrid;
+        }else{
+            g = grid;
         }
-    }
-
-    public void submergeShip(Ship ship, int row, int col, String direction){
-        if(isInvalidPlacement(ship, row, col, direction,submergedGrid)) // checks for overlap, out of bounds, and invalid direction
+        if(isInvalidPlacement(ship, row, col, direction,g)) // checks for overlap, out of bounds, and invalid direction
             throw new IllegalArgumentException("Ships cannot overlap or hang off of grid!");
         fleet.addShip(ship);
         int id = ship.getID();
@@ -63,30 +29,30 @@ public class LowerGrid extends Grid{
             for(int j = 0; j < ship.getDimension()[1]; j++){
                 if (direction == "N"){
                     if(ship.getShape()[i][j] == 2){
-                        submergedGrid[row-j][col+i] = cid;
+                        g[row-j][col+i] = cid;
                     }else if(ship.getShape()[i][j] == 1){
-                        submergedGrid[row-j][col+i] = id;
+                        g[row-j][col+i] = id;
                     }
                 }
                 else if (direction == "S"){ // South means increasing row num (e.g A1 then A2)
                     if(ship.getShape()[i][j] == 2){
-                        submergedGrid[row+j][col-i] = cid;
+                        g[row+j][col-i] = cid;
                     }else if(ship.getShape()[i][j] == 1){
-                        submergedGrid[row+j][col-i] = id;
+                        g[row+j][col-i] = id;
                     }
                 }
                 else if (direction == "E"){
                     if(ship.getShape()[i][j] == 2){
-                        submergedGrid[row+i][col+j] = cid;
+                        g[row+i][col+j] = cid;
                     }else if(ship.getShape()[i][j] == 1){
-                        submergedGrid[row+i][col+j] = id;
+                        g[row+i][col+j] = id;
                     }
                 }
                 else if (direction == "W"){
                     if(ship.getShape()[i][j] == 2){
-                        submergedGrid[row-i][col-j] = cid;
+                        g[row-i][col-j] = cid;
                     }else if(ship.getShape()[i][j] == 1){
-                        submergedGrid[row-i][col-j] = id;
+                        g[row-i][col-j] = id;
                     }
                 }
             }
