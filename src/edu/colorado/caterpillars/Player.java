@@ -17,9 +17,9 @@ public class Player {
         return upper;
     }
 
-    public void setOpponent(Player opponent, SunkData sunkData){
+    public void setOpponent(Player opponent){
         this.opponent = opponent;
-        sunkData.setFleet(opponent.getLower().getFleet());
+        SunkData sunkData = new SunkData(lower.getFleet());
         upper = new UpperGrid(this.opponent.getLower(), sunkData);
     }
 

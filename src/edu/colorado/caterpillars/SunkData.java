@@ -10,8 +10,9 @@ public class SunkData{
 
     private Fleet fleet;
 
-    public SunkData(){
+    public SunkData(Fleet fleet){
         support = new PropertyChangeSupport(this);
+        this.fleet = fleet;
     }
 
     public void addListener(PropertyChangeListener pcl){
@@ -25,10 +26,6 @@ public class SunkData{
     public void setNumSunk(int value){
         support.firePropertyChange("numSunk", this.numSunk, value);
         this.numSunk = value;
-    }
-
-    public void setFleet(Fleet fleet){
-        this.fleet = fleet;
     }
 
     public void checkForUpdates(){

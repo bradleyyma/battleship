@@ -13,7 +13,7 @@ public class SonarPulseTest {
     @BeforeEach
     public void createSonarPulse(){
         grid = new LowerGrid();
-        sunkData = new SunkData();
+        sunkData = new SunkData(grid.getFleet());
         pulse = new SonarPulse(grid, sunkData);
     }
 
@@ -136,7 +136,6 @@ public class SonarPulseTest {
         Ship ship2 = new Battleship();
         grid.addShip(ship1, 0, 0, "E",false);
         grid.addShip(ship2, 5, 5, "S",false);
-        sunkData.setFleet(grid.getFleet()); // Needs Fleet for sunk data
         pulse = new SonarPulse(grid, sunkData); // sonar pulse object, needs LowerGrid for info
         //
 

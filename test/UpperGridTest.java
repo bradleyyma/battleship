@@ -9,12 +9,11 @@ public class UpperGridTest {
 
     @BeforeEach
     public void createGrid() {
-        SunkData sunkData = new SunkData();
         lowerGrid = new LowerGrid();
+        SunkData sunkData = new SunkData(lowerGrid.getFleet());
         upperGrid = new UpperGrid(lowerGrid, sunkData);
         Ship ship = new Minesweeper();
         lowerGrid.addShip(ship, 0, 0, "E",false); //Ship is at (0,0) and (0,1)
-        sunkData.setFleet(lowerGrid.getFleet());
 
     }
 

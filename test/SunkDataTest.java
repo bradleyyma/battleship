@@ -10,6 +10,7 @@ import java.beans.PropertyChangeListener;
 public class SunkDataTest {
 
     private SunkData observable;
+    private LowerGrid grid;
 
     //Temporary class to mock an observer to use in tests
     static class Observer implements PropertyChangeListener {
@@ -21,16 +22,25 @@ public class SunkDataTest {
         }
     }
 
+    private Observer observer;
+
     @BeforeEach
     public void createObservable(){
-        observable = new SunkData();
+
+        grid = new LowerGrid();
+        Ship ship1 = new Minesweeper();
+        Ship ship2 = new Destroyer();
+        grid.addShip(ship1, 0, 0, "E",false);
+        grid.addShip(ship2, 1, 0, "S",false);
+        observable = new SunkData(grid.getFleet());
+        observer = new Observer();
+        observable.addListener(observer);
+
 
     }
 
     @Test
     public void testAddingAndRemovingListener(){
-        Observer observer = new Observer();
-        observable.addListener(observer);
         assertEquals(0, observer.numSunk);
         observable.setNumSunk(1);
         assertEquals(1, observer.numSunk);
@@ -41,15 +51,6 @@ public class SunkDataTest {
 
     @Test
     public void testCheckForUpdate(){
-        LowerGrid grid = new LowerGrid();
-        Ship ship1 = new Minesweeper();
-        Ship ship2 = new Destroyer();
-        grid.addShip(ship1, 0, 0, "E",false);
-        grid.addShip(ship2, 1, 0, "S",false);
-        observable.setFleet(grid.getFleet());
-        Observer observer = new Observer();
-        observable.addListener(observer);
-
         assertEquals(0, observer.numSunk);
         grid.receiveAttack(1, 0); //hit, no sunk
         observable.checkForUpdates(); // This should be called after every turn/move
