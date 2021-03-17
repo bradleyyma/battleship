@@ -40,8 +40,6 @@ public class SpaceLaser extends Weapon{
     public String use(int row, int col){
         String surfaceResult = helper(lower.getGrid(), row, col);
         String submergeResult = helper(lower.getSubmergedGrid(), row, col);
-        System.out.println(surfaceResult + submergeResult);
-        System.out.println(submergeResult.split(" ")[0]);
         if(surfaceResult.equals("SURRENDER") || submergeResult.equals("SURRENDER"))
             return "SURRENDER";
         if(surfaceResult.split(" ")[0].equals("SUNK"))

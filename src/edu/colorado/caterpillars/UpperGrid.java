@@ -24,8 +24,10 @@ public class UpperGrid extends Grid implements PropertyChangeListener {
         String result = attackBehavior.attack(row, col);
         if(result == "MISS")
             grid[row][col] = -1;
-        else // sunk and hit will both indicate 1
+        else { // sunk and hit will both indicate 1
+            sunkData.checkForUpdates();
             grid[row][col] = 1;
+        }
         return result;
     }
 
