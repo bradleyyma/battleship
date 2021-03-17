@@ -49,7 +49,7 @@ public class SendLaserAttackTest {
 
     @Test
     public void testAttackHitSurfaceSunkSub(){
-        assertEquals("HIT",sendLaser.attack(1,4));
-        assertEquals("SUNK",sendLaser.attack(1,4));
+        assertEquals("HIT",sendLaser.attack(0,1));
+        assertEquals("SUNK Submarine",sendLaser.attack(0,1));
     }
 }
