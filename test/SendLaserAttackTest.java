@@ -11,35 +11,45 @@ public class SendLaserAttackTest {
         Ship bat = new Battleship();
         Ship sub = new Submarine();
         sendLaser = new SendLaserAttack(lower);
+        lower.addShip(bat, 0, 0, "E", false);
+        lower.addShip(sub, 1, 4, "W", true);
+        //int [][] testGrid = {
+        //                {1, 1, 1, 3, 0, 0, 0, 0, 0, 0},
+        //                {0, 2, 2, 2, 2, 0, 0, 0, 0, 0},
+        //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //        };
     }
 
     @Test
     public void testAttackMissSurfaceHitSub(){
-        LowerGrid lower = new LowerGrid();
-        Ship bat = new Battleship();
-        Ship sub = new Submarine();
-        lower.addShip(bat, 0, 0, "E", false);
-        lower.addShip(sub, 1, 4, "W", true);
         assertEquals("HIT", sendLaser.attack(1, 2));
     }
 
     @Test
     public void testAttackHitSurfaceMissSub(){
-        LowerGrid lower = new LowerGrid();
-        Ship bat = new Battleship();
-        Ship sub = new Submarine();
-        lower.addShip(bat, 0, 0, "E", false);
-        lower.addShip(sub, 1, 4, "W", true);
         assertEquals("HIT",sendLaser.attack(0,0));
     }
 
     @Test
     public void testAttackMissSurfaceMissSub(){
-        LowerGrid lower = new LowerGrid();
-        Ship bat = new Battleship();
-        Ship sub = new Submarine();
-        lower.addShip(bat, 0, 0, "E", false);
-        lower.addShip(sub, 1, 4, "W", true);
-        assertEquals("MISS",sendLaser.attack(9,0));
+        assertEquals("MISS",sendLaser.attack(8,8));
+    }
+
+    @Test
+    public void testAttackHitSurfaceHitSub(){
+        assertEquals("HIT",sendLaser.attack(0,3));
+    }
+
+    @Test
+    public void testAttackHitSurfaceSunkSub(){
+        assertEquals("HIT",sendLaser.attack(1,4));
+        assertEquals("SUNK",sendLaser.attack(1,4));
     }
 }
