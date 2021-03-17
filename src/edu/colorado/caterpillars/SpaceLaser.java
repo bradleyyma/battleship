@@ -11,7 +11,6 @@ public class SpaceLaser extends Weapon{
         Fleet fleet = lower.getFleet();
         if(grid[row][col] > 0){
             int id = grid[row][col];
-            System.out.println(id);
             String result = fleet.hitShipById(id);
             if(!result.equals("MISS")){
                 grid[row][col] = -id; // -ship.id represents a ship coord that has been hit (should be <= -2)
@@ -41,8 +40,15 @@ public class SpaceLaser extends Weapon{
     public String use(int row, int col){
         String surfaceResult = helper(lower.getGrid(), row, col);
         String submergeResult = helper(lower.getSubmergedGrid(), row, col);
-
-        if(surfaceResult == "HIT" || submergeResult == "HIT")
+        System.out.println(surfaceResult + submergeResult);
+        System.out.println(submergeResult.split(" ")[0]);
+        if(surfaceResult.equals("SURRENDER") || submergeResult.equals("SURRENDER"))
+            return "SURRENDER";
+        if(surfaceResult.split(" ")[0].equals("SUNK"))
+            return surfaceResult;
+        if(submergeResult.split(" ")[0].equals("SUNK"))
+            return submergeResult;
+        if(surfaceResult.equals("HIT") || submergeResult.equals("HIT"))
             return "HIT";
         else
             return "MISS";
