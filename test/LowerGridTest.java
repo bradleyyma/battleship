@@ -139,4 +139,22 @@ public class LowerGridTest {
         testGrid[0][0] = -capId1;
         testGrid[0][1] = -shipId1; //
     }
+
+    @Test
+    public void testMoveFleet() {
+        int[][] testGrid = new int[10][10];
+        int shipId1 = 2;
+        int capId1 = 3;
+        int shipId2 = 4;
+        int capId2 = 5;
+        Ship ship1 = new Minesweeper();
+        Ship ship2 = new Battleship();
+        grid.addShip(ship1, 2, 3, "E",false); //ship is at (0, 0) and (0, 1)
+        grid.addShip(ship2, 4, 4, "E",false);
+        testGrid[2][4] = capId1;
+        testGrid[2][5] = shipId1;
+        testGrid[4][7] = capId2;
+        testGrid[4][5] = testGrid[4][6] = testGrid[4][8] = shipId2;
+        assertArrayEquals(testGrid, grid.moveFleet("E"));
+    }
 }
