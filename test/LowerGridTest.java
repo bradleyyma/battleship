@@ -149,12 +149,15 @@ public class LowerGridTest {
         int capId2 = 5;
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Battleship();
-        grid.addShip(ship1, 2, 3, "E",false); //ship is at (0, 0) and (0, 1)
-        grid.addShip(ship2, 4, 4, "E",false);
+        grid.addShip(ship1, 2, 3, "E",false); //ship is at (2, 3) and (2, 4)
+        grid.addShip(ship2, 4, 4, "E",false); //ship is at (4, 4) (4, 5), .. (4, 7)
         testGrid[2][4] = capId1;
         testGrid[2][5] = shipId1;
         testGrid[4][7] = capId2;
         testGrid[4][5] = testGrid[4][6] = testGrid[4][8] = shipId2;
         assertArrayEquals(testGrid, grid.moveFleet("E"));
+        assertArrayEquals(testGrid, grid.moveFleet("S"));
+        assertArrayEquals(testGrid, grid.moveFleet("W"));
+        assertArrayEquals(testGrid, grid.moveFleet("N"));
     }
 }
