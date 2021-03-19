@@ -7,79 +7,79 @@ public class LowerGridTest {
     private LowerGrid grid;
 
     @BeforeEach
-    public void createGrid(){
+    public void createGrid() {
         grid = new LowerGrid();
     }
 
     @Test
-    public void testAddShips(){
+    public void testAddShips() {
         int[][] gridTest = new int[10][10];
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Destroyer();
         Ship ship3 = new Submarine();
-        grid.addShip(ship1 ,2,4,"E",false);
-        grid.addShip(ship2, 9, 9, "N",false);
-        grid.addShip(ship3, 3, 3, "E",false);
+        grid.addShip(ship1, 2, 4, "E", false);
+        grid.addShip(ship2, 9, 9, "N", false);
+        grid.addShip(ship3, 3, 3, "E", false);
         gridTest[2][4] = 3; // cid of first ship added
         gridTest[2][5] = 2; // sid of first ship added
         gridTest[8][9] = 5; // cid of second ship added
-        gridTest[9][9]  = gridTest[7][9] = 4; //sid of second ship added
+        gridTest[9][9] = gridTest[7][9] = 4; //sid of second ship added
         gridTest[4][6] = 7; // cid of third ship added
-        gridTest[4][3]  = gridTest[4][4] = gridTest[4][5] = gridTest[3][5] = 6; //sid of third ship added
+        gridTest[4][3] = gridTest[4][4] = gridTest[4][5] = gridTest[3][5] = 6; //sid of third ship added
         assertArrayEquals(gridTest, grid.getGrid());
     }
 
     @Test
-    public void testAddSubmergedShip(){
+    public void testAddSubmergedShip() {
         int[][] gridTest = new int[10][10];
         int[][] gridTest2 = new int[10][10];
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Destroyer();
         Ship ship3 = new Submarine();
-        grid.addShip(ship1 ,2,4,"E",false);
-        grid.addShip(ship2, 9, 9, "N",false);
-        grid.addShip(ship3, 1, 4, "E",true);
+        grid.addShip(ship1, 2, 4, "E", false);
+        grid.addShip(ship2, 9, 9, "N", false);
+        grid.addShip(ship3, 1, 4, "E", true);
         gridTest[2][4] = 3; // cid of first ship added
         gridTest[2][5] = 2; // sid of first ship added
         gridTest[8][9] = 5; // cid of second ship added
-        gridTest[9][9]  = gridTest[7][9] = 4; //sid of second ship added
+        gridTest[9][9] = gridTest[7][9] = 4; //sid of second ship added
         gridTest2[2][7] = 7; // cid of third ship added
-        gridTest2[2][4]  = gridTest2[2][5] = gridTest2[2][6] = gridTest2[1][6] = 6; //sid of third ship added
+        gridTest2[2][4] = gridTest2[2][5] = gridTest2[2][6] = gridTest2[1][6] = 6; //sid of third ship added
         assertArrayEquals(gridTest, grid.getGrid());
         assertArrayEquals(gridTest2, grid.getSubmergedGrid());
     }
 
     @Test
-    public void testCantSubmergeDestroyer(){
+    public void testCantSubmergeDestroyer() {
         Ship ship1 = new Destroyer();
-        assertThrows(Exception.class, () -> grid.addShip(ship1, 5, 5, "N",true));
+        assertThrows(Exception.class, () -> grid.addShip(ship1, 5, 5, "N", true));
     }
 
     @Test
-    public void testOutOfBoundsShip(){
+    public void testOutOfBoundsShip() {
         Ship ship1 = new Destroyer();
-        assertThrows(Exception.class, () -> grid.addShip(ship1, 1, 0, "N",false));
-        assertThrows(Exception.class, () -> grid.addShip(ship1, -1, 1, "N",false)); //out of bounds to start
-        assertThrows(Exception.class, () -> grid.addShip(ship1, 0, 1, "X",false)); // invalid direction
+        assertThrows(Exception.class, () -> grid.addShip(ship1, 1, 0, "N", false));
+        assertThrows(Exception.class, () -> grid.addShip(ship1, -1, 1, "N", false)); //out of bounds to start
+        assertThrows(Exception.class, () -> grid.addShip(ship1, 0, 1, "X", false)); // invalid direction
         // Also check that the grid is correct (no partial ships were added)
         int[][] gridTest = new int[10][10];
         assertArrayEquals(gridTest, grid.getGrid());
         // Now check we can re add the ship(validly) correctly
-        grid.addShip(ship1, 0, 0, "E",false);
+        grid.addShip(ship1, 0, 0, "E", false);
         gridTest[0][1] = 3;
         gridTest[0][0] = gridTest[0][2] = 2;
         assertArrayEquals(gridTest, grid.getGrid());
     }
 
     @Test
-    public void testOverlappingShip(){
+    public void testOverlappingShip() {
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Destroyer();
-        grid.addShip(ship1, 0, 0, "S",false);
-        assertThrows(Exception.class, () -> grid.addShip(ship2, 3, 0, "N",false));
-        assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 0, "E",false));
-        assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 0, "S",false));
-        assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 2, "W",false));
+        grid.addShip(ship1, 0, 0, "S", false);
+        assertThrows(Exception.class, () -> grid.addShip(ship2, 3, 0, "N", false));
+        assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 0, "E", false));
+        assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 0, "S", false));
+        assertThrows(Exception.class, () -> grid.addShip(ship2, 0, 2, "W", false));
         // Also check that the grid is correct (no partial ship2 were added)
         int[][] gridTest = new int[10][10];
         gridTest[0][0] = 3;
@@ -89,14 +89,14 @@ public class LowerGridTest {
 
 
     @Test
-    public void testAttack(){
+    public void testAttack() {
         int[][] gridTest = new int[10][10];
         assertArrayEquals(gridTest, grid.getGrid());
         Ship ship = new Minesweeper();
-        grid.addShip(ship, 0, 1, "W",false);
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
-                if(i == 0 && j == 0 || i == 0 && j == 1) // where the ship is placed
+        grid.addShip(ship, 0, 1, "W", false);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (i == 0 && j == 0 || i == 0 && j == 1) // where the ship is placed
                     assertNotEquals("MISS", grid.receiveAttack(i, j));
                 else // anything else should MISS
                     assertEquals("MISS", grid.receiveAttack(i, j));
@@ -106,15 +106,15 @@ public class LowerGridTest {
 
 
     @Test
-    public void testSunkAndSurrender(){
+    public void testSunkAndSurrender() {
         Ship ship = new Minesweeper();
         Ship ship2 = new Destroyer();
-        grid.addShip(ship, 0, 0, "E",false);
-        grid.addShip(ship2, 1, 0, "E",false);
-        assertEquals("SUNK Minesweeper", grid.receiveAttack(0,0));
-        assertEquals("HIT", grid.receiveAttack(1,0));
-        assertEquals("MISS", grid.receiveAttack(1,1));
-        assertEquals("SURRENDER", grid.receiveAttack(1,1));
+        grid.addShip(ship, 0, 0, "E", false);
+        grid.addShip(ship2, 1, 0, "E", false);
+        assertEquals("SUNK Minesweeper", grid.receiveAttack(0, 0));
+        assertEquals("HIT", grid.receiveAttack(1, 0));
+        assertEquals("MISS", grid.receiveAttack(1, 1));
+        assertEquals("SURRENDER", grid.receiveAttack(1, 1));
     }
 
     @Test
@@ -126,8 +126,8 @@ public class LowerGridTest {
         int capId2 = 5;
         Ship ship1 = new Minesweeper();
         Ship ship2 = new Minesweeper();
-        grid.addShip(ship1, 0, 0, "E",false); //ship is at (0, 0) and (0, 1)
-        grid.addShip(ship2, 1, 0, "E",false); //ship is at (1, 0) and (1, 1)
+        grid.addShip(ship1, 0, 0, "E", false); //ship is at (0, 0) and (0, 1)
+        grid.addShip(ship2, 1, 0, "E", false); //ship is at (1, 0) and (1, 1)
         testGrid[0][0] = capId1;
         testGrid[0][1] = shipId1;
         testGrid[1][0] = capId2;
@@ -139,4 +139,44 @@ public class LowerGridTest {
         testGrid[0][0] = -capId1;
         testGrid[0][1] = -shipId1; //
     }
+
+    @Test
+    public void testMoveFleet() {
+        int[][] testGrid = new int[10][10];
+        int shipId1 = 2;
+        int capId1 = 3;
+        int shipId2 = 4;
+        int capId2 = 5;
+        Ship ship1 = new Minesweeper();
+        Ship ship2 = new Battleship();
+        grid.addShip(ship1, 2, 3, "E",false); //ship is at (2, 3) and (2, 4)
+        grid.addShip(ship2, 4, 4, "E",false); //ship is at (4, 4) (4, 5), .. (4, 7)
+        testGrid[2][4] = capId1;
+        testGrid[2][5] = shipId1;
+        testGrid[4][7] = capId2;
+        testGrid[4][5] = testGrid[4][6] = testGrid[4][8] = shipId2;
+        grid.moveFleet("E");
+        grid.moveFleet("S");
+        grid.moveFleet("W");
+        grid.moveFleet("N");
+        assertArrayEquals(testGrid, grid.moveFleet("E"));
+    }
+
+
+
+    @Test
+    public void testOutOfBoundFleetMovement(){
+        int[][] testGrid = new int[10][10];
+        int shipId1 = 2;
+        int capId1 = 3;
+        int shipId2 = 4;
+        int capId2 = 5;
+        Ship ship1 = new Minesweeper();
+        Ship ship2 = new Battleship();
+        grid.addShip(ship1, 0, 1, "E",false); //ship is at (2, 3) and (2, 4)
+        grid.addShip(ship2, 4, 4, "E",false); //ship is at (4, 4) (4, 5), .. (4, 7)
+        assertThrows(Exception.class, () -> grid.moveFleet("N"));
+
+    }
 }
+

@@ -52,4 +52,19 @@ public class SendLaserAttackTest {
         assertEquals("HIT",sendLaser.attack(0,1));
         assertEquals("SUNK Submarine",sendLaser.attack(0,1));
     }
+
+    @Test
+    public void testAttackSunkBatSunkSub(){
+        assertEquals("HIT",sendLaser.attack(0,0));
+        assertEquals("HIT",sendLaser.attack(0,1));
+        assertEquals("HIT",sendLaser.attack(0,2));
+        assertEquals("HIT",sendLaser.attack(0,3));
+        //assertEquals("MISS",sendLaser.attack(0,4));
+        assertEquals("HIT",sendLaser.attack(1,1));
+        assertEquals("HIT",sendLaser.attack(1,2));
+        assertEquals("HIT",sendLaser.attack(1,3));
+        assertEquals("HIT",sendLaser.attack(1,4));
+        assertEquals("SUNK Submarine",sendLaser.attack(1,4));
+        assertEquals("SUNK Battleship",sendLaser.attack(0,2));
+    }
 }

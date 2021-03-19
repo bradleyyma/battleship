@@ -99,8 +99,69 @@ public class LowerGrid extends Grid{
         BasicAttack basic = new BasicAttack(this);
         return basic.use(row, col);
     }
-    public String receiveAttack(Weapon weapon, int row, int col){
+    public String receiveAttack(Weapon weapon, int row, int col) {
         return weapon.use(row, col);
+    }
+
+    public int[][] moveFleet(String dir) {
+        int[][] lowerGrid = getGrid();
+        int[][] subGrid = getSubmergedGrid();
+        int[][] newGrid = new int[10][10];
+        int[][] newSubGrid = new int[10][10];
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                if(i == 0 || i == 9 && j == 0 || j == 9){
+                    if(lowerGrid[i][j] > 0 || subGrid[i][j] > 0){
+                        throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located on the corner of the grid.");
+                    }
+                }
+            }
+        }
+        if(dir == "W") { //a = row b = col
+            for(int a = 0; a < 10; a++) {
+                for (int b = 1; b < 10; b++) {
+                    newGrid[a][b-1] = lowerGrid[a][b];
+                    newSubGrid[a][b-1] = subGrid[a][b];
+                }
+            }
+        }
+        else if(dir == "E") {
+            for(int a = 0; a < 10; a++) {
+                for (int b = 0; b < 9; b++) {
+                    newGrid[a][b+1] = lowerGrid[a][b];
+                    newSubGrid[a][b+1] = subGrid[a][b];
+                }
+            }
+        }
+        else if(dir == "S") {
+            for(int a = 0; a < 9; a++) {
+                for (int b = 0; b < 10; b++) {
+                    newGrid[a+1][b] = lowerGrid[a][b];
+                    newSubGrid[a+1][b] = subGrid[a][b];
+                }
+            }
+        }
+        else if(dir == "N") {
+            for(int a = 1; a < 10; a++) {
+                for (int b = 0; b < 10; b++) {
+                    newGrid[a-1][b] = lowerGrid[a][b];
+                    newSubGrid[a-1][b] = subGrid[a][b];
+                }
+            }
+        }
+        else{
+            throw new IllegalArgumentException("Not a valid direction!");
+        }
+        for(int x = 0; x < 10; x++) {
+            for (int y = 0; y < 10; y++) {
+                lowerGrid[x][y] = newGrid[x][y];
+                subGrid[x][y] = newSubGrid[x][y];
+            }
+        }
+        return lowerGrid;
+        // I dont know if we have to return the subgrid as well
+    }
+
 
 //        if(grid[row][col] > 0){
 //            int id = grid[row][col];
@@ -134,4 +195,3 @@ public class LowerGrid extends Grid{
 //        }
     }
 
-}
