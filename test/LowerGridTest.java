@@ -197,8 +197,6 @@ public class LowerGridTest {
         assertArrayEquals(testSubGrid, grid.getSubmergedGrid());
     }
 
-
-
     @Test
     public void testOutOfBoundFleetMovementNorth(){
         Ship ship1 = new Minesweeper();

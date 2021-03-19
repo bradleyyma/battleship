@@ -57,10 +57,12 @@ public class SendLaserAttackTest {
     public void testAttackSunkBatSunkSub(){
         assertEquals("HIT",sendLaser.attack(0,0)); //hits bat
         assertEquals("HIT",sendLaser.attack(0,1)); //hits bat, "misses" sub CQ
+        assertEquals("MISS",sendLaser.attack(0,5)); //misses everything
         assertEquals("HIT",sendLaser.attack(0,2)); //hits sub below, "misses" battleship CQ
         assertEquals("HIT",sendLaser.attack(0,3)); //hits both
-        assertEquals("HIT",sendLaser.attack(0,4)); //hits sub
+        assertEquals("HIT",sendLaser.attack(0,4)); //hits sub WHY? does this work
         assertEquals("HIT",sendLaser.attack(1,2)); //hits sub, misses bat
+        assertEquals("MISS",sendLaser.attack(5,5)); //misses everything
         assertEquals("SUNK Submarine",sendLaser.attack(0,1)); //hits sub cq -> sink
         assertEquals("SURRENDER",sendLaser.attack(0,2)); //hits bat cq -> sink -> surrender
     }
