@@ -116,7 +116,7 @@ public class LowerGrid extends Grid{
                 }
             }
         }
-        if(dir == "W") {
+        if(dir == "W") { //a = row b = col
             for(int a = 0; a < 10; a++) {
                 for (int b = 1; b < 10; b++) {
                     newGrid[a][b-1] = lowerGrid[a][b];
@@ -131,14 +131,14 @@ public class LowerGrid extends Grid{
             }
         }
         else if(dir == "S") {
-            for(int a = 1; a < 10; a++) {
+            for(int a = 0; a < 9; a++) {
                 for (int b = 0; b < 10; b++) {
                     newGrid[a+1][b] = lowerGrid[a][b];
                 }
             }
         }
         else if(dir == "N") {
-            for(int a = 0; a < 9; a++) {
+            for(int a = 1; a < 10; a++) {
                 for (int b = 0; b < 10; b++) {
                     newGrid[a-1][b] = lowerGrid[a][b];
                 }

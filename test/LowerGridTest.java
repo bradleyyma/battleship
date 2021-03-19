@@ -155,9 +155,10 @@ public class LowerGridTest {
         testGrid[2][5] = shipId1;
         testGrid[4][7] = capId2;
         testGrid[4][5] = testGrid[4][6] = testGrid[4][8] = shipId2;
+        grid.moveFleet("E");
+        grid.moveFleet("S");
+        grid.moveFleet("W");
+        grid.moveFleet("N");
         assertArrayEquals(testGrid, grid.moveFleet("E"));
-        assertArrayEquals(testGrid, grid.moveFleet("S"));
-        assertArrayEquals(testGrid, grid.moveFleet("W"));
-        assertArrayEquals(testGrid, grid.moveFleet("N"));
     }
 }
