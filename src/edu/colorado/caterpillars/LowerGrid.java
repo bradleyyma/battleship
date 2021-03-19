@@ -107,6 +107,7 @@ public class LowerGrid extends Grid{
         int[][] lowerGrid = getGrid();
         int[][] subGrid = getSubmergedGrid();
         int[][] newGrid = new int[10][10];
+        int[][] newSubGrid = new int[10][10];
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
                 if(i == 0 || i == 9 && j == 0 || j == 9){
@@ -120,6 +121,7 @@ public class LowerGrid extends Grid{
             for(int a = 0; a < 10; a++) {
                 for (int b = 1; b < 10; b++) {
                     newGrid[a][b-1] = lowerGrid[a][b];
+                    newSubGrid[a][b-1] = subGrid[a][b];
                 }
             }
         }
@@ -127,6 +129,7 @@ public class LowerGrid extends Grid{
             for(int a = 0; a < 10; a++) {
                 for (int b = 0; b < 9; b++) {
                     newGrid[a][b+1] = lowerGrid[a][b];
+                    newSubGrid[a][b+1] = subGrid[a][b];
                 }
             }
         }
@@ -134,6 +137,7 @@ public class LowerGrid extends Grid{
             for(int a = 0; a < 9; a++) {
                 for (int b = 0; b < 10; b++) {
                     newGrid[a+1][b] = lowerGrid[a][b];
+                    newSubGrid[a+1][b] = subGrid[a][b];
                 }
             }
         }
@@ -141,6 +145,7 @@ public class LowerGrid extends Grid{
             for(int a = 1; a < 10; a++) {
                 for (int b = 0; b < 10; b++) {
                     newGrid[a-1][b] = lowerGrid[a][b];
+                    newSubGrid[a-1][b] = subGrid[a][b];
                 }
             }
         }
@@ -150,9 +155,11 @@ public class LowerGrid extends Grid{
         for(int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
                 lowerGrid[x][y] = newGrid[x][y];
+                subGrid[x][y] = newSubGrid[x][y];
             }
         }
         return lowerGrid;
+        // I dont know if we have to return the subgrid as well
     }
 
 
