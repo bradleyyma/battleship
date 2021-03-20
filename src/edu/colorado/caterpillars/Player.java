@@ -1,12 +1,17 @@
 package edu.colorado.caterpillars;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Player {
     private Player opponent;
     private LowerGrid lower;
     private UpperGrid upper;
+    private Map<String, Command> moveFleetCommands;
 
     public Player(){
         lower = new LowerGrid();
+        moveFleetCommands = new HashMap<>();
     }
 
     public LowerGrid getLower(){
@@ -29,5 +34,13 @@ public class Player {
 
     public String attack(int row, int col){
         return upper.sendAttack(row, col);
+    }
+
+    public Command getMoveFleetCommand(String dir){
+        return moveFleetCommands.get(dir);
+    }
+
+    public void setMoveFleetCommand(String dir, Command moveCommand){
+        moveFleetCommands.put(dir, moveCommand);
     }
 }
