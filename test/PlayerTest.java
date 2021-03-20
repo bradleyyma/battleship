@@ -46,5 +46,28 @@ public class PlayerTest {
         assertArrayEquals(testUpperGrid, player2.getUpper().getGrid());
     }
 
+    @Test
+    public void testSetMoveCommands(){
+        Command moveNorth1 = new MoveFleetCommand(player1,"N");
+        Command moveSouth1 = new MoveFleetCommand(player1,"S");
+        Command moveEast1 = new MoveFleetCommand(player1,"E");
+        Command moveWest1 = new MoveFleetCommand(player1,"W");
+
+        Command moveNorth2 = new MoveFleetCommand(player2,"N");
+        Command moveSouth2 = new MoveFleetCommand(player2,"S");
+        Command moveEast2 = new MoveFleetCommand(player2,"E");
+        Command moveWest2 = new MoveFleetCommand(player2,"W");
+
+        player1.setMoveFleetCommand("N", moveNorth1);
+        player1.setMoveFleetCommand("S", moveSouth1);
+        player1.setMoveFleetCommand("E", moveEast1);
+        player1.setMoveFleetCommand("W", moveWest1);
+
+        player2.setMoveFleetCommand("N", moveNorth2);
+        player2.setMoveFleetCommand("S", moveSouth2);
+        player2.setMoveFleetCommand("E", moveEast2);
+        player2.setMoveFleetCommand("W", moveWest2);
+    }
+
 
 }
