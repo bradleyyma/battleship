@@ -74,6 +74,11 @@ public class SonarPulse extends Weapon implements PropertyChangeListener {
     }
 
     @Override
+    public void undoUse(int row, int col) {
+
+    }
+
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if((int) evt.getNewValue() >= sunkShipsReq){
             locked = !locked;

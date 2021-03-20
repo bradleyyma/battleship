@@ -1,14 +1,17 @@
 package edu.colorado.caterpillars;
 
 public class BasicAttack extends Weapon{
+    private LowerGrid lower;
     private int [][] grid;
     private Fleet fleet;
     public BasicAttack(LowerGrid lower){
+        this.lower = lower;
         grid = lower.getGrid();
         fleet = lower.getFleet();
     }
 
     public String use(int row, int col){
+        lower.addGridToHistory();
         if(grid[row][col] > 0){
             int id = grid[row][col];
             String result = fleet.hitShipById(id);
@@ -38,6 +41,16 @@ public class BasicAttack extends Weapon{
         else{
             grid[row][col] = -1; // -1 should indicate miss
             return "MISS";
+        }
+    }
+
+    @Override
+    public void undoUse(int row, int col) {
+        lower.undoGrids();
+        grid = lower.getGrid();
+        if(grid[row][col] > 0){
+            int id = grid[row][col];
+            fleet.undoHitShipById(id);
         }
     }
 }

@@ -106,4 +106,13 @@ public class Fleet {
 
 
     }
+
+    public void undoHitShipById(int id){
+        Ship ship = getShipById(id);
+        if(inSidArray(id)) {
+            ship.undoHit();
+        }else{
+            ship.undoHitCQ();
+        }
+    }
 }

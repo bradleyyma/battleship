@@ -11,4 +11,9 @@ public class SendLaserAttack implements AttackBehavior{
         String result = opponentLower.receiveAttack(sl, row, col);
         return result;
     }
+
+    @Override
+    public void undoAttack(int row, int col) {
+
+    }
 }

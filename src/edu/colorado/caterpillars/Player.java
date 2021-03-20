@@ -36,6 +36,10 @@ public class Player {
         return upper.sendAttack(row, col);
     }
 
+    public void undoAttack(int row, int col){
+        upper.undoSendAttack(row, col);
+    }
+
     public Command getMoveFleetCommand(String dir){
         return moveFleetCommands.get(dir);
     }

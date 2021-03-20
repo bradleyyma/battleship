@@ -1,9 +1,12 @@
 package edu.colorado.caterpillars;
 
+import java.util.Stack;
+
 public class LowerGrid extends Grid {
 
     private Fleet fleet = new Fleet();
     private int[][] submergedGrid = new int[10][10];
+    private Stack<int [][]> undoStack = new Stack<>();
 
     public Fleet getFleet() {
         return fleet;
@@ -97,6 +100,10 @@ public class LowerGrid extends Grid {
         return weapon.use(row, col);
     }
 
+    public void undoReceiveAttack(Weapon weapon, int row, int col) {
+        weapon.undoUse(row, col);
+    }
+
     public void moveFleet(String dir) {
         int[][] lowerGrid = getGrid();
         int[][] subGrid = getSubmergedGrid();
@@ -156,6 +163,21 @@ public class LowerGrid extends Grid {
                 subGrid[x][y] = newSubGrid[x][y];
             }
         }
+    }
+
+    public void addGridToHistory(){
+        int [][] oldGrid = new int [10][10];
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                oldGrid[i][j] = grid[i][j];
+            }
+        }
+        undoStack.push(oldGrid);
+    }
+
+    public void undoGrids(){
+        grid = undoStack.pop();
+        //TODO: submerged
     }
 }
 

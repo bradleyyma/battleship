@@ -67,6 +67,10 @@ public class Ship {
         this.numHits++;
     }
 
+    public void undoHit(){
+        this.numHits--;
+    }
+
     public void hitCaptainQuarters(){
         if(armored){
             armored = false;
@@ -74,6 +78,16 @@ public class Ship {
             sunk = true;
         }
     }
+
+    public void undoHitCQ(){
+        if(sunk){
+            sunk = false;
+        }
+        else{
+            armored = true;
+        }
+    }
+
 
 
 }

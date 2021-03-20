@@ -10,4 +10,10 @@ public class SendBasicAttack implements AttackBehavior{
         String result = opponentLower.receiveAttack(ba, row, col);
         return result;
     }
+
+    public void undoAttack(int row, int col){
+        BasicAttack ba = new BasicAttack(opponentLower);
+        opponentLower.undoReceiveAttack(ba, row, col);
+    }
+
 }

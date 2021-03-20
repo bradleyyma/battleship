@@ -51,4 +51,9 @@ public class SpaceLaser extends Weapon{
         else
             return "MISS";
     }
+
+    @Override
+    public void undoUse(int row, int col) {
+        lower.undoGrids();
+    }
 }

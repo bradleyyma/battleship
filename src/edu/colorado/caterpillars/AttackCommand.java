@@ -16,10 +16,8 @@ public class AttackCommand implements Command{
         player.attack(row, col);
     }
 
-
-
     @Override
     public void undo() {
-        // TODO:
+        player.undoAttack(row, col);
     }
 }
