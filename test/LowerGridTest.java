@@ -233,5 +233,20 @@ public class LowerGridTest {
         grid.receiveAttack(0, 9);
         assertThrows(Exception.class, () -> grid.moveFleet("E"));
     }
+
+    @Test
+    public void testUndoStack(){
+        grid.addGridToHistory();
+        grid.addShip(new Minesweeper(), 0, 0, "E", false);
+        int [][] testGrid = new int [10][10];
+        testGrid[0][0] = 3;
+        testGrid[0][1] = 2;
+        assertArrayEquals(testGrid, grid.getGrid());
+
+        int [][] emptyGrid = new int [10][10];
+        grid.undoGrids();
+        assertArrayEquals(emptyGrid, grid.getGrid());
+
+    }
 }
 

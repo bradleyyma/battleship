@@ -6,9 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BasicAttackTest {
     private BasicAttack basicAttack;
+    private LowerGrid lower;
     @BeforeEach
     public void createObject(){
-        LowerGrid lower = new LowerGrid();
+        lower = new LowerGrid();
         Ship bat = new Battleship();
         Ship sub = new Submarine();
         lower.addShip(bat, 0, 0, "E", false); //at (0, 0), (0, 1), (0, 2), (0, 3) on surface
@@ -34,5 +35,15 @@ public class BasicAttackTest {
     public void testSink(){
         assertEquals("MISS", basicAttack.use(0, 2));
         assertEquals("SUNK Battleship", basicAttack.use(0, 2)); // no surrender due to submarine
+    }
+
+    @Test
+    public void testUndoUse(){
+        basicAttack.use(0, 2);
+        basicAttack.use(0, 2);
+        assertEquals(1, lower.getFleet().getNumSurvivingShips());
+        basicAttack.undoUse(0, 2);
+        assertEquals(2, lower.getFleet().getNumSurvivingShips());
+
     }
 }
