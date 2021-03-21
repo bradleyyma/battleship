@@ -163,8 +163,11 @@ public class GameTest {
         game.move("E");
         game.undo();
         game.move("E");
-        assertThrows(Exception.class, () ->game.redo());
-
+        assertThrows(Exception.class, () -> game.redo());
+        game.attack(0, 1);
+        game.undo();
+        game.attack(0, 1);
+        assertThrows(Exception.class, () -> game.redo());
     }
 
 
@@ -188,6 +191,34 @@ public class GameTest {
         game.redo();
         assertEquals(0, player2.getLower().getFleet().getNumSurvivingShips());
         assertFalse(game.isRunning());
+    }
+
+    @Test
+    public void testMultipleAttacksAndUndoes(){
+        player2.addShip(new Submarine(), 0, 0, "E", true);
+        game.attack(1, 3); //misses everything
+        assertEquals(2, player2.getLower().getFleet().getNumSurvivingShips());
+
+        game.attack(0, 0); //sinks minesweeper
+        assertEquals(1, player2.getLower().getFleet().getNumSurvivingShips());
+        assertTrue(game.isRunning());
+
+        game.attack(1, 3); //"misses" sub CQ
+        assertEquals(1, player2.getLower().getFleet().getNumSurvivingShips());
+
+        game.attack(1, 3); //hits sub CQ -> sinks -> surrender
+        assertEquals(0, player2.getLower().getFleet().getNumSurvivingShips());
+        assertFalse(game.isRunning());
+
+        game.undo(); // sub revives
+        assertEquals(1, player2.getLower().getFleet().getNumSurvivingShips());
+        assertTrue(game.isRunning());
+        game.undo(); // sub regains armor
+        assertEquals(1, player2.getLower().getFleet().getNumSurvivingShips());
+        game.undo(); // minesweeper revives
+        assertEquals(2, player2.getLower().getFleet().getNumSurvivingShips());
+
+
     }
 
 
