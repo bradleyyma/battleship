@@ -89,13 +89,14 @@ public class Game{
         Command command = activePlayer.getAttackCommand(row, col);
         command.execute();
         undoStack.push(command);
+        redoStack.clear();
     }
 
     public void move(String dir){
         Command command = activePlayer.getMoveFleetCommand(dir);
         command.execute();
         undoStack.push(command);
-        redoStack = new Stack<>();
+        redoStack.clear();
     }
 
     public void undo(){
@@ -120,7 +121,7 @@ public class Game{
         Command command = swapPlayers;
         command.execute();
         undoStack.push(command);
-        redoStack = new Stack<>();
+        redoStack.clear();
 
     }
 
@@ -128,7 +129,7 @@ public class Game{
         Command command = new AddShipCommand(activePlayer,ship,row,col,direction,submerge);
         command.execute();
         undoStack.push(command);
-        redoStack = new Stack<>();
+        redoStack.clear();
     }
 
 

@@ -1,7 +1,6 @@
 package edu.colorado.caterpillars;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.List;
 
 public class SunkData{
     private int numSunk;
