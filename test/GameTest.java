@@ -149,6 +149,12 @@ public class GameTest {
 
         game.undo(); // add ship
         assertEquals(0,player2.getLower().getFleet().getTotalNumShips());
+        game.redo();
+        assertEquals(1,player2.getLower().getFleet().getTotalNumShips());
+        game.redo();
+        assertEquals(player1,game.getActivePlayer());
+        game.redo();
+        assertArrayEquals(testGridE, game.getActivePlayer().getLower().getGrid());
 
     }
 
