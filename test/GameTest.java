@@ -75,10 +75,6 @@ public class GameTest {
         assertArrayEquals(testGridStart, game.getActivePlayer().getLower().getGrid());
     }
 
-    @Test void UndoNoMove(){
-        assertThrows(Exception.class, () -> game.undo());
-    }
-
     @Test
     public void testMovesThenUndosThenRedos(){
         int [][] testGridStart = new int[10][10];
@@ -126,7 +122,7 @@ public class GameTest {
     }
 
     @Test
-    public void testUndoMoveRedo(){
+    public void testInvalidRedo(){
         game.move("E");
         game.undo();
         game.move("E");
