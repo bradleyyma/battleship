@@ -76,6 +76,52 @@ public class GameTest {
     }
 
     @Test
+    public void testMovesThenUndosThenRedos(){
+        int [][] testGridStart = new int[10][10];
+        testGridStart[0][0] = 3;
+        testGridStart[0][1] = 2;
+        assertArrayEquals(testGridStart, game.getActivePlayer().getLower().getGrid());
+
+        game.move("E");
+        int [][] testGridE = new int[10][10];
+        testGridE[0][1] = 3;
+        testGridE[0][2] = 2;
+        assertArrayEquals(testGridE, game.getActivePlayer().getLower().getGrid());
+
+        game.move("S");
+        int [][] testGridS = new int[10][10];
+        testGridS[1][1] = 3;
+        testGridS[1][2] = 2;
+        assertArrayEquals(testGridS, game.getActivePlayer().getLower().getGrid());
+
+        game.move("E");
+        int [][] testGridESE = new int[10][10];
+        testGridESE[1][2] = 3;
+        testGridESE[1][3] = 2;
+        assertArrayEquals(testGridESE, game.getActivePlayer().getLower().getGrid());
+
+        game.undo();
+        assertArrayEquals(testGridS, game.getActivePlayer().getLower().getGrid());
+
+        game.undo();
+        assertArrayEquals(testGridE, game.getActivePlayer().getLower().getGrid());
+
+        game.undo();
+        assertArrayEquals(testGridStart, game.getActivePlayer().getLower().getGrid());
+
+        game.redo();
+        assertArrayEquals(testGridE, game.getActivePlayer().getLower().getGrid());
+
+        game.redo();
+        assertArrayEquals(testGridS, game.getActivePlayer().getLower().getGrid());
+
+        game.redo();
+        assertArrayEquals(testGridESE, game.getActivePlayer().getLower().getGrid());
+
+
+    }
+
+    @Test
     public void testInvalidUndo(){
         assertThrows(Exception.class, () -> game.move("W"));
         assertThrows(Exception.class, () -> game.undo());
