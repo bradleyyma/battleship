@@ -8,10 +8,12 @@ public class Player {
     private LowerGrid lower;
     private UpperGrid upper;
     private Map<String, Command> moveFleetCommands;
+    private Command [][] attackCommands;
 
     public Player(){
         lower = new LowerGrid();
         moveFleetCommands = new HashMap<>();
+        attackCommands = new Command[10][10];
     }
 
     public LowerGrid getLower(){
@@ -47,5 +49,12 @@ public class Player {
 
     public void setMoveFleetCommand(String dir, Command moveCommand){
         moveFleetCommands.put(dir, moveCommand);
+    }
+
+    public Command getAttackCommand(int row, int col){
+        return attackCommands[row][col];
+    }
+    public void setAttackCommand(int row, int col, Command attackCommand){
+        attackCommands[row][col] = attackCommand;
     }
 }

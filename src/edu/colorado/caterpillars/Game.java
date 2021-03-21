@@ -4,7 +4,6 @@ import java.util.Stack;
 public class Game{
     private Player player1;
     private Player player2;
-    private boolean isRunning;
     private Player activePlayer;
     private Player waitingPlayer;
     private Stack<Command> undoStack;
@@ -17,10 +16,10 @@ public class Game{
         swapPlayers = new SwitchPlayersCommand(this);
 
         instantiateMoveCommands();
+        instantiateAttackCommands();
 
         player1.setOpponent(player2);
         player2.setOpponent(player1);
-        isRunning = true;
         activePlayer = player1;
         waitingPlayer = player2;
         undoStack = new Stack<>();
@@ -50,6 +49,16 @@ public class Game{
         player2.setMoveFleetCommand("E", moveEast2);
         player2.setMoveFleetCommand("W", moveWest2);
     }
+    private void instantiateAttackCommands(){
+        for(int row = 0; row < 10; row ++){
+            for(int col = 0; col < 10; col++){
+                Command p1attack = new AttackCommand(player1, row, col);
+                Command p2attack = new AttackCommand(player2, row, col);
+                player1.setAttackCommand(row, col, p1attack);
+                player2.setAttackCommand(row, col, p2attack);
+            }
+        }
+    }
 
     public Player getPlayer(int playerNum){
         if(playerNum == 1)
@@ -69,14 +78,17 @@ public class Game{
     }
 
     public boolean isRunning(){
-        return isRunning;
+        if(player1.getLower().getFleet().getNumSurvivingShips() == 0 ||
+                player2.getLower().getFleet().getNumSurvivingShips() == 0)
+            return false;
+        else
+            return true;
     }
 
     public void attack(int row, int col){
-        activePlayer.attack(row, col);
-        if(waitingPlayer.getLower().getFleet().getNumSurvivingShips() <= 0){
-            isRunning = false;
-        }
+        Command command = activePlayer.getAttackCommand(row, col);
+        command.execute();
+        undoStack.push(command);
     }
 
     public void move(String dir){
