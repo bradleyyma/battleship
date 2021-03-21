@@ -79,6 +79,7 @@ public class Game{
         Command command = activePlayer.getMoveFleetCommand(dir);
         command.execute();
         undoStack.push(command);
+        redoStack = new Stack<>();
     }
 
     public void undo(){
