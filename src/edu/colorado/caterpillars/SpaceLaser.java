@@ -32,12 +32,14 @@ public class SpaceLaser extends Weapon{
             return result;
         }
         else{
-            grid[row][col] = -1; // -1 should indicate miss
+            if(grid[row][col] > -2) // sunk ship ids should not be changed
+                grid[row][col] = -1; // -1 should indicate miss
             return "MISS";
         }
     }
 
     public String use(int row, int col){
+        lower.addGridsToHistory();
         String surfaceResult = helper(lower.getGrid(), row, col);
         String submergeResult = helper(lower.getSubmergedGrid(), row, col);
         if(surfaceResult.equals("SURRENDER") || submergeResult.equals("SURRENDER"))
@@ -55,5 +57,14 @@ public class SpaceLaser extends Weapon{
     @Override
     public void undoUse(int row, int col) {
         lower.undoGrids();
+        Fleet fleet = lower.getFleet();
+        int surfaceId = lower.getGrid()[row][col];
+        int subId = lower.getSubmergedGrid()[row][col];
+        if(surfaceId > 0){
+            fleet.undoHitShipById(surfaceId);
+        }
+        if(subId > 0){
+            fleet.undoHitShipById(subId);
+        }
     }
 }

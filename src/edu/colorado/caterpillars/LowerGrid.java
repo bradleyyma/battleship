@@ -7,6 +7,7 @@ public class LowerGrid extends Grid {
     private Fleet fleet = new Fleet();
     private int[][] submergedGrid = new int[10][10];
     private Stack<int [][]> undoStack = new Stack<>();
+    private Stack<int [][]> undoSubStack = new Stack<>();
 
     public Fleet getFleet() {
         return fleet;
@@ -165,19 +166,22 @@ public class LowerGrid extends Grid {
         }
     }
 
-    public void addGridToHistory(){
+    public void addGridsToHistory(){
         int [][] oldGrid = new int [10][10];
+        int [][] oldSubGrid = new int [10][10];
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
                 oldGrid[i][j] = grid[i][j];
+                oldSubGrid[i][j] = submergedGrid[i][j];
             }
         }
         undoStack.push(oldGrid);
+        undoSubStack.push(oldSubGrid);
     }
 
     public void undoGrids(){
         grid = undoStack.pop();
-        //TODO: submerged
+        submergedGrid = undoSubStack.pop();
     }
 }
 

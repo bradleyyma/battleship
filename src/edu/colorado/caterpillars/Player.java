@@ -24,8 +24,9 @@ public class Player {
 
     public void setOpponent(Player opponent){
         this.opponent = opponent;
-        SunkData sunkData = new SunkData(lower.getFleet());
-        upper = new UpperGrid(this.opponent.getLower(), sunkData);
+        LowerGrid opponentLower = opponent.getLower();
+        SunkData sunkData = new SunkData(opponentLower.getFleet());
+        upper = new UpperGrid(opponentLower, sunkData);
     }
 
     public void addShip(Ship ship, int row, int col, String dir,boolean submerge){

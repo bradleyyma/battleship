@@ -14,6 +14,7 @@ public class SendLaserAttack implements AttackBehavior{
 
     @Override
     public void undoAttack(int row, int col) {
-
+        SpaceLaser sl = new SpaceLaser(opponentLower);
+        opponentLower.undoReceiveAttack(sl, row, col);
     }
 }

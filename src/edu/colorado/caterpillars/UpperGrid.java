@@ -43,11 +43,11 @@ public class UpperGrid extends Grid implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if((int) evt.getNewValue() >= 1){
+        if((int) evt.getOldValue() == 0 && (int) evt.getNewValue() == 1){
             AttackBehavior newAb = new SendLaserAttack(opponentLower);
             setAttackBehavior(newAb);
         }
-        if((int) evt.getNewValue() == 0){
+        if((int) evt.getOldValue() == 1 && (int) evt.getNewValue() == 0){
             AttackBehavior newAb = new SendBasicAttack(opponentLower);
             setAttackBehavior(newAb);
         }

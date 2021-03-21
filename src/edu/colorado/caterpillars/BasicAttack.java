@@ -11,7 +11,7 @@ public class BasicAttack extends Weapon{
     }
 
     public String use(int row, int col){
-        lower.addGridToHistory();
+        lower.addGridsToHistory();
         if(grid[row][col] > 0){
             int id = grid[row][col];
             String result = fleet.hitShipById(id);
@@ -39,7 +39,8 @@ public class BasicAttack extends Weapon{
             return result;
         }
         else{
-            grid[row][col] = -1; // -1 should indicate miss
+            if(grid[row][col] > -2) // sunk ship ids should not be changed
+                grid[row][col] = -1; // -1 should indicate miss
             return "MISS";
         }
     }
@@ -47,9 +48,8 @@ public class BasicAttack extends Weapon{
     @Override
     public void undoUse(int row, int col) {
         lower.undoGrids();
-        grid = lower.getGrid();
-        if(grid[row][col] > 0){
-            int id = grid[row][col];
+        int id = lower.getGrid()[row][col];
+        if(id > 0){
             fleet.undoHitShipById(id);
         }
     }

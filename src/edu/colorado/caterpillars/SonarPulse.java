@@ -75,7 +75,8 @@ public class SonarPulse extends Weapon implements PropertyChangeListener {
 
     @Override
     public void undoUse(int row, int col) {
-
+        if(uses < 2)
+            uses++;
     }
 
     @Override
