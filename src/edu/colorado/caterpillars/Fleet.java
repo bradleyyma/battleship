@@ -115,4 +115,11 @@ public class Fleet {
             ship.undoHitCQ();
         }
     }
+
+    public void undoAddShip(){
+        shipArray = Arrays.copyOf(shipArray, shipArray.length - 1);
+        sidArray = Arrays.copyOf(sidArray, sidArray.length - 1);
+        cidArray = Arrays.copyOf(cidArray, cidArray.length - 1);
+        nextAvailId -= 2;
+    }
 }

@@ -9,12 +9,14 @@ public class Game{
     private Player waitingPlayer;
     private Stack<Command> undoStack;
     private Stack<Command> redoStack;
+    private Command swapPlayers;
 
     public Game(){
         player1 = new Player();
         player2 = new Player();
+        swapPlayers = new SwitchPlayersCommand(this);
 
-        instantiateCommands();
+        instantiateMoveCommands();
 
         player1.setOpponent(player2);
         player2.setOpponent(player1);
@@ -25,7 +27,9 @@ public class Game{
         redoStack = new Stack<>();
     }
 
-    private void instantiateCommands(){
+    private void instantiateMoveCommands(){
+
+
         Command moveNorth1 = new MoveFleetCommand(player1,"N");
         Command moveSouth1 = new MoveFleetCommand(player1,"S");
         Command moveEast1 = new MoveFleetCommand(player1,"E");
@@ -94,10 +98,25 @@ public class Game{
         undoStack.push(command);
     }
 
-    public void endTurn(){
+    public void swapPlayers(){
         Player temp = activePlayer;
         activePlayer = waitingPlayer;
         waitingPlayer = temp;
+    }
+
+    public void endTurn(){
+        Command command = swapPlayers;
+        command.execute();
+        undoStack.push(command);
+        redoStack = new Stack<>();
+
+    }
+
+    public void addShip(Ship ship, int row, int col, String direction, boolean submerge){
+        Command command = new AddShipCommand(activePlayer,ship,row,col,direction,submerge);
+        command.execute();
+        undoStack.push(command);
+        redoStack = new Stack<>();
     }
 
 

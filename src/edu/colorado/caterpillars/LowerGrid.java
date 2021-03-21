@@ -183,5 +183,10 @@ public class LowerGrid extends Grid {
         grid = undoStack.pop();
         submergedGrid = undoSubStack.pop();
     }
+
+    public void undoAddShip(){
+        undoGrids();
+        fleet.undoAddShip();
+    }
 }
 

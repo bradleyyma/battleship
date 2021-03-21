@@ -15,8 +15,10 @@ public class GameTest {
         player2 = game.getPlayer(2);
         Ship mine1 = new Minesweeper();
         Ship mine2 = new Minesweeper();
-        player1.addShip(mine1, 0, 0, "E", false);
-        player2.addShip(mine2, 0, 0, "E", false);
+        game.addShip(mine1,0, 0, "E", false);
+        game.endTurn();
+        game.addShip(mine2,0, 0, "E", false);
+        game.endTurn();
     }
 
     @Test
@@ -121,6 +123,35 @@ public class GameTest {
 
     }
 
+    @Test void testAddShip(){
+        Ship ship = new Battleship();
+        game.addShip(ship,5,5,"E",false);
+        Ship ship1 = game.getActivePlayer().getLower().getFleet().getShipById(4);
+        assertEquals(ship,ship1);
+    }
+
+    @Test void undoMoveAndSwapAndAddShip(){
+        int [][] testGridStart = new int[10][10];
+        testGridStart[0][0] = 3;
+        testGridStart[0][1] = 2;
+        game.move("E");
+        int [][] testGridE = new int[10][10];
+        testGridE[0][1] = 3;
+        testGridE[0][2] = 2;
+        assertArrayEquals(testGridE, game.getActivePlayer().getLower().getGrid());
+
+        game.undo(); // move
+        assertArrayEquals(testGridStart, game.getActivePlayer().getLower().getGrid());
+
+        assertEquals(player1,game.getActivePlayer());
+        game.undo(); // swap players
+        assertEquals(player2,game.getActivePlayer());
+
+        game.undo(); // add ship
+        assertEquals(0,player2.getLower().getFleet().getTotalNumShips());
+
+    }
+
     @Test
     public void testInvalidRedo(){
         game.move("E");
@@ -132,8 +163,11 @@ public class GameTest {
 
 
     @Test
-    public void testInvalidUndo(){
-        assertThrows(Exception.class, () -> game.move("W"));
+    public void testInvalidUndo() {
+        game.undo();
+        game.undo();
+        game.undo();
+        game.undo();
         assertThrows(Exception.class, () -> game.undo());
     }
 

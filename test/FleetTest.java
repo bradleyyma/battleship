@@ -70,6 +70,17 @@ public class FleetTest {
         assertEquals(0,fleet.getNumSurvivingShips());
     }
 
+    @Test
+    public void testRemoveShip(){
+        fleet.undoAddShip();
+        assertEquals(2,fleet.getTotalNumShips());
+        fleet.undoAddShip();
+        assertEquals(1,fleet.getTotalNumShips());
+        fleet.undoAddShip();
+        assertEquals(0,fleet.getTotalNumShips());
+        assertThrows(Exception.class, () -> fleet.undoAddShip());
+    }
+
 //    @Test
 //    public void testSinkFleetHitById(){
 //        assertEquals(3,fleet.getNumSurvivingShips());
