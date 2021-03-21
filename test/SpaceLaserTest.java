@@ -7,9 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SpaceLaserTest {
 
     private SpaceLaser laser;
+    private LowerGrid lower;
     @BeforeEach
     public void createObjects(){
-        LowerGrid lower = new LowerGrid();
+        lower = new LowerGrid();
         Ship bat = new Battleship();
         Ship sub = new Submarine();
         lower.addShip(bat, 0, 0, "E", false); //at (0, 0), (0, 1), (0, 2){CQ}, (0, 3) on surface
@@ -43,5 +44,33 @@ public class SpaceLaserTest {
         laser.use(0, 2);
         assertEquals("SURRENDER", laser.use(0, 2)); // sink surface ship => Surrender
 
+    }
+
+    @Test
+    public void testUseThenUndo(){
+        int testGrid[][] = new int[10][10];
+        testGrid[0][2] = 3;
+        testGrid[0][0] = testGrid[0][1] = testGrid[0][3] = 2;
+        int testSubGrid[][] = new int[10][10];
+        testSubGrid[0][2] = testSubGrid[0][4] = testSubGrid[0][3] = testSubGrid[1][2] = 4;
+        testSubGrid[0][1] = 5;
+        assertArrayEquals(testGrid, lower.getGrid());
+        assertArrayEquals(testSubGrid, lower.getSubmergedGrid());
+
+        laser.use(0, 1);
+        testGrid[0][1] = -2;
+        assertArrayEquals(testGrid, lower.getGrid());
+        assertArrayEquals(testSubGrid, lower.getSubmergedGrid());
+
+        laser.use(0, 1);
+        testSubGrid[0][2] = testSubGrid[0][4] = testSubGrid[0][3] = testSubGrid[1][2] = -4;
+        testSubGrid[0][1] = -5;
+        assertEquals(1, lower.getFleet().getNumSurvivingShips());
+
+
+        laser.undoUse(0, 1);
+        testSubGrid[0][2] = testSubGrid[0][4] = testSubGrid[0][3] = testSubGrid[1][2] = 4;
+        testSubGrid[0][1] = 5;
+        assertEquals(2, lower.getFleet().getNumSurvivingShips());
     }
 }

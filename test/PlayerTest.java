@@ -47,6 +47,15 @@ public class PlayerTest {
     }
 
     @Test
+    public void testSpaceLaserUpgrade(){
+        player2.addShip(new Submarine(), 8, 0, "E", true);
+        assertEquals("MISS",  player1.attack(9, 0));
+        assertEquals("SUNK Minesweeper", player1.attack(0, 9));
+        assertNotEquals(0, player2.getLower().getSubmergedGrid()[9][0]);
+        assertEquals("HIT", player1.attack(9, 0));
+    }
+
+    @Test
     public void testSetMoveCommands(){
         Command moveNorth1 = new MoveFleetCommand(player1,"N");
         Command moveSouth1 = new MoveFleetCommand(player1,"S");

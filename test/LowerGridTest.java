@@ -236,16 +236,22 @@ public class LowerGridTest {
 
     @Test
     public void testUndoStack(){
-        grid.addGridToHistory();
+        grid.addGridsToHistory();
         grid.addShip(new Minesweeper(), 0, 0, "E", false);
+        grid.addShip(new Submarine(), 1, 0, "E", true);
         int [][] testGrid = new int [10][10];
+        int [][] testSubGrid = new int [10][10];
         testGrid[0][0] = 3;
         testGrid[0][1] = 2;
+        testSubGrid[1][2] = testSubGrid[2][0] = testSubGrid[2][1] = testSubGrid[2][2] = 4;
+        testSubGrid[2][3] = 5;
         assertArrayEquals(testGrid, grid.getGrid());
+        assertArrayEquals(testSubGrid, grid.getSubmergedGrid());
 
         int [][] emptyGrid = new int [10][10];
         grid.undoGrids();
         assertArrayEquals(emptyGrid, grid.getGrid());
+        assertArrayEquals(emptyGrid, grid.getSubmergedGrid());
 
     }
 }

@@ -44,6 +44,5 @@ public class BasicAttackTest {
         assertEquals(1, lower.getFleet().getNumSurvivingShips());
         basicAttack.undoUse(0, 2);
         assertEquals(2, lower.getFleet().getNumSurvivingShips());
-
     }
 }

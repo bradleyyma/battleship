@@ -157,7 +157,13 @@ public class SonarPulseTest {
 
         // Should not be allowed(this will be 3rd usage)
         assertThrows(RuntimeException.class, () -> pulse.use(5, 5));
+
+        pulse.undoUse(5, 5);
+        pulse.use(5, 5);
+        assertThrows(RuntimeException.class, () -> pulse.use(5, 5));
+
     }
+
 
 
 }
