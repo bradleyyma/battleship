@@ -78,5 +78,11 @@ public class PlayerTest {
         player2.setMoveFleetCommand("W", moveWest2);
     }
 
+    @Test
+    public void testSetAttackCommands(){
+        Command attack00 = new AttackCommand(player1, 0, 0);
+        player1.setAttackCommand(0, 0, attack00);
+    }
+
 
 }

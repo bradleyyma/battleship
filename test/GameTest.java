@@ -177,6 +177,19 @@ public class GameTest {
         assertThrows(Exception.class, () -> game.undo());
     }
 
+    @Test
+    public void testAttackCommands(){
+        game.attack(0, 0);
+        assertEquals(0, player2.getLower().getFleet().getNumSurvivingShips());
+        assertFalse(game.isRunning());
+        game.undo();
+        assertEquals(1, player2.getLower().getFleet().getNumSurvivingShips());
+        assertTrue(game.isRunning());
+        game.redo();
+        assertEquals(0, player2.getLower().getFleet().getNumSurvivingShips());
+        assertFalse(game.isRunning());
+    }
+
 
 
 }
