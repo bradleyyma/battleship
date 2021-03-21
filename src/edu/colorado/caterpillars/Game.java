@@ -87,6 +87,12 @@ public class Game{
         redoStack.push(command);
     };
 
+    public void redo(){
+        Command command = redoStack.pop();
+        command.execute();
+        undoStack.push(command);
+    }
+
     public void endTurn(){
         Player temp = activePlayer;
         activePlayer = waitingPlayer;
