@@ -8,6 +8,7 @@ public class Game{
     private Player activePlayer;
     private Player waitingPlayer;
     private Stack<Command> undoStack;
+    private Stack<Command> redoStack;
 
     public Game(){
         player1 = new Player();
@@ -21,6 +22,7 @@ public class Game{
         activePlayer = player1;
         waitingPlayer = player2;
         undoStack = new Stack<>();
+        redoStack = new Stack<>();
     }
 
     private void instantiateCommands(){
@@ -82,6 +84,7 @@ public class Game{
     public void undo(){
         Command command = undoStack.pop();
         command.undo();
+        redoStack.push(command);
     };
 
     public void endTurn(){
