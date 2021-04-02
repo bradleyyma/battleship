@@ -1,17 +1,36 @@
 package edu.colorado.caterpillars;
 
-public class Bomb extends Weapon{
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class Bomb extends Weapon implements PropertyChangeListener{
     private int [][] grid;
     private Fleet fleet;
-    public Bomb(LowerGrid lower){
+    private int [][] upperGrid;
+    private SunkData sunkData;
+    private int sunkShipsReq;
+    public Bomb(LowerGrid lower, UpperGrid upper, SunkData sunkData){
         grid = lower.getGrid();
         fleet = lower.getFleet();
+        locked = true;
+        upperGrid = upper.getGrid();
+        sunkShipsReq = 2;
+        uses = 1;
+        this.sunkData = sunkData;
+        sunkData.addListener(this);
     }
     @Override
     public String use(int row, int col) {
+        if(locked){
+            throw new RuntimeException("You need to sink 2 ships first!");
+        }
         if(row < 0 || row >= 10 || col < 0 || col >= 10){
             throw new IndexOutOfBoundsException("Not a valid area to fire Bomb!");
         }
+        if (uses <= 0) {
+            throw new RuntimeException("You don't have any Bombs left!");
+        }
+        uses--;
         String result = "MISS";
         int startRow = row - 1;
         int endRow = row + 1;
@@ -42,6 +61,7 @@ public class Bomb extends Weapon{
                         if(result.equals("MISS"))
                             result = "HIT";
                         grid[i][j] = -id; // -ship.id represents a ship coord that has been hit (should be <= -2)
+                        upperGrid[i][j] = 1;
                     }
                     if(tmpResult.contains("SUNK") || tmpResult.equals("SURRENDER")){ // we hit unarmored CQ
                         Ship ship = fleet.getShipById(id);
@@ -72,5 +92,14 @@ public class Bomb extends Weapon{
     @Override
     public void undoUse(int row, int col) {
 
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if((int) evt.getNewValue() >= sunkShipsReq){
+            locked = false;
+        }
+        if((int) evt.getNewValue() < sunkShipsReq)
+            locked = true;
     }
 }
