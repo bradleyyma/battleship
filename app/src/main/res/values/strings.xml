@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">caterpillars</string>
+    <string name="play_btn">Play</string>
+    <string name="help_btn">Help</string>
+    <string name="help_header_1">Rules</string>
+    <string name="help_text_1">Be the first to destroy your opponent\'s fleet. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Id nibh tortor id aliquet lectus proin. Libero justo laoreet sit amet. Eget mauris pharetra et ultrices. Sed tempus urna et pharetra pharetra massa massa ultricies. Nisi scelerisque eu ultrices vitae auctor. Elementum tempus egestas sed sed risus pretium quam. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Risus in hendrerit gravida rutrum quisque. Pretium aenean pharetra magna ac placerat vestibulum lectus mauris. Arcu bibendum at varius vel pharetra vel turpis. Turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet. Pulvinar proin gravida hendrerit lectus. Amet consectetur adipiscing elit pellentesque. Pulvinar mattis nunc sed blandit libero.
+
+        Egestas diam in arcu cursus euismod quis viverra nibh. Venenatis a condimentum vitae sapien pellentesque habitant morbi tristique. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Sed nisi lacus sed viverra tellus in hac habitasse platea. Elit eget gravida cum sociis natoque penatibus et magnis dis. Fringilla urna porttitor rhoncus dolor purus non enim. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla. A diam maecenas sed enim ut sem. Morbi tristique senectus et netus. Etiam tempor orci eu lobortis elementum nibh tellus molestie nunc.</string>
+    <string name="help_header_2">About Us</string>
+    <string name="help_text_2">Built by Jaskrit, Maxsim, Bradley, and Anusha</string>
+
+
 </resources>
