@@ -9,5 +9,13 @@
     <string name="help_header_2">About Us</string>
     <string name="help_text_2">Built by Jaskrit, Maxsim, Bradley, and Anusha</string>
 
+    <string name="current_ship_text">Current Ship</string>
+    <string name="curr_ship">Battleship</string>
+    <string name="player_1_place_ship_title">Player 1 Place Ship</string>
+    <string name="row">Row</string>
+    <string name="col">Column</string>
+    <string name="done_btn">Place</string>
+
+
 
 </resources>

@@ -15,11 +15,18 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_help = (Button) findViewById(R.id.btn_help);
         btn_help.setOnClickListener((v)->{openHelpMenu();});
+        Button btn_play = (Button) findViewById(R.id.btn_play);
+        btn_play.setOnClickListener((v)->{openP1PlaceShipActivity();});
 
     }
 
     public void openHelpMenu(){
         Intent intent = new Intent(this,HelpActivity.class);
+        startActivity(intent);
+    }
+
+    public void openP1PlaceShipActivity(){
+        Intent intent = new Intent(this,P1PlaceShipActivity.class);
         startActivity(intent);
     }
 }
