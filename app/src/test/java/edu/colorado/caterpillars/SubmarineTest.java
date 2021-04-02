@@ -14,8 +14,8 @@ public class SubmarineTest {
     @Test
     public void testData(){
         assertEquals("Submarine", ship.getName());
-        assertEquals(4, ship.getDimension()[1]);
-        assertEquals(2, ship.getDimension()[0]);
+        assertEquals(4, ship.getLength());
+        assertEquals(2, ship.getWidth());
         assertTrue(ship.canSubmerge());
     }
 }

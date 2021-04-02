@@ -22,7 +22,7 @@ public class ShipTest{
 
     @Test
     public void testSizeOfShip(){
-        int size = ship.getDimension()[1];
+        int size = ship.getLength();
         assertEquals(4, size);
     }
 

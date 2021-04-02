@@ -34,8 +34,8 @@ public class LowerGrid extends Grid {
         fleet.addShip(ship);
         int id = ship.getID();
         int cid = ship.getCID();
-        for (int i = 0; i < ship.getDimension()[0]; i++) {
-            for (int j = 0; j < ship.getDimension()[1]; j++) {
+        for (int i = 0; i < ship.getWidth(); i++) {
+            for (int j = 0; j < ship.getLength(); j++) {
                 if (direction == "N") {
                     if (ship.getShape()[i][j] == 2) {
                         g[row - j][col + i] = cid;
@@ -66,8 +66,8 @@ public class LowerGrid extends Grid {
     }
 
     private boolean isInvalidPlacement(Ship ship, int row, int col, String direction, int[][] g) {
-        for (int i = 0; i < ship.getDimension()[0]; i++) {
-            for (int j = 0; j < ship.getDimension()[1]; j++) {
+        for (int i = 0; i < ship.getWidth(); i++) {
+            for (int j = 0; j < ship.getLength(); j++) {
                 if (direction == "N") {
                     if (row - j >= 10 || row - j < 0 || col + i >= 10 ||
                             col + i < 0 || g[row - j][col + i] != 0)
