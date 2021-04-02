@@ -35,7 +35,7 @@ public class Bomb extends Weapon{
                 endCol = 9;
             }
             for(int j = startCol; j <= endCol; j++){
-                System.out.println(i + " " + j);
+                //System.out.println(i + " " + j);
                 if(grid[i][j] > 0){
                     int id = grid[i][j];
                     String tmpResult = fleet.hitShipById(id);
