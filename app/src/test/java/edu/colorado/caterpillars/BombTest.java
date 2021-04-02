@@ -37,7 +37,7 @@ public class BombTest {
 
     @Test
     public void testBombFire(){
-        assertEquals("HIT", bomb.use(1, 1)); // Should be "HIT BATTLESHIP AND SUNK DESTROYER" right?
+        assertEquals("HIT", bomb.use(1, 1)); // Multiple hits -> return "HIT"
         testGrid[0][1] *= -1;
         testGrid[1][0] *= -1;
         testGrid[1][2] *= -1;
@@ -46,7 +46,7 @@ public class BombTest {
 
     @Test
     public void testBombTopLeftCorner(){
-        assertEquals("HIT", bomb.use(0, 0)); // Should be "HIT BATTLESHIP AND HIT DESTROYER" right?
+        assertEquals("HIT", bomb.use(0, 0)); // Multiple hits -> return "HIT"
         testGrid[0][0] *= -1;
         testGrid[1][0] *= -1;
         testGrid[0][1] *= -1;
@@ -56,9 +56,6 @@ public class BombTest {
     @Test
     public void testBombBottomRightCorner(){
         assertEquals("MISS", bomb.use(9, 9)); // Should be "MISS"
-        testGrid[9][9] *= 0;
-        testGrid[8][9] *= 0;
-        testGrid[9][8] *= 0;
         assertArrayEquals(testGrid, lower.getGrid());
     }
 
@@ -66,10 +63,6 @@ public class BombTest {
     public void testBombSingleHit(){
         assertEquals("HIT", bomb.use(2, 2)); // Should be "HIT DESTROYER"
         testGrid[1][2] *= -1;
-        testGrid[2][2] *= 0;
-        testGrid[3][2] *= 0;
-        testGrid[2][3] *= 0;
-        testGrid[2][1] *= 0;
         assertArrayEquals(testGrid, lower.getGrid());
     }
 
@@ -77,6 +70,28 @@ public class BombTest {
     public void testBombOutOfBounds(){
         assertThrows(IndexOutOfBoundsException.class, () -> bomb.use(5, 10));
     }
+
+    @Test
+    public void testOneSink(){
+        assertEquals("MISS", bomb.use(2, 1)); //Only hits the CQ of destroyer -> "MISS" due to armor
+        assertEquals("SUNK Destroyer", bomb.use(2, 1)); // CQ of destroyer hit again -> sinks
+    }
+
+    @Test
+    public void testSurrender(){
+        assertEquals("HIT", bomb.use(1, 2)); //Hits destroyer part and both ship's CQ(misses) --> "HIT"
+        assertEquals("SURRENDER", bomb.use(1, 2)); //Hits both ship's CQ again --> Two sinks --> Surrender
+    }
+
+    @Test
+    public void testTwoSinks(){
+        lower.addShip(new Minesweeper(), 5, 5, "E", false);
+        assertEquals("HIT", bomb.use(1, 2)); //Hits destroyer part and both ship's CQ(misses) --> "HIT"
+        String twoSinkRes = bomb.use(1, 2);
+        assertTrue(twoSinkRes.equals("SUNK Battleship, SUNK Destroyer") || twoSinkRes.equals("SUNK Destroyer, SUNK Battleship")); //Hits both ship's CQ again --> Two sinks
+    }
+
+
 
     //TODO: Test edge fires, Test Return values
 }
