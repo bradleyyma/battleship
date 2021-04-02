@@ -73,5 +73,10 @@ public class BombTest {
         assertArrayEquals(testGrid, lower.getGrid());
     }
 
+    @Test
+    public void testBombOutOfBounds(){
+        assertThrows(IndexOutOfBoundsException.class, () -> bomb.use(5, 10));
+    }
+
     //TODO: Test edge fires, Test Return values
 }
