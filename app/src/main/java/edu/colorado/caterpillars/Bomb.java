@@ -35,12 +35,12 @@ public class Bomb extends Weapon{
                 endCol = 9;
             }
             for(int j = startCol; j <= endCol; j++){
-                //System.out.println(i + " " + j);
                 if(grid[i][j] > 0){
                     int id = grid[i][j];
                     String tmpResult = fleet.hitShipById(id);
                     if(!tmpResult.equals("MISS")){
-                        result = "HIT";
+                        if(result.equals("MISS"))
+                            result = "HIT";
                         grid[i][j] = -id; // -ship.id represents a ship coord that has been hit (should be <= -2)
                     }
                     if(tmpResult.contains("SUNK") || tmpResult.equals("SURRENDER")){ // we hit unarmored CQ
@@ -55,7 +55,12 @@ public class Bomb extends Weapon{
                                 }
                             }
                         }
-
+                        if(result.equals("HIT") || result.equals("MISS")) // if the current result is only a hit or miss, then it can be replaced
+                            result = tmpResult;
+                        else if(tmpResult.contains("SUNK") && !result.contains(tmpResult)) // add additional sunk ships to current sunk return
+                            result = result + ", " + tmpResult;
+                        else if(tmpResult.equals("SURRENDER")) // if result is surrender, then replace any current result
+                            result = tmpResult;
                     }
                 }
             }
