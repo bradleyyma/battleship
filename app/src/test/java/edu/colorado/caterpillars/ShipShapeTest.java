@@ -27,8 +27,10 @@ public class ShipShapeTest {
 
     @Test
     public void testGetShape(){
-        int [][] testSub = {{0, 0, 1, 0}, {1, 1, 1, 2}};
-        int [][] testBat = {{1, 1, 2, 1}};
+        int id = ShipShape.id;
+        int cid = ShipShape.cid;
+        int [][] testBat = {{id, id, cid, id}};
+        int [][] testSub = {{0, 0, id, 0}, {id, id, id, cid}};
         assertArrayEquals(testSub, submarineShape.getShape());
         assertArrayEquals(testBat, battleshipShape.getShape());
     }

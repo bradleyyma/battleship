@@ -34,30 +34,32 @@ public class LowerGrid extends Grid {
         fleet.addShip(ship);
         int id = ship.getID();
         int cid = ship.getCID();
+        int idIndicator = ShipShape.id;
+        int cidIndicator = ShipShape.cid;
         for (int i = 0; i < ship.getWidth(); i++) {
             for (int j = 0; j < ship.getLength(); j++) {
                 if (direction == "N") {
-                    if (ship.getShape()[i][j] == 2) {
+                    if (ship.getShape()[i][j] == cidIndicator) {
                         g[row - j][col + i] = cid;
-                    } else if (ship.getShape()[i][j] == 1) {
+                    } else if (ship.getShape()[i][j] == idIndicator) {
                         g[row - j][col + i] = id;
                     }
                 } else if (direction == "S") { // South means increasing row num (e.g A1 then A2)
-                    if (ship.getShape()[i][j] == 2) {
+                    if (ship.getShape()[i][j] == cidIndicator) {
                         g[row + j][col - i] = cid;
-                    } else if (ship.getShape()[i][j] == 1) {
+                    } else if (ship.getShape()[i][j] == idIndicator) {
                         g[row + j][col - i] = id;
                     }
                 } else if (direction == "E") {
-                    if (ship.getShape()[i][j] == 2) {
+                    if (ship.getShape()[i][j] == cidIndicator) {
                         g[row + i][col + j] = cid;
-                    } else if (ship.getShape()[i][j] == 1) {
+                    } else if (ship.getShape()[i][j] == idIndicator) {
                         g[row + i][col + j] = id;
                     }
                 } else if (direction == "W") {
-                    if (ship.getShape()[i][j] == 2) {
+                    if (ship.getShape()[i][j] == cidIndicator) {
                         g[row - i][col - j] = cid;
-                    } else if (ship.getShape()[i][j] == 1) {
+                    } else if (ship.getShape()[i][j] == idIndicator) {
                         g[row - i][col - j] = id;
                     }
                 }
@@ -69,19 +71,19 @@ public class LowerGrid extends Grid {
         for (int i = 0; i < ship.getWidth(); i++) {
             for (int j = 0; j < ship.getLength(); j++) {
                 if (direction == "N") {
-                    if (row - j >= 10 || row - j < 0 || col + i >= 10 ||
+                    if (row - j >= ROWS || row - j < 0 || col + i >= COLS ||
                             col + i < 0 || g[row - j][col + i] != 0)
                         return true;
                 } else if (direction == "S") { // South means increasing row num (e.g A1 then A2)
-                    if (row + j >= 10 || row + j < 0 || col - i >= 10 ||
+                    if (row + j >= ROWS || row + j < 0 || col - i >= COLS ||
                             col - i < 0 || g[row + j][col - i] != 0)
                         return true;
                 } else if (direction == "E") {
-                    if (row + i >= 10 || row + i < 0 || col + j >= 10 ||
+                    if (row + i >= ROWS || row + i < 0 || col + j >= COLS ||
                             col + j < 0 || g[row + i][col + j] != 0)
                         return true;
                 } else if (direction == "W") {
-                    if (row - i >= 10 || row - i < 0 || col - j >= 10 ||
+                    if (row - i >= ROWS || row - i < 0 || col - j >= COLS ||
                             col - j < 0 || g[row - i][col - j] != 0)
                         return true;
                 } else {
