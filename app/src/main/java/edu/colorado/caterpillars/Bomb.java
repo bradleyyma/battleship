@@ -7,7 +7,6 @@ public class Bomb extends Weapon implements PropertyChangeListener{
     private int [][] grid;
     private Fleet fleet;
     private int [][] upperGrid;
-    private SunkData sunkData;
     private int sunkShipsReq;
     public Bomb(LowerGrid lower, UpperGrid upper, SunkData sunkData){
         grid = lower.getGrid();
@@ -16,7 +15,6 @@ public class Bomb extends Weapon implements PropertyChangeListener{
         upperGrid = upper.getGrid();
         sunkShipsReq = 2;
         uses = 1;
-        this.sunkData = sunkData;
         sunkData.addListener(this);
     }
     @Override

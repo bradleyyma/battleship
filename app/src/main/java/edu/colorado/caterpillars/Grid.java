@@ -1,7 +1,10 @@
 package edu.colorado.caterpillars;
 
 public class Grid {
-    protected int[][] grid = new int[10][10];
+
+    final protected int COLS = 10;
+    final protected int ROWS = 10;
+    protected int[][] grid = new int[ROWS][COLS];
 
     public int[][] getGrid(){
         return grid;

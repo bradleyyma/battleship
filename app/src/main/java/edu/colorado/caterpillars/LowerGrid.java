@@ -5,7 +5,7 @@ import java.util.Stack;
 public class LowerGrid extends Grid {
 
     private Fleet fleet = new Fleet();
-    private int[][] submergedGrid = new int[10][10];
+    private int[][] submergedGrid = new int[ROWS][COLS];
     private Stack<int [][]> undoStack = new Stack<>();
     private Stack<int [][]> undoSubStack = new Stack<>();
 
@@ -108,49 +108,49 @@ public class LowerGrid extends Grid {
     public void moveFleet(String dir) {
         int[][] lowerGrid = getGrid();
         int[][] subGrid = getSubmergedGrid();
-        int[][] newGrid = new int[10][10];
-        int[][] newSubGrid = new int[10][10];
+        int[][] newGrid = new int[ROWS][COLS];
+        int[][] newSubGrid = new int[ROWS][COLS];
 
         if (dir == "W") { //a = row b = col
-            for (int a = 0; a < 10; a++) {
+            for (int a = 0; a < ROWS; a++) {
                 if (lowerGrid[a][0] > 0 || lowerGrid[a][0] <= -2 ||  subGrid[a][0] > 0 || subGrid[a][0] <= -2)
                     throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located at North edge.");
             }
-            for (int a = 0; a < 10; a++) {
-                for (int b = 1; b < 10; b++) {
+            for (int a = 0; a < ROWS; a++) {
+                for (int b = 1; b < COLS; b++) {
                     newGrid[a][b - 1] = lowerGrid[a][b];
                     newSubGrid[a][b - 1] = subGrid[a][b];
                 }
             }
         } else if (dir == "E") {
-            for (int a = 0; a < 10; a++) {
+            for (int a = 0; a < ROWS; a++) {
                 if (lowerGrid[a][9] > 0 || lowerGrid[a][9] <= -2 || subGrid[a][9] > 0 || subGrid[a][9] <= -2)
                     throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located at East edge.");
             }
-            for (int a = 0; a < 10; a++) {
-                for (int b = 0; b < 9; b++) {
+            for (int a = 0; a < ROWS; a++) {
+                for (int b = 0; b < COLS-1; b++) {
                     newGrid[a][b + 1] = lowerGrid[a][b];
                     newSubGrid[a][b + 1] = subGrid[a][b];
                 }
             }
         } else if (dir == "S") {
-            for (int b = 0; b < 10; b++) {
-                if (lowerGrid[9][b] > 0 || lowerGrid[9][b] <= -2 || subGrid[9][b] > 0 || subGrid[9][b] <= -2)
+            for (int b = 0; b < COLS; b++) {
+                if (lowerGrid[COLS-1][b] > 0 || lowerGrid[COLS-1][b] <= -2 || subGrid[COLS-1][b] > 0 || subGrid[COLS-1][b] <= -2)
                     throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located at South edge.");
             }
-            for (int a = 0; a < 9; a++) {
-                for (int b = 0; b < 10; b++) {
+            for (int a = 0; a < ROWS-1; a++) {
+                for (int b = 0; b < COLS; b++) {
                     newGrid[a + 1][b] = lowerGrid[a][b];
                     newSubGrid[a + 1][b] = subGrid[a][b];
                 }
             }
         } else if (dir == "N") {
-            for (int b = 0; b < 10; b++) {
+            for (int b = 0; b < COLS; b++) {
                 if (lowerGrid[0][b] > 0 || lowerGrid[0][b] <= -2 || subGrid[0][b] > 0 || subGrid[0][b] <= -2)
                     throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located at North edge.");
             }
-            for (int a = 1; a < 10; a++) {
-                for (int b = 0; b < 10; b++) {
+            for (int a = 1; a < ROWS; a++) {
+                for (int b = 0; b < COLS; b++) {
                     newGrid[a - 1][b] = lowerGrid[a][b];
                     newSubGrid[a - 1][b] = subGrid[a][b];
                 }
@@ -158,8 +158,8 @@ public class LowerGrid extends Grid {
         } else {
             throw new IllegalArgumentException("Not a valid direction!");
         }
-        for (int x = 0; x < 10; x++) {
-            for (int y = 0; y < 10; y++) {
+        for (int x = 0; x < ROWS; x++) {
+            for (int y = 0; y < COLS; y++) {
                 lowerGrid[x][y] = newGrid[x][y];
                 subGrid[x][y] = newSubGrid[x][y];
             }
@@ -167,10 +167,10 @@ public class LowerGrid extends Grid {
     }
 
     public void addGridsToHistory(){
-        int [][] oldGrid = new int [10][10];
-        int [][] oldSubGrid = new int [10][10];
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
+        int [][] oldGrid = new int [ROWS][COLS];
+        int [][] oldSubGrid = new int [ROWS][COLS];
+        for(int i = 0; i < ROWS; i++){
+            for(int j = 0; j < COLS; j++){
                 oldGrid[i][j] = grid[i][j];
                 oldSubGrid[i][j] = submergedGrid[i][j];
             }
