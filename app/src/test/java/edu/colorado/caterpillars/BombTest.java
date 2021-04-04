@@ -91,6 +91,10 @@ public class BombTest {
     public void testOneSink(){
         lower.receiveAttack(1, 1); //hits the CQ of destroyer -> "MISS" due to armor
         assertEquals("SUNK Destroyer", bomb.use(2, 1)); // CQ of destroyer hit again -> sinks
+        testLowerGrid[1][0] *= -1;
+        testLowerGrid[1][1] *= -1;
+        testLowerGrid[1][2] *= -1;
+        assertArrayEquals(testLowerGrid, lower.getGrid());
         //TODO: uppergrid test
     }
 
@@ -117,6 +121,8 @@ public class BombTest {
         assertThrows(RuntimeException.class, () -> bomb.use(-1, 5)); // Invalid use shouldn't count as a use
         bomb.use(0, 0);
         assertThrows(Exception.class, () -> bomb.use(0, 0)); // only allowing one usage
+        bomb.undoUse(0, 0);
+        bomb.use(0, 0);
     }
 
     @Test
@@ -136,6 +142,34 @@ public class BombTest {
         upper.sendAttack(1, 1);
         upper.sendAttack(1, 1);
         bomb.use(1, 5);
+    }
+
+    @Test
+    public void testUndos(){
+        bomb.use(1, 1); // Multiple hits -> return "HIT"
+        bomb.undoUse(1, 1);
+        assertArrayEquals(testLowerGrid, lower.getGrid());
+        assertArrayEquals(testUpperGrid, upper.getGrid());
+
+        lower.receiveAttack(1, 1); // hit bat CQ first time
+        assertEquals("SUNK Destroyer", bomb.use(2, 1));
+        testLowerGrid[1][0] *= -1;
+        testLowerGrid[1][1] *= -1;
+        testLowerGrid[1][2] *= -1;
+        assertArrayEquals(testLowerGrid, lower.getGrid());
+        assertEquals(1, lower.getFleet().getNumSurvivingShips());
+
+        bomb.undoUse(2, 1);
+        testLowerGrid[1][0] *= -1;
+        testLowerGrid[1][1] *= -1;
+        testLowerGrid[1][2] *= -1;
+        assertArrayEquals(testLowerGrid, lower.getGrid());
+        assertEquals(2, lower.getFleet().getNumSurvivingShips());
+
+        bomb.use(9, 9);
+        assertArrayEquals(testLowerGrid, lower.getGrid());
+        bomb.undoUse(9, 9);
+        assertArrayEquals(testLowerGrid, lower.getGrid());
     }
 
     //TODO: Test edge fires, Test Return values
