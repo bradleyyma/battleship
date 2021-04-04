@@ -4,15 +4,13 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class Bomb extends Weapon implements PropertyChangeListener{
-    private int [][] grid;
-    private Fleet fleet;
-    private int [][] upperGrid;
+    private LowerGrid lower;
+    private UpperGrid upper;
     private int sunkShipsReq;
     public Bomb(LowerGrid lower, UpperGrid upper, SunkData sunkData){
-        grid = lower.getGrid();
-        fleet = lower.getFleet();
+        this.lower = lower;
         locked = true;
-        upperGrid = upper.getGrid();
+        this.upper = upper;
         sunkShipsReq = 2;
         uses = 1;
         sunkData.addListener(this);
@@ -28,6 +26,8 @@ public class Bomb extends Weapon implements PropertyChangeListener{
         if (uses <= 0) {
             throw new RuntimeException("You don't have any Bombs left!");
         }
+        lower.addGridsToHistory();
+        upper.addGridsToHistory();
         uses--;
         String result = "MISS";
         int startRow = row - 1;
@@ -41,6 +41,8 @@ public class Bomb extends Weapon implements PropertyChangeListener{
             endRow = 9;
         }
         int width[] = {1, 3, 1};
+        int [][] grid = lower.getGrid();
+        Fleet fleet = lower.getFleet();
         for(int i = startRow; i <= endRow; i ++){
             int halfRowWidth = (int)Math.floor(width[i-topRow]/2);
             startCol = col - halfRowWidth;
@@ -59,7 +61,7 @@ public class Bomb extends Weapon implements PropertyChangeListener{
                         if(result.equals("MISS"))
                             result = "HIT";
                         grid[i][j] = -id; // -ship.id represents a ship coord that has been hit (should be <= -2)
-                        upperGrid[i][j] = 1;
+                        upper.getGrid()[i][j] = 1;
                     }
                     if(tmpResult.contains("SUNK") || tmpResult.equals("SURRENDER")){ // we hit unarmored CQ
                         Ship ship = fleet.getShipById(id);
@@ -89,8 +91,42 @@ public class Bomb extends Weapon implements PropertyChangeListener{
 
     @Override
     public void undoUse(int row, int col) {
-
+        uses++;
+        lower.undoGrids();
+        upper.undoGrids();
+        int startRow = row - 1;
+        int endRow = row + 1;
+        int topRow = startRow;
+        int startCol, endCol;
+        if(startRow < 0){
+            startRow = 0;
+        }
+        if(endRow >= 10){
+            endRow = 9;
+        }
+        int width[] = {1, 3, 1};
+        int [][] grid = lower.getGrid();
+        Fleet fleet = lower.getFleet();
+        for(int i = startRow; i <= endRow; i ++){
+            int halfRowWidth = (int)Math.floor(width[i-topRow]/2);
+            startCol = col - halfRowWidth;
+            endCol = col + halfRowWidth;
+            if(startCol < 0){
+                startCol = 0;
+            }
+            if(endCol > 9){
+                endCol = 9;
+            }
+            for(int j = startCol; j <= endCol; j++){
+                if(grid[i][j] > 0){
+                    int id = grid[i][j];
+                    fleet.undoHitShipById(id);
+                }
+            }
+        }
     }
+
+
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {

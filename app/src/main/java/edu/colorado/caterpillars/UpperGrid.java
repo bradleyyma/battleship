@@ -25,7 +25,7 @@ public class UpperGrid extends Grid implements PropertyChangeListener {
 
     public String sendAttack(int row, int col){
         String result = attackBehavior.attack(row, col);
-        undoStack.push(grid);
+        addGridsToHistory();
         if(result == "MISS")
             grid[row][col] = -1;
         else { // sunk and hit will both indicate 1
@@ -36,10 +36,25 @@ public class UpperGrid extends Grid implements PropertyChangeListener {
     }
 
     public void undoSendAttack(int row, int col){
-        grid = undoStack.pop();
+        undoGrids();
         attackBehavior.undoAttack(row, col);
         sunkData.checkForUpdates();
     }
+
+    public void addGridsToHistory(){
+        int [][] oldGrid = new int [ROWS][COLS];
+        for(int i = 0; i < ROWS; i++){
+            for(int j = 0; j < COLS; j++){
+                oldGrid[i][j] = grid[i][j];
+            }
+        }
+        undoStack.push(oldGrid);
+    }
+
+    public void undoGrids(){
+        grid = undoStack.pop();
+    }
+
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
