@@ -33,7 +33,7 @@ public class Fleet {
     public int getNumSurvivingShips(){
         int survivingShips = 0;
         for (Ship ship : shipArray) {
-            if (!ship.isSunk()) {
+            if (!ship.isSunk() && !ship.isDummy()) {
                 survivingShips++;
             }
         }

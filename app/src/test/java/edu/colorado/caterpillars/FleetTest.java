@@ -12,6 +12,7 @@ public class FleetTest {
     private Ship ship1;
     private Ship ship2;
     private Ship ship3;
+    private Ship ship4;
 
 
     @BeforeEach
@@ -20,14 +21,16 @@ public class FleetTest {
         ship1 = new Battleship();
         ship2 = new Minesweeper();
         ship3 = new Destroyer();
+        ship4 = new DummyShip();
         fleet.addShip(ship1);
         fleet.addShip(ship2);
         fleet.addShip(ship3);
+        fleet.addShip(ship4);
     }
 
     @Test
     public void testGetTotalShips(){
-        assertEquals(3, fleet.getTotalNumShips());
+        assertEquals(4, fleet.getTotalNumShips());
     }
 
     @Test
@@ -44,6 +47,8 @@ public class FleetTest {
         assertSame(ship3,fleetShipId6); // ship3 should get id = 6 and cid = 7
         Ship fleetCapId7 = fleet.getShipById(7);
         assertSame(ship3,fleetCapId7); // ship3 should get id = 6 and cid = 7
+        Ship fleetShipId8 = fleet.getShipById(8);
+        assertSame(ship4,fleetShipId8); // ship4 should get id = ??? and cid = ???
     }
 
     @Test
@@ -76,12 +81,20 @@ public class FleetTest {
     @Test
     public void testRemoveShip(){
         fleet.undoAddShip();
+        assertEquals(3,fleet.getTotalNumShips());
+        fleet.undoAddShip();
         assertEquals(2,fleet.getTotalNumShips());
         fleet.undoAddShip();
         assertEquals(1,fleet.getTotalNumShips());
         fleet.undoAddShip();
         assertEquals(0,fleet.getTotalNumShips());
         assertThrows(Exception.class, () -> fleet.undoAddShip());
+    }
+
+    @Test
+    public void testDummyShip(){
+        fleet.hitShipById(8);
+        assertEquals("HIT",fleet.hitShipById(8));
     }
 
 //    @Test
