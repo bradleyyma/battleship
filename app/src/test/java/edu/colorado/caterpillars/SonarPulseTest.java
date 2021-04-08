@@ -166,6 +166,19 @@ public class SonarPulseTest {
 
     }
 
+    @Test
+    public void testFireWithDummyShip(){
+        Ship ship1 = new DummyShip();
+        Ship ship2 = new Destroyer();
+        grid.addShip(ship1, 2, 2, "W", false);
+        grid.addShip(ship2, 3, 3, "E", false);
+        assertTrue(pulse.isLocked());
+        assertThrows(Exception.class, () -> pulse.use(5, 5));
+        grid.receiveAttack(2, 2);
+        sunkData.checkForUpdates();
+        assertTrue(pulse.isLocked());
+        assertThrows(Exception.class, () -> pulse.use(4, 3));
+    }
 
 
 }
