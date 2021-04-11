@@ -10,7 +10,7 @@ public class BasicAttack extends Weapon{
         fleet = lower.getFleet();
     }
 
-    public String use(int row, int col){
+    public String fire(int row, int col){
         lower.addGridsToHistory();
         if(grid[row][col] > 0){
             int id = grid[row][col];

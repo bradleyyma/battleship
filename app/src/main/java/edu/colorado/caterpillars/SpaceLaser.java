@@ -38,7 +38,7 @@ public class SpaceLaser extends Weapon{
         }
     }
 
-    public String use(int row, int col){
+    public String fire(int row, int col){
         lower.addGridsToHistory();
         String surfaceResult = helper(lower.getGrid(), row, col);
         String submergeResult = helper(lower.getSubmergedGrid(), row, col);
