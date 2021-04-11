@@ -40,6 +40,15 @@ public class Fleet {
         return survivingShips;
     }
 
+    public int getNumNonDummyShips(){
+        int count = 0;
+        for(Ship ship : shipArray){
+            if(!ship.isDummy())
+                count ++;
+        }
+        return count;
+    }
+
     public int getTotalNumShips(){
         return shipArray.length;
     }
