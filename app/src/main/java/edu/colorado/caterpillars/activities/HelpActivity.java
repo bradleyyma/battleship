@@ -1,7 +1,8 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import edu.colorado.caterpillars.R;
 
 public class HelpActivity extends AppCompatActivity {
 
