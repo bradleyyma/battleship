@@ -9,8 +9,10 @@ public class Game{
     private Stack<Command> undoStack;
     private Stack<Command> redoStack;
     private Command swapPlayers;
+    private static Game instance;
 
-    public Game(){
+
+    private Game(){
         player1 = new Player();
         player2 = new Player();
         swapPlayers = new SwitchPlayersCommand(this);
@@ -24,6 +26,13 @@ public class Game{
         waitingPlayer = player2;
         undoStack = new Stack<>();
         redoStack = new Stack<>();
+    }
+
+    public static synchronized Game getInstance() {
+        if (instance == null){
+            instance = new Game();
+        }
+        return instance;
     }
 
     private void instantiateMoveCommands(){
@@ -78,11 +87,8 @@ public class Game{
     }
 
     public boolean isRunning(){
-        if(player1.getLower().getFleet().getNumSurvivingShips() == 0 ||
-                player2.getLower().getFleet().getNumSurvivingShips() == 0)
-            return false;
-        else
-            return true;
+        return player1.getLower().getFleet().getNumSurvivingShips() != 0 &&
+                player2.getLower().getFleet().getNumSurvivingShips() != 0;
     }
 
     public void attack(int row, int col){
@@ -103,7 +109,7 @@ public class Game{
         Command command = undoStack.pop();
         command.undo();
         redoStack.push(command);
-    };
+    }
 
     public void redo(){
         Command command = redoStack.pop();
@@ -130,6 +136,10 @@ public class Game{
         command.execute();
         undoStack.push(command);
         redoStack.clear();
+    }
+
+    public static void endGame(){
+        instance = null;
     }
 
 

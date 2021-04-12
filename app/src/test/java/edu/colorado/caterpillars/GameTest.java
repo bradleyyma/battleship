@@ -13,7 +13,8 @@ public class GameTest {
 
     @BeforeEach
     public void createObjects(){
-        game = new Game();
+        Game.endGame();
+        game = Game.getInstance();
         player1 = game.getPlayer(1);
         player2 = game.getPlayer(2);
         Ship mine1 = new Minesweeper();
@@ -26,7 +27,7 @@ public class GameTest {
 
     @Test
     public void invalidPlayer(){
-        assertThrows(Exception.class, () -> { game.getPlayer(3); });
+        assertThrows(Exception.class, () -> game.getPlayer(3));
     }
 
     @Test
