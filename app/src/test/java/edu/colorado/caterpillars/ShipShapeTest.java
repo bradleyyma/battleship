@@ -1,5 +1,6 @@
 package edu.colorado.caterpillars;
 
+import edu.colorado.caterpillars.Fleet.ShipShape;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,6 +1,9 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.AttackBehavior;
 
-public class SendLaserAttack implements AttackBehavior{
+import edu.colorado.caterpillars.Grid.LowerGrid;
+import edu.colorado.caterpillars.Weapons.SpaceLaser;
+
+public class SendLaserAttack implements AttackBehavior {
     private LowerGrid opponentLower;
     public SendLaserAttack(LowerGrid lower){
         opponentLower = lower;

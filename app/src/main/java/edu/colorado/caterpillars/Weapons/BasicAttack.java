@@ -1,14 +1,21 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Weapons;
 
-public class SpaceLaser extends Weapon{
+import edu.colorado.caterpillars.Fleet.Fleet;
+import edu.colorado.caterpillars.Grid.LowerGrid;
+import edu.colorado.caterpillars.Fleet.Ship;
+
+public class BasicAttack extends Weapon {
     private LowerGrid lower;
-
-    public SpaceLaser(LowerGrid lower){
+    private int [][] grid;
+    private Fleet fleet;
+    public BasicAttack(LowerGrid lower){
         this.lower = lower;
+        grid = lower.getGrid();
+        fleet = lower.getFleet();
     }
 
-    private String helper(int [][] grid, int row, int col){
-        Fleet fleet = lower.getFleet();
+    public String fire(int row, int col){
+        lower.addGridsToHistory();
         if(grid[row][col] > 0){
             int id = grid[row][col];
             String result = fleet.hitShipById(id);
@@ -26,8 +33,12 @@ public class SpaceLaser extends Weapon{
                         if(grid[i][j] == sid) {
                             grid[i][j] = -sid;
                         }
+//                        else if(grid[i][j] == cid){
+//                            grid[i][j] = -cid;
+//                        }
                     }
                 }
+
             }
             return result;
         }
@@ -38,33 +49,12 @@ public class SpaceLaser extends Weapon{
         }
     }
 
-    public String fire(int row, int col){
-        lower.addGridsToHistory();
-        String surfaceResult = helper(lower.getGrid(), row, col);
-        String submergeResult = helper(lower.getSubmergedGrid(), row, col);
-        if(surfaceResult.equals("SURRENDER") || submergeResult.equals("SURRENDER"))
-            return "SURRENDER";
-        if(surfaceResult.split(" ")[0].equals("SUNK"))
-            return surfaceResult;
-        if(submergeResult.split(" ")[0].equals("SUNK"))
-            return submergeResult;
-        if(surfaceResult.equals("HIT") || submergeResult.equals("HIT"))
-            return "HIT";
-        else
-            return "MISS";
-    }
-
     @Override
     public void undoUse(int row, int col) {
         lower.undoGrids();
-        Fleet fleet = lower.getFleet();
-        int surfaceId = lower.getGrid()[row][col];
-        int subId = lower.getSubmergedGrid()[row][col];
-        if(surfaceId > 0){
-            fleet.undoHitShipById(surfaceId);
-        }
-        if(subId > 0){
-            fleet.undoHitShipById(subId);
+        int id = lower.getGrid()[row][col];
+        if(id > 0){
+            fleet.undoHitShipById(id);
         }
     }
 }

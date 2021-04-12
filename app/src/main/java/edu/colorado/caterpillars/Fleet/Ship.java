@@ -1,4 +1,5 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Fleet;
+
 // This is the  baseclass for your ship.  Modify accordingly
 // TODO: practice good OO design
 public class Ship {

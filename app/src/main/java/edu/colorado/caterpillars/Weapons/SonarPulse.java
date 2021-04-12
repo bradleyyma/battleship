@@ -1,4 +1,7 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Weapons;
+
+import edu.colorado.caterpillars.Grid.LowerGrid;
+import edu.colorado.caterpillars.SunkData;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

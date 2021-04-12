@@ -1,4 +1,9 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Grid;
+
+import edu.colorado.caterpillars.*;
+import edu.colorado.caterpillars.AttackBehavior.AttackBehavior;
+import edu.colorado.caterpillars.AttackBehavior.SendBasicAttack;
+import edu.colorado.caterpillars.AttackBehavior.SendLaserAttack;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

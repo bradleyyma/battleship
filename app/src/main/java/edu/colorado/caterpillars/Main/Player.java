@@ -1,4 +1,10 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Main;
+
+import edu.colorado.caterpillars.Fleet.Ship;
+import edu.colorado.caterpillars.GameCommands.Command;
+import edu.colorado.caterpillars.Grid.UpperGrid;
+import edu.colorado.caterpillars.Grid.LowerGrid;
+import edu.colorado.caterpillars.SunkData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +37,7 @@ public class Player {
         upper = new UpperGrid(opponentLower, sunkData);
     }
 
-    public void addShip(Ship ship, int row, int col, String dir,boolean submerge){
+    public void addShip(Ship ship, int row, int col, String dir, boolean submerge){
         lower.addShip(ship, row, col, dir,submerge);
     }
 

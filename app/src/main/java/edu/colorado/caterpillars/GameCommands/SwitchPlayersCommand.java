@@ -1,6 +1,8 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.GameCommands;
 
-public class SwitchPlayersCommand implements Command{
+import edu.colorado.caterpillars.Main.Game;
+
+public class SwitchPlayersCommand implements Command {
 
     private Game game;
 

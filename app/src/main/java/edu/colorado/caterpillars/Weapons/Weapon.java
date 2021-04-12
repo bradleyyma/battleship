@@ -1,4 +1,4 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Weapons;
 
 public abstract class Weapon{
     protected String weaponName;
@@ -10,7 +10,7 @@ public abstract class Weapon{
         locked = false;
     }
 
-    final String use(int row, int col){
+    public final String use(int row, int col){
         validChecker(row, col);
         String result = fire(row, col);
         if(uses > 0) // uses < 0 means unlimited

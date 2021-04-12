@@ -1,6 +1,8 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.GameCommands;
 
-public class MoveFleetCommand implements Command{
+import edu.colorado.caterpillars.Main.Player;
+
+public class MoveFleetCommand implements Command {
 
     private Player player;
     private String dir;

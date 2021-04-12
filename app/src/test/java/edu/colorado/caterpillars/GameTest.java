@@ -1,5 +1,11 @@
 package edu.colorado.caterpillars;
 
+import edu.colorado.caterpillars.Fleet.Ships.Battleship;
+import edu.colorado.caterpillars.Fleet.Ships.Minesweeper;
+import edu.colorado.caterpillars.Fleet.Ship;
+import edu.colorado.caterpillars.Fleet.Ships.Submarine;
+import edu.colorado.caterpillars.Main.Game;
+import edu.colorado.caterpillars.Main.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

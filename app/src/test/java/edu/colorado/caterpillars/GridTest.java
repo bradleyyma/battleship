@@ -1,5 +1,6 @@
 package edu.colorado.caterpillars;
 
+import edu.colorado.caterpillars.Grid.Grid;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,10 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Grid;
+
+import edu.colorado.caterpillars.Fleet.Fleet;
+import edu.colorado.caterpillars.Fleet.Ship;
+import edu.colorado.caterpillars.Fleet.ShipShape;
+import edu.colorado.caterpillars.Weapons.Weapon;
+import edu.colorado.caterpillars.Weapons.BasicAttack;
 
 import java.util.Stack;
 

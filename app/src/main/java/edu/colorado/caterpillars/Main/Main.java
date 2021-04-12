@@ -1,4 +1,4 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Main;
   
 public class Main {
 

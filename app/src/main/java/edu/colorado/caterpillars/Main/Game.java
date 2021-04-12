@@ -1,4 +1,11 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Main;
+import edu.colorado.caterpillars.GameCommands.AttackCommand;
+import edu.colorado.caterpillars.Fleet.Ship;
+import edu.colorado.caterpillars.GameCommands.AddShipCommand;
+import edu.colorado.caterpillars.GameCommands.Command;
+import edu.colorado.caterpillars.GameCommands.MoveFleetCommand;
+import edu.colorado.caterpillars.GameCommands.SwitchPlayersCommand;
+
 import java.util.Stack;
 
 public class Game{

@@ -1,4 +1,4 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.GameCommands;
 
 public interface Command {
     public void execute();

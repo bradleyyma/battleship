@@ -1,6 +1,9 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.GameCommands;
 
-public class AttackCommand implements Command{
+import edu.colorado.caterpillars.GameCommands.Command;
+import edu.colorado.caterpillars.Main.Player;
+
+public class AttackCommand implements Command {
     private int row;
     private int col;
     private Player player;

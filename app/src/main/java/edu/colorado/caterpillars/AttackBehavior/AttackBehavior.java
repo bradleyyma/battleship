@@ -1,4 +1,4 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.AttackBehavior;
 
 public interface AttackBehavior {
     public String attack(int row, int col);

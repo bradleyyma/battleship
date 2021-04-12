@@ -1,4 +1,7 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.GameCommands;
+
+import edu.colorado.caterpillars.Fleet.Ship;
+import edu.colorado.caterpillars.Main.Player;
 
 public class AddShipCommand implements Command {
     private Ship ship;

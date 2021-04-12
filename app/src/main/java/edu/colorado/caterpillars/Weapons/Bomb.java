@@ -1,4 +1,10 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.Weapons;
+
+import edu.colorado.caterpillars.*;
+import edu.colorado.caterpillars.Fleet.Fleet;
+import edu.colorado.caterpillars.Fleet.Ship;
+import edu.colorado.caterpillars.Grid.LowerGrid;
+import edu.colorado.caterpillars.Grid.UpperGrid;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
