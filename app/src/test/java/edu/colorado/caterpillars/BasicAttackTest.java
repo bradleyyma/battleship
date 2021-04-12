@@ -1,10 +1,10 @@
 package edu.colorado.caterpillars;
 
-import edu.colorado.caterpillars.Fleet.Ships.Battleship;
-import edu.colorado.caterpillars.Fleet.Ship;
-import edu.colorado.caterpillars.Fleet.Ships.Submarine;
-import edu.colorado.caterpillars.Grid.LowerGrid;
-import edu.colorado.caterpillars.Weapons.BasicAttack;
+import edu.colorado.caterpillars.fleet.ships.Battleship;
+import edu.colorado.caterpillars.fleet.Ship;
+import edu.colorado.caterpillars.fleet.ships.Submarine;
+import edu.colorado.caterpillars.grid.LowerGrid;
+import edu.colorado.caterpillars.weapons.BasicAttack;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

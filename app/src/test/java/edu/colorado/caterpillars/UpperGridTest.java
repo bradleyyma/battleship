@@ -2,12 +2,12 @@ package edu.colorado.caterpillars;
 
 import edu.colorado.caterpillars.AttackBehavior.AttackBehavior;
 import edu.colorado.caterpillars.AttackBehavior.SendBasicAttack;
-import edu.colorado.caterpillars.Fleet.Ships.Destroyer;
-import edu.colorado.caterpillars.Fleet.Ships.Minesweeper;
-import edu.colorado.caterpillars.Fleet.Ship;
-import edu.colorado.caterpillars.Fleet.Ships.Submarine;
-import edu.colorado.caterpillars.Grid.LowerGrid;
-import edu.colorado.caterpillars.Grid.UpperGrid;
+import edu.colorado.caterpillars.fleet.ships.Destroyer;
+import edu.colorado.caterpillars.fleet.ships.Minesweeper;
+import edu.colorado.caterpillars.fleet.Ship;
+import edu.colorado.caterpillars.fleet.ships.Submarine;
+import edu.colorado.caterpillars.grid.LowerGrid;
+import edu.colorado.caterpillars.grid.UpperGrid;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,8 +1,8 @@
 package edu.colorado.caterpillars;
 
-import edu.colorado.caterpillars.Fleet.Ships.Battleship;
-import edu.colorado.caterpillars.Fleet.Ships.Minesweeper;
-import edu.colorado.caterpillars.Fleet.Ship;
+import edu.colorado.caterpillars.fleet.ships.Battleship;
+import edu.colorado.caterpillars.fleet.ships.Minesweeper;
+import edu.colorado.caterpillars.fleet.Ship;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
