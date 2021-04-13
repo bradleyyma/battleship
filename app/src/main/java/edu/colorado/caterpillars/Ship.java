@@ -9,17 +9,19 @@ public class Ship {
     private ShipShape shape;
     private int numHits;
     private boolean sunk;
+    private boolean dummy;
     private int id;
     private int cid;
     private boolean armored;
     private boolean canSubmerge;
 
 
-    public Ship(int id, String name, int [][] shape, boolean armored, boolean canSubmerge) {
+    public Ship(int id, String name, int [][] shape, boolean armored, boolean canSubmerge, boolean dummy) {
         this.id = id;
         this.name = name;
         this.shape = new ShipShape(shape);
         this.canSubmerge = canSubmerge;
+        this.dummy = dummy;
         numHits = 0;
         sunk = false;
         this.armored = armored;
@@ -38,6 +40,7 @@ public class Ship {
     public boolean isSunk(){
         return sunk;
     }
+    public boolean isDummy() { return dummy; }
     public boolean canSubmerge() {return canSubmerge;}
 
     public int getID(){

@@ -7,7 +7,9 @@ public class Bomb extends Weapon implements PropertyChangeListener{
     private LowerGrid lower;
     private UpperGrid upper;
     private int sunkShipsReq;
+
     public Bomb(LowerGrid lower, UpperGrid upper, SunkData sunkData){
+        weaponName = "Bomb";
         this.lower = lower;
         locked = true;
         this.upper = upper;
@@ -15,17 +17,9 @@ public class Bomb extends Weapon implements PropertyChangeListener{
         uses = 1;
         sunkData.addListener(this);
     }
+
     @Override
-    public String use(int row, int col) {
-        if(locked){
-            throw new RuntimeException("You need to sink 2 ships first!");
-        }
-        if(row < 0 || row >= 10 || col < 0 || col >= 10){
-            throw new IndexOutOfBoundsException("Not a valid area to fire Bomb!");
-        }
-        if (uses <= 0) {
-            throw new RuntimeException("You don't have any Bombs left!");
-        }
+    public String fire(int row, int col) {
         lower.addGridsToHistory();
         upper.addGridsToHistory();
         uses--;
@@ -125,6 +119,7 @@ public class Bomb extends Weapon implements PropertyChangeListener{
             }
         }
     }
+
 
 
 

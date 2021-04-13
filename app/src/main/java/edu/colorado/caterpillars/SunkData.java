@@ -28,7 +28,7 @@ public class SunkData{
     }
 
     public void checkForUpdates(){
-        int nSunk = fleet.getTotalNumShips() - fleet.getNumSurvivingShips();
+        int nSunk = fleet.getNumNonDummyShips() - fleet.getNumSurvivingShips();
         if(nSunk != numSunk){
             setNumSunk(nSunk);
         }

@@ -38,7 +38,7 @@ public class SonarPulseTest {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         };
-        assertArrayEquals(testGrid, pulse.fire(5,5));
+        assertArrayEquals(testGrid, pulse.fireHelper(5,5));
     }
     @Test
     public void testFireWithShip(){
@@ -59,7 +59,7 @@ public class SonarPulseTest {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         };
-        assertArrayEquals(testGrid, pulse.fire(5,5));
+        assertArrayEquals(testGrid, pulse.fireHelper(5,5));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class SonarPulseTest {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         };
-        assertArrayEquals(testGrid, pulse.fire(0,0));
+        assertArrayEquals(testGrid, pulse.fireHelper(0,0));
     }
     @Test
     public void testFireOnBLCorner(){
@@ -100,7 +100,7 @@ public class SonarPulseTest {
                 {0, 0, 0, 0, 0, 0, -1, -1, -1, -1},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1},
         };
-        assertArrayEquals(testGrid, pulse.fire(8,8));
+        assertArrayEquals(testGrid, pulse.fireHelper(8,8));
     }
 
     @Test
@@ -166,6 +166,19 @@ public class SonarPulseTest {
 
     }
 
+    @Test
+    public void testFireWithDummyShip(){
+        Ship ship1 = new DummyShip();
+        Ship ship2 = new Destroyer();
+        grid.addShip(ship1, 2, 2, "W", false);
+        grid.addShip(ship2, 3, 3, "E", false);
+        assertTrue(pulse.isLocked());
+        assertThrows(Exception.class, () -> pulse.use(5, 5));
+        grid.receiveAttack(2, 2);
+        sunkData.checkForUpdates();
+        assertTrue(pulse.isLocked());
+        assertThrows(Exception.class, () -> pulse.use(4, 3));
+    }
 
 
 }

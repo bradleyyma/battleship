@@ -10,6 +10,7 @@ public class SonarPulse extends Weapon implements PropertyChangeListener {
     private SunkData sunkData;
 
     public SonarPulse(LowerGrid lower, SunkData sunkData){
+        weaponName = "Sonar Pulse";
         grid = lower.getGrid();
         locked = true;
         sunkShipsReq = 1;
@@ -23,7 +24,7 @@ public class SonarPulse extends Weapon implements PropertyChangeListener {
     }
 
 
-    public int [][] fire(int row, int col){
+    public int [][] fireHelper(int row, int col){
         if(row < 0 || row >= 10 || col < 0 || col >= 10){
             throw new IndexOutOfBoundsException("Not a valid area to fire SonarPulse!");
         }
@@ -61,16 +62,14 @@ public class SonarPulse extends Weapon implements PropertyChangeListener {
         return result;
     }
 
-    public String use(int row, int col){
-        if(locked){
-            throw new RuntimeException("You need to sink one ship first!");
-        }
-        if(uses <= 0){
-            throw new RuntimeException("You don't have any Sonar Pulses left!");
-        }
-        fire(row, col);
-        uses--;
-        return "Sonar Pulse Used";
+    public String fire(int row, int col){
+        fireHelper(row, col);
+        return weaponName + " Used";
+    }
+
+    @Override
+    public void lockedErrorHook(){
+        throw new RuntimeException("You need to sink " + sunkShipsReq + " ship first, before using a " + weaponName + "!");
     }
 
     @Override
