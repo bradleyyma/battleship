@@ -1,4 +1,6 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.activities;
+import android.widget.Toast;
+import edu.colorado.caterpillars.*;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,19 +40,25 @@ public class P1PlaceShipActivity extends AppCompatActivity {
             String dir = dirText.getText().toString();
             System.out.println(dir);
             Ship battleship = new Battleship();
-            game.addShip(battleship,r-1,c-1,dir,false);
-            int [][] grid = game.getActivePlayer().getLower().getGrid();
-            for(int i=0; i<10;i++){
-                for(int j=0; j<10;j++){
-                    if(grid[i][j] > 1){
-                        System.out.println(i);
-                        System.out.println(j);
-                        int index = 10*i + j;
-                        ImageView square = findViewById(gridMap[index]);
-                        square.setVisibility(ImageView.VISIBLE);
+            try {
+                game.addShip(battleship, r - 1, c - 1, dir, false);
+                int [][] grid = game.getActivePlayer().getLower().getGrid();
+                for(int i=0; i<10;i++){
+                    for(int j=0; j<10;j++){
+                        if(grid[i][j] > 1){
+                            System.out.println(i);
+                            System.out.println(j);
+                            int index = 10*i + j;
+                            ImageView square = findViewById(gridMap[index]);
+                            square.setVisibility(ImageView.VISIBLE);
+                        }
                     }
                 }
+            }catch (Exception e){
+                Toast.makeText(this, "Cannot add ship. Overlaps with the edge of the grid or with another ship.",
+                        Toast.LENGTH_LONG).show();
             }
+
 //            if(r > 0 && r <= 10 && c > 0 && c <= 10){
 //                int index = 10*(r-1) + (c-1);
 //                ImageView square = findViewById(gridMap[index]);

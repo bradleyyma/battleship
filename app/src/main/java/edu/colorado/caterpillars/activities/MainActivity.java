@@ -1,10 +1,12 @@
-package edu.colorado.caterpillars;
+package edu.colorado.caterpillars.activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import edu.colorado.caterpillars.R;
+import edu.colorado.caterpillars.activities.HelpActivity;
+import edu.colorado.caterpillars.activities.P1PlaceShipActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openHelpMenu(){
-        Intent intent = new Intent(this,HelpActivity.class);
+        Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
 
     public void openP1PlaceShipActivity(){
-        Intent intent = new Intent(this,P1PlaceShipActivity.class);
+        Intent intent = new Intent(this, P1PlaceShipActivity.class);
         startActivity(intent);
     }
 }
