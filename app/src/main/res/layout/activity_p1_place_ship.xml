@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
     <TextView
@@ -14,16 +16,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textCurrentShip"
             android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@+id/p1LowerGrid" app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            app:layout_constraintTop_toBottomOf="@+id/p1LowerGrid"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
             android:layout_marginStart="24dp" android:textSize="18sp"/>
     <EditText
-            android:layout_width="59dp"
-            android:layout_height="36dp"
+            android:layout_width="61dp"
+            android:layout_height="48dp"
             android:inputType="number"
             android:ems="10"
             android:id="@+id/editTextColumn"
             app:layout_constraintStart_toStartOf="@+id/editTextRow"
-            app:layout_constraintTop_toTopOf="@+id/textColumn"/>
+            app:layout_constraintTop_toTopOf="@+id/textColumn" android:layout_marginTop="-4dp"/>
     <TextView
             android:text="@string/col"
             android:layout_width="wrap_content"
@@ -37,8 +40,8 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/editTextRow"
-            app:layout_constraintStart_toEndOf="@+id/textRow" android:layout_marginStart="60dp"
-            app:layout_constraintTop_toTopOf="@+id/textRow"/>
+            app:layout_constraintStart_toEndOf="@+id/textRow" android:layout_marginStart="32dp"
+            app:layout_constraintTop_toTopOf="@+id/textRow" android:layout_marginTop="-2dp"/>
     <TextView
             android:text="@string/row"
             android:layout_width="wrap_content"
@@ -48,12 +51,12 @@
             android:layout_marginStart="4dp"
     />
     <ImageView
-            android:layout_width="317dp"
-            android:layout_height="327dp" app:srcCompat="@drawable/ic_launcher_background"
+            android:layout_width="320dp"
+            android:layout_height="320dp" app:srcCompat="@drawable/grid"
             android:id="@+id/p1LowerGrid"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.51" app:layout_constraintVertical_bias="0.299"/>
+            app:layout_constraintHorizontal_bias="0.494" app:layout_constraintVertical_bias="0.166"/>
     <Button
             android:text="@string/done_btn"
             android:layout_width="wrap_content"
@@ -67,4 +70,640 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/p1LowerGrid"
             android:textSize="30sp"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot00"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot01"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot02"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot03"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot04"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot05"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot06"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot07"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot08"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot09"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="7dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot10"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot11"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot12"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot13"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot14"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot15"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot16"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot17"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot18"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot19"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="39dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot20"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot21"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot22"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot23"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot24"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot25"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot26"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot27"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot28"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot29"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="70dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot30"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot31"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot32"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot33"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot34"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot35"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot36"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot37"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot38"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot39"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="101dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot40"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot41"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot42"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot43"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot44"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot45"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot46"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot47"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot48"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot49"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="132dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot50"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot51"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot52"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot53"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot54"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot55"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot56"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot57"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot58"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot59"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="163dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot60"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot61"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot62"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot63"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot64"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot65"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot66"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot67"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot68"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot69"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="194dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot70"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot71"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot72"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot73"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot74"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot75"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot76"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot77"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot78"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot79"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="225dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot80"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot81"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot82"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot83"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot84"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot85"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot86"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot87"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot88"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot89"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="257dp" android:visibility="invisible"/>
+
+
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot90"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="7dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot91"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="39dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot92"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="70dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot93"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="101dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot94"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="132dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot95"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="163dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot96"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="194dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot97"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="225dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot98"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="257dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp" app:srcCompat="@drawable/ship_spot" android:id="@+id/gridSpot99"
+            app:layout_constraintStart_toStartOf="@+id/p1LowerGrid"
+            android:layout_marginStart="288dp" app:layout_constraintTop_toTopOf="@+id/p1LowerGrid"
+            android:layout_marginTop="288dp" android:visibility="invisible"/>
+    <TextView
+            android:text="@string/orientation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textOrientation"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/editTextDir" android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_place" android:layout_marginBottom="28dp"/>
+    <EditText
+            android:layout_width="75dp"
+            android:layout_height="38dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editTextDir"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:hint="@string/orientation_hint"
+            app:layout_constraintBottom_toTopOf="@+id/btn_place" android:layout_marginBottom="20dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

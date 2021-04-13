@@ -15,14 +15,19 @@ public class MoveFleetCommand implements Command{
 
     @Override
     public void undo() {
-        if(dir == "W"){
-            player.getLower().moveFleet("E");
-        }else if(dir == "E"){
-            player.getLower().moveFleet("W");
-        }else if(dir == "N"){
-            player.getLower().moveFleet("S");
-        }else if(dir == "S"){
-            player.getLower().moveFleet("N");
+        switch (dir) {
+            case "W":
+                player.getLower().moveFleet("E");
+                break;
+            case "E":
+                player.getLower().moveFleet("W");
+                break;
+            case "N":
+                player.getLower().moveFleet("S");
+                break;
+            case "S":
+                player.getLower().moveFleet("N");
+                break;
         }
 
     }

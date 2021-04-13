@@ -38,25 +38,25 @@ public class LowerGrid extends Grid {
         int cidIndicator = ShipShape.cid;
         for (int i = 0; i < ship.getWidth(); i++) {
             for (int j = 0; j < ship.getLength(); j++) {
-                if (direction == "N") {
+                if (direction.equals("N")) {
                     if (ship.getShape()[i][j] == cidIndicator) {
                         g[row - j][col + i] = cid;
                     } else if (ship.getShape()[i][j] == idIndicator) {
                         g[row - j][col + i] = id;
                     }
-                } else if (direction == "S") { // South means increasing row num (e.g A1 then A2)
+                } else if (direction.equals("S")) { // South means increasing row num (e.g A1 then A2)
                     if (ship.getShape()[i][j] == cidIndicator) {
                         g[row + j][col - i] = cid;
                     } else if (ship.getShape()[i][j] == idIndicator) {
                         g[row + j][col - i] = id;
                     }
-                } else if (direction == "E") {
+                } else if (direction.equals("E")) {
                     if (ship.getShape()[i][j] == cidIndicator) {
                         g[row + i][col + j] = cid;
                     } else if (ship.getShape()[i][j] == idIndicator) {
                         g[row + i][col + j] = id;
                     }
-                } else if (direction == "W") {
+                } else if (direction.equals("W")) {
                     if (ship.getShape()[i][j] == cidIndicator) {
                         g[row - i][col - j] = cid;
                     } else if (ship.getShape()[i][j] == idIndicator) {
@@ -70,24 +70,24 @@ public class LowerGrid extends Grid {
     private boolean isInvalidPlacement(Ship ship, int row, int col, String direction, int[][] g) {
         for (int i = 0; i < ship.getWidth(); i++) {
             for (int j = 0; j < ship.getLength(); j++) {
-                if (direction == "N") {
+                if (direction.equals("N")) {
                     if (row - j >= ROWS || row - j < 0 || col + i >= COLS ||
                             col + i < 0 || g[row - j][col + i] != 0)
                         return true;
-                } else if (direction == "S") { // South means increasing row num (e.g A1 then A2)
+                } else if (direction.equals("S")) { // South means increasing row num (e.g A1 then A2)
                     if (row + j >= ROWS || row + j < 0 || col - i >= COLS ||
                             col - i < 0 || g[row + j][col - i] != 0)
                         return true;
-                } else if (direction == "E") {
+                } else if (direction.equals("E")) {
                     if (row + i >= ROWS || row + i < 0 || col + j >= COLS ||
                             col + j < 0 || g[row + i][col + j] != 0)
                         return true;
-                } else if (direction == "W") {
+                } else if (direction.equals("W")) {
                     if (row - i >= ROWS || row - i < 0 || col - j >= COLS ||
                             col - j < 0 || g[row - i][col - j] != 0)
                         return true;
                 } else {
-                    throw new IllegalArgumentException("Not a valid direction!");
+                    throw new IllegalArgumentException(direction + " is not a valid direction");
                 }
             }
         }
