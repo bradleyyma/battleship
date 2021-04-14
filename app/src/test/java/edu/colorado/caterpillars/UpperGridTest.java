@@ -1,7 +1,7 @@
 package edu.colorado.caterpillars;
 
-import edu.colorado.caterpillars.AttackBehavior.AttackBehavior;
-import edu.colorado.caterpillars.AttackBehavior.SendBasicAttack;
+import edu.colorado.caterpillars.attackBehavior.AttackBehavior;
+import edu.colorado.caterpillars.attackBehavior.SendBasicAttack;
 import edu.colorado.caterpillars.fleet.ships.Destroyer;
 import edu.colorado.caterpillars.fleet.ships.Minesweeper;
 import edu.colorado.caterpillars.fleet.Ship;

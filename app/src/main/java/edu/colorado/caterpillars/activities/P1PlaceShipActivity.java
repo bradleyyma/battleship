@@ -2,13 +2,15 @@ package edu.colorado.caterpillars.activities;
 import android.widget.Toast;
 import edu.colorado.caterpillars.*;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.widget.EditText;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import edu.colorado.caterpillars.fleet.Ship;
+import edu.colorado.caterpillars.fleet.ships.Battleship;
+import edu.colorado.caterpillars.main.Game;
+
 
 public class P1PlaceShipActivity extends AppCompatActivity {
 
@@ -19,7 +21,7 @@ public class P1PlaceShipActivity extends AppCompatActivity {
         EditText rowText = findViewById(R.id.editTextRow);
         EditText colText = findViewById(R.id.editTextColumn);
         EditText dirText = findViewById(R.id.editTextDir);
-        Game game = new Game();
+        Game game = Game.getInstance();
 
         int [] gridMap = {R.id.gridSpot00,R.id.gridSpot01,R.id.gridSpot02,R.id.gridSpot03,R.id.gridSpot04,R.id.gridSpot05,R.id.gridSpot06,R.id.gridSpot07,R.id.gridSpot08,R.id.gridSpot09,
                 R.id.gridSpot10,R.id.gridSpot11,R.id.gridSpot12,R.id.gridSpot13,R.id.gridSpot14,R.id.gridSpot15,R.id.gridSpot16,R.id.gridSpot17,R.id.gridSpot18,R.id.gridSpot19,

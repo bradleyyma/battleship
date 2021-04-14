@@ -1,6 +1,6 @@
 package edu.colorado.caterpillars;
 
-import edu.colorado.caterpillars.GameCommands.AttackCommand;
+import edu.colorado.caterpillars.gameCommands.AttackCommand;
 import edu.colorado.caterpillars.fleet.ships.Minesweeper;
 import edu.colorado.caterpillars.fleet.Ship;
 import edu.colorado.caterpillars.fleet.ships.Submarine;

@@ -1,6 +1,6 @@
 package edu.colorado.caterpillars;
 
-import edu.colorado.caterpillars.AttackBehavior.SendLaserAttack;
+import edu.colorado.caterpillars.attackBehavior.SendLaserAttack;
 import edu.colorado.caterpillars.fleet.ships.Battleship;
 import edu.colorado.caterpillars.fleet.Ship;
 import edu.colorado.caterpillars.fleet.ships.Submarine;

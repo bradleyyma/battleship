@@ -1,5 +1,5 @@
 package edu.colorado.caterpillars;
-import edu.colorado.caterpillars.Fleet.Fleet;
+import edu.colorado.caterpillars.fleet.Fleet;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

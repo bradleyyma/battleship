@@ -2,7 +2,7 @@ package edu.colorado.caterpillars;
 
 import edu.colorado.caterpillars.fleet.ships.Destroyer;
 import edu.colorado.caterpillars.fleet.Ship;
-import edu.colorado.caterpillars.GameCommands.MoveFleetCommand;
+import edu.colorado.caterpillars.gameCommands.MoveFleetCommand;
 import edu.colorado.caterpillars.main.Player;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

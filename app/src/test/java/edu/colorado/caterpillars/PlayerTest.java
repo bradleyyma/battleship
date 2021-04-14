@@ -1,11 +1,11 @@
 package edu.colorado.caterpillars;
 
-import edu.colorado.caterpillars.GameCommands.AttackCommand;
+import edu.colorado.caterpillars.gameCommands.AttackCommand;
 import edu.colorado.caterpillars.fleet.ships.Minesweeper;
 import edu.colorado.caterpillars.fleet.Ship;
 import edu.colorado.caterpillars.fleet.ships.Submarine;
-import edu.colorado.caterpillars.GameCommands.Command;
-import edu.colorado.caterpillars.GameCommands.MoveFleetCommand;
+import edu.colorado.caterpillars.gameCommands.Command;
+import edu.colorado.caterpillars.gameCommands.MoveFleetCommand;
 import edu.colorado.caterpillars.main.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
