@@ -9,6 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".activities.ChooseMoveActivity">
+        </activity>
+        <activity android:name=".activities.SwapPlayerActivity">
+        </activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -17,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.HelpActivity"/>
-        <activity android:name=".activities.P1PlaceShipActivity"/>
+        <activity android:name=".activities.PlaceShipActivity"/>
     </application>
 
 </manifest>

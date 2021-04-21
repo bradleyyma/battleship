@@ -1,4 +1,8 @@
 package edu.colorado.caterpillars.main;
+import edu.colorado.caterpillars.fleet.ships.Battleship;
+import edu.colorado.caterpillars.fleet.ships.Destroyer;
+import edu.colorado.caterpillars.fleet.ships.Minesweeper;
+import edu.colorado.caterpillars.fleet.ships.Submarine;
 import edu.colorado.caterpillars.gameCommands.AttackCommand;
 import edu.colorado.caterpillars.fleet.Ship;
 import edu.colorado.caterpillars.gameCommands.AddShipCommand;
@@ -17,6 +21,7 @@ public class Game{
     private Stack<Command> redoStack;
     private Command swapPlayers;
     private static Game instance;
+    private int turnNumber;
 
 
     private Game(){
@@ -29,10 +34,17 @@ public class Game{
 
         player1.setOpponent(player2);
         player2.setOpponent(player1);
+        player1.setName("Player 1");
+        player2.setName("Player 2");
         activePlayer = player1;
         waitingPlayer = player2;
         undoStack = new Stack<>();
         redoStack = new Stack<>();
+        turnNumber = 0;
+    }
+
+    public Ship [] getShipsInGame(){
+        return new Ship[] {new Battleship(),new Submarine(),new Destroyer(),new Minesweeper()};
     }
 
     public static synchronized Game getInstance() {
@@ -138,15 +150,36 @@ public class Game{
 
     }
 
-    public void addShip(Ship ship, int row, int col, String direction, boolean submerge){
+    public void addShip(Ship ship,int row, int col, String direction, boolean submerge){
         Command command = new AddShipCommand(activePlayer,ship,row,col,direction,submerge);
         command.execute();
         undoStack.push(command);
         redoStack.clear();
     }
 
+    public Ship getNextShip(){
+        int numShips = getActivePlayer().getLower().getFleet().getTotalNumShips();
+        if(numShips <  getShipsInGame().length) {
+            return getShipsInGame()[numShips];
+        }else{
+            return null;
+        }
+    }
+
     public static void endGame(){
         instance = null;
+    }
+
+    public void incTurnNum(){
+        turnNumber++;
+    }
+
+    public void decTurnNum(){
+        turnNumber--;
+    }
+
+    public int getTurnNumber(){
+        return turnNumber;
     }
 
 

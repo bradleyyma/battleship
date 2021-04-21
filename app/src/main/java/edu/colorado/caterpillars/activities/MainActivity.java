@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import edu.colorado.caterpillars.R;
-import edu.colorado.caterpillars.activities.HelpActivity;
-import edu.colorado.caterpillars.activities.P1PlaceShipActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openP1PlaceShipActivity(){
-        Intent intent = new Intent(this, P1PlaceShipActivity.class);
+        Intent intent = new Intent(this, PlaceShipActivity.class);
         startActivity(intent);
     }
 }

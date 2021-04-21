@@ -15,6 +15,7 @@ public class Player {
     private UpperGrid upper;
     private Map<String, Command> moveFleetCommands;
     private Command [][] attackCommands;
+    private String name;
 
     public Player(){
         lower = new LowerGrid();
@@ -63,4 +64,6 @@ public class Player {
     public void setAttackCommand(int row, int col, Command attackCommand){
         attackCommands[row][col] = attackCommand;
     }
+    public void setName(String name){this.name = name;}
+    public String getName(){ return name;}
 }

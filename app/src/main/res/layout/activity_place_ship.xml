@@ -64,9 +64,9 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="40dp" android:layout_marginBottom="40dp"/>
     <TextView
-            android:text="@string/player_1_place_ship_title"
+            android:text="@string/player_place_ship_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/player1PlaceShipTitle"
+            android:layout_height="wrap_content" android:id="@+id/playerPlaceShipTitle"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/p1LowerGrid"
             android:textSize="30sp"/>
@@ -704,6 +704,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" android:hint="@string/orientation_hint"
             app:layout_constraintBottom_toTopOf="@+id/btn_place" android:layout_marginBottom="20dp"/>
+    <Button
+            android:text="Undo"
+            android:layout_width="56dp"
+            android:layout_height="36dp" android:id="@+id/button"
+            android:textSize="12sp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/p1LowerGrid" app:layout_constraintVertical_bias="0.593"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/playerPlaceShipTitle"/>
+    <Button
+            android:text="Redo"
+            android:layout_width="56dp"
+            android:layout_height="36dp" android:id="@+id/button2"
+            android:textSize="12sp" app:layout_constraintStart_toEndOf="@+id/playerPlaceShipTitle"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/p1LowerGrid"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

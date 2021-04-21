@@ -4,7 +4,7 @@ import edu.colorado.caterpillars.main.Game;
 
 public class SwitchPlayersCommand implements Command {
 
-    private Game game;
+    private final Game game;
 
     public SwitchPlayersCommand(Game game){
         this.game = game;
@@ -13,11 +13,13 @@ public class SwitchPlayersCommand implements Command {
     @Override
     public void execute() {
         game.swapPlayers();
+        game.incTurnNum();
     }
 
     @Override
     public void undo() {
         game.swapPlayers();
+        game.decTurnNum();
     }
 
 

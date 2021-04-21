@@ -17,7 +17,7 @@ public class MainActivityTest {
         ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class);
         scenario.onActivity((activity -> {
             activity.findViewById(R.id.btn_play).performClick();
-            Intent expectedIntent = new Intent(activity, P1PlaceShipActivity.class);
+            Intent expectedIntent = new Intent(activity, PlaceShipActivity.class);
             Intent actual = shadowOf(activity).getNextStartedActivity();
             assertEquals(expectedIntent.getComponent(), actual.getComponent());
         }));
