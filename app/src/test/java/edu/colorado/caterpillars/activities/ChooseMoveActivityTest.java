@@ -7,12 +7,10 @@ import org.robolectric.RobolectricTestRunner;
 
 
 @RunWith(RobolectricTestRunner.class)
-public class HelpActivityTest {
+public class ChooseMoveActivityTest {
     @Test
     public void onCreate(){
-        ActivityScenario<HelpActivity> scenario = ActivityScenario.launch(HelpActivity.class);
+        ActivityScenario<ChooseMoveActivity> scenario = ActivityScenario.launch(ChooseMoveActivity.class);
         scenario.close();
-//        scenario.onActivity((activity -> {
-//        }));
     }
 }

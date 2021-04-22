@@ -1,5 +1,7 @@
 package edu.colorado.caterpillars.activities;
 
+import android.app.Activity;
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Rule;
 

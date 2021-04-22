@@ -2,6 +2,7 @@ package edu.colorado.caterpillars.activities;
 
 import android.content.Intent;
 import androidx.test.core.app.ActivityScenario;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -21,6 +22,7 @@ public class MainActivityTest {
             Intent actual = shadowOf(activity).getNextStartedActivity();
             assertEquals(expectedIntent.getComponent(), actual.getComponent());
         }));
+        scenario.close();
     }
 
     @Test
@@ -32,6 +34,7 @@ public class MainActivityTest {
             Intent actual = shadowOf(activity).getNextStartedActivity();
             assertEquals(expectedIntent.getComponent(), actual.getComponent());
         }));
+        scenario.close();
     }
 
 
