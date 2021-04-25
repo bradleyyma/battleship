@@ -15,7 +15,7 @@ public class PlaceShipActivity extends AppCompatActivity {
     TextView shipText,playerText;
     Game game;
 
-    public int[] getGridMap(){
+    private int[] getGridMap(){
         return new int[]{R.id.gridSpot00, R.id.gridSpot01, R.id.gridSpot02, R.id.gridSpot03, R.id.gridSpot04, R.id.gridSpot05, R.id.gridSpot06, R.id.gridSpot07, R.id.gridSpot08, R.id.gridSpot09,
                 R.id.gridSpot10, R.id.gridSpot11, R.id.gridSpot12, R.id.gridSpot13, R.id.gridSpot14, R.id.gridSpot15, R.id.gridSpot16, R.id.gridSpot17, R.id.gridSpot18, R.id.gridSpot19,
                 R.id.gridSpot20, R.id.gridSpot21, R.id.gridSpot22, R.id.gridSpot23, R.id.gridSpot24, R.id.gridSpot25, R.id.gridSpot26, R.id.gridSpot27, R.id.gridSpot28, R.id.gridSpot29,
@@ -29,6 +29,34 @@ public class PlaceShipActivity extends AppCompatActivity {
         };
     }
 
+    private void drawGrid(){
+        Ship ship = game.getNextShip();
+        if(ship == null){
+            shipText.setText("None");
+            Intent intent = new Intent(this, SwapPlayerActivity.class);
+            startActivity(intent);
+        }else {
+            shipText.setText(ship.getName());
+        }
+        int[] gridMap = getGridMap();
+        int[][] grid = game.getActivePlayer().getLower().getGrid();
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                int id = grid[i][j];
+                if (id > 1) {
+                    int index = 10 * i + j;
+                    ImageView square = findViewById(gridMap[index]);
+                    square.setVisibility(ImageView.VISIBLE);
+                    if (id % 2 == 0) {
+                        square.setImageResource(R.drawable.ship_spot);
+                    } else {
+                        square.setImageResource(R.drawable.captain_spot);
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,30 +68,9 @@ public class PlaceShipActivity extends AppCompatActivity {
         shipText = findViewById(R.id.currShip);
         game = Game.getInstance();
         playerText.setText(game.getActivePlayer().getName());
-        if(game.getNextShip() == null){
-            shipText.setText("None");
-            Intent intent = new Intent(this, SwapPlayerActivity.class);
-            startActivity(intent);
-        }
-        else {
-            shipText.setText(game.getNextShip().getName());
-            int[] gridMap = getGridMap();
-            int[][] grid = game.getActivePlayer().getLower().getGrid();
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (grid[i][j] > 1) {
-                        int index = 10 * i + j;
-                        ImageView square = findViewById(gridMap[index]);
-                        square.setVisibility(ImageView.VISIBLE);
-                    }
-                }
-            }
-
-            Button btn_place = findViewById(R.id.btn_place);
-            btn_place.setOnClickListener((v) -> addShip());
-        }
-
-
+        drawGrid();
+        Button btn_place = findViewById(R.id.btn_place);
+        btn_place.setOnClickListener((v) -> addShip());
     }
 
 
@@ -77,36 +84,10 @@ public class PlaceShipActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please enter data in all fields before adding a ship",
                         Toast.LENGTH_LONG).show();
             }else {
-
                 try {
                     Ship ship = game.getNextShip();
                     game.addShip(ship,r - 1, c - 1, dir, false);
-                    ship = game.getNextShip();
-                    if(ship == null){
-                        shipText.setText("None");
-                        Intent intent = new Intent(this, SwapPlayerActivity.class);
-                        startActivity(intent);
-                    }else{
-                        shipText.setText(ship.getName());
-                    }
-
-
-                    int[][] grid = game.getActivePlayer().getLower().getGrid();
-                    for (int i = 0; i < 10; i++) {
-                        for (int j = 0; j < 10; j++) {
-                            int id = grid[i][j];
-                            if (id > 1) {
-                                int index = 10 * i + j;
-                                ImageView square = findViewById(gridMap[index]);
-                                square.setVisibility(ImageView.VISIBLE);
-                                if(id % 2 == 0){
-                                    square.setImageResource(R.drawable.ship_spot);
-                                }else{
-                                    square.setImageResource(R.drawable.captain_spot);
-                                }
-                            }
-                        }
-                    }
+                    drawGrid();
                 } catch (Exception e) {
                     Toast.makeText(this, "Cannot add ship. Overlaps with the edge of the grid or with another ship.",
                             Toast.LENGTH_LONG).show();
