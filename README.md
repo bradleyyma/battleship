@@ -7,3 +7,5 @@ class at CU Boulder called Object Oriented Analysis & Design during the Spring 2
 Our project utilizes the Android SDK, so this must be installed
 
 Our project can be run either through an android emulator, or through an android device on developer mode. One of these must be available before running our project. 
+
+Click [here](project_documentation.pdf) to view our project documentation
