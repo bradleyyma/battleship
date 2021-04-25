@@ -71,11 +71,8 @@ public class PlaceShipActivity extends AppCompatActivity {
         game = Game.getInstance();
         playerText.setText(game.getActivePlayer().getName());
         drawGrid();
-
         Button btn_place = findViewById(R.id.btn_place);
         btn_place.setOnClickListener((v) -> addShip());
-
-
     }
 
 
