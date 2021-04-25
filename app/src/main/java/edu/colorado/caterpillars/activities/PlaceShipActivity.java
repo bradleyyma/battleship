@@ -9,6 +9,8 @@ import edu.colorado.caterpillars.fleet.Ship;
 
 import edu.colorado.caterpillars.main.Game;
 
+import java.util.Locale;
+
 public class PlaceShipActivity extends AppCompatActivity {
 
     EditText rowText,colText,dirText;
@@ -40,6 +42,11 @@ public class PlaceShipActivity extends AppCompatActivity {
         shipText = findViewById(R.id.currShip);
         game = Game.getInstance();
         playerText.setText(game.getActivePlayer().getName());
+        if(game.getNextShip() == null){
+            shipText.setText("None");
+            Intent intent = new Intent(this, SwapPlayerActivity.class);
+            startActivity(intent);
+        }
         shipText.setText(game.getNextShip().getName());
         int [] gridMap = getGridMap();
         int[][] grid = game.getActivePlayer().getLower().getGrid();
@@ -65,7 +72,7 @@ public class PlaceShipActivity extends AppCompatActivity {
         try {
             int r = Integer.parseInt(rowText.getText().toString());
             int c = Integer.parseInt(colText.getText().toString());
-            String dir = dirText.getText().toString();
+            String dir = dirText.getText().toString().toUpperCase();
             if (dir.matches("")) {
                 Toast.makeText(this, "Please enter data in all fields before adding a ship",
                         Toast.LENGTH_LONG).show();
@@ -76,9 +83,9 @@ public class PlaceShipActivity extends AppCompatActivity {
                     game.addShip(ship,r - 1, c - 1, dir, false);
                     ship = game.getNextShip();
                     if(ship == null){
+                        shipText.setText("None");
                         Intent intent = new Intent(this, SwapPlayerActivity.class);
                         startActivity(intent);
-                        shipText.setText("None");
                     }else{
                         shipText.setText(ship.getName());
                     }
@@ -87,10 +94,16 @@ public class PlaceShipActivity extends AppCompatActivity {
                     int[][] grid = game.getActivePlayer().getLower().getGrid();
                     for (int i = 0; i < 10; i++) {
                         for (int j = 0; j < 10; j++) {
-                            if (grid[i][j] > 1) {
+                            int id = grid[i][j];
+                            if (id > 1) {
                                 int index = 10 * i + j;
                                 ImageView square = findViewById(gridMap[index]);
                                 square.setVisibility(ImageView.VISIBLE);
+                                if(id % 2 == 0){
+                                    square.setImageResource(R.drawable.ship_spot);
+                                }else{
+                                    square.setImageResource(R.drawable.captain_spot);
+                                }
                             }
                         }
                     }

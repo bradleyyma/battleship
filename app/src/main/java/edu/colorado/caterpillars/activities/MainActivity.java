@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import edu.colorado.caterpillars.R;
 
+import edu.colorado.caterpillars.main.Game;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
