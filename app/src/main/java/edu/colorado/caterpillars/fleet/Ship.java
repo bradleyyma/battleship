@@ -1,7 +1,5 @@
 package edu.colorado.caterpillars.fleet;
 
-// This is the  baseclass for your ship.  Modify accordingly
-// TODO: practice good OO design
 public class Ship {
 
     //Team caterpillars, pair 2 was here

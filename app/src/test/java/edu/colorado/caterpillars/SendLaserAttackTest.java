@@ -20,7 +20,7 @@ public class SendLaserAttackTest {
         sendLaser = new SendLaserAttack(lower);
         lower.addShip(bat, 0, 0, "E", false);
         lower.addShip(sub, 1, 4, "W", true);
-        //int [][] testGrid = {
+        //testGrid : {
         //                {1, 1, 1, 3, 0, 0, 0, 0, 0, 0},
         //                {0, 2, 2, 2, 2, 0, 0, 0, 0, 0},
         //                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},

@@ -15,11 +15,11 @@ import static org.robolectric.Shadows.shadowOf;
 @RunWith(RobolectricTestRunner.class)
 public class SwapPlayerActivityTest {
 
-//    @Before
-//    public void setUp(){
-//        Game.endGame();
-//    }
-//
+    @Before
+    public void setUp(){
+        Game.endGame();
+    }
+
     @After
     public void tearDown() {
         Game.endGame();

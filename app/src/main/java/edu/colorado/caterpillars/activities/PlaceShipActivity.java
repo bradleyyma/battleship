@@ -9,8 +9,6 @@ import edu.colorado.caterpillars.fleet.Ship;
 
 import edu.colorado.caterpillars.main.Game;
 
-import java.util.Locale;
-
 public class PlaceShipActivity extends AppCompatActivity {
 
     EditText rowText,colText,dirText;

@@ -87,19 +87,6 @@ public class Fleet {
         if(inSidArray(id)) {
             ship.hit();
             return("HIT");
-
-            // Can no longer sink ship by regular hit, so this condition
-            // is not required anymore
-//            if (priorShips != getNumSurvivingShips()) {
-//                if(getNumSurvivingShips() == 0){
-//                    return ("SURRENDER");
-//                }else {
-//                    return ("SUNK " + ship.getName());
-//                }
-//            } else {
-//                return ("HIT");
-//            }
-
         }else{
             ship.hitCaptainQuarters();
             if (priorShips != getNumSurvivingShips()) {

@@ -35,18 +35,6 @@ public class ShipTest{
         assertEquals(1, ship.getNumHits());
     }
 
-//    @Test
-//    public void testSunk(){
-//        ship.hit();
-//        assertFalse(ship.isSunk());
-//        ship.hit();
-//        assertFalse(ship.isSunk());
-//        ship.hit();
-//        assertFalse(ship.isSunk());
-//        ship.hit();
-//        assertTrue(ship.isSunk());
-//    }
-
     @Test
     public void testGetSetIds(){
         ship.setID(1);

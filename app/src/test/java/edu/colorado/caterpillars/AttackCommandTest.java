@@ -31,7 +31,7 @@ public class AttackCommandTest {
 
     @Test
     public void createAttackCommand(){
-        AttackCommand ac = new AttackCommand(new Player(), 0, 0);
+        new AttackCommand(new Player(), 0, 0);
     }
 
     @Test

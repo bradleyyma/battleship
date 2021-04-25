@@ -49,9 +49,7 @@ public class UpperGrid extends Grid implements PropertyChangeListener {
     public void addGridsToHistory(){
         int [][] oldGrid = new int [ROWS][COLS];
         for(int i = 0; i < ROWS; i++){
-            for(int j = 0; j < COLS; j++){
-                oldGrid[i][j] = grid[i][j];
-            }
+            System.arraycopy(grid[i], 0, oldGrid[i], 0, COLS);
         }
         undoStack.push(oldGrid);
     }

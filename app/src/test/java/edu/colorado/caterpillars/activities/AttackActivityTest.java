@@ -6,18 +6,14 @@ import androidx.test.core.app.ActivityScenario;
 import edu.colorado.caterpillars.R;
 import edu.colorado.caterpillars.fleet.ships.Minesweeper;
 import edu.colorado.caterpillars.main.Game;
-import edu.colorado.caterpillars.main.Main;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.robolectric.RuntimeEnvironment.application;
 import static org.robolectric.Shadows.shadowOf;
 
 
@@ -71,8 +67,6 @@ public class AttackActivityTest {
             col.setText("1");
             Button btn_atk = activity.findViewById(R.id.btn_atk);
             btn_atk.performClick();
-//            ImageView square = activity.findViewById(R.id.gridSpot00);
-//            assertEquals(square.getDrawable().getAlpha(), R.id.gridSpot00);
         });
     }
 

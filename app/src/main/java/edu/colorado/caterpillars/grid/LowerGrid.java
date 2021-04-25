@@ -119,7 +119,7 @@ public class LowerGrid extends Grid {
         int[][] newGrid = new int[ROWS][COLS];
         int[][] newSubGrid = new int[ROWS][COLS];
 
-        if (dir == "W") { //a = row b = col
+        if (dir.equals("W")) { //a = row b = col
             for (int a = 0; a < ROWS; a++) {
                 if (lowerGrid[a][0] > 0 || lowerGrid[a][0] <= -2 ||  subGrid[a][0] > 0 || subGrid[a][0] <= -2)
                     throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located at North edge.");
@@ -130,7 +130,7 @@ public class LowerGrid extends Grid {
                     newSubGrid[a][b - 1] = subGrid[a][b];
                 }
             }
-        } else if (dir == "E") {
+        } else if (dir.equals("E")) {
             for (int a = 0; a < ROWS; a++) {
                 if (lowerGrid[a][9] > 0 || lowerGrid[a][9] <= -2 || subGrid[a][9] > 0 || subGrid[a][9] <= -2)
                     throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located at East edge.");
@@ -141,7 +141,7 @@ public class LowerGrid extends Grid {
                     newSubGrid[a][b + 1] = subGrid[a][b];
                 }
             }
-        } else if (dir == "S") {
+        } else if (dir.equals("S")) {
             for (int b = 0; b < COLS; b++) {
                 if (lowerGrid[COLS-1][b] > 0 || lowerGrid[COLS-1][b] <= -2 || subGrid[COLS-1][b] > 0 || subGrid[COLS-1][b] <= -2)
                     throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located at South edge.");
@@ -152,7 +152,7 @@ public class LowerGrid extends Grid {
                     newSubGrid[a + 1][b] = subGrid[a][b];
                 }
             }
-        } else if (dir == "N") {
+        } else if (dir.equals("N")) {
             for (int b = 0; b < COLS; b++) {
                 if (lowerGrid[0][b] > 0 || lowerGrid[0][b] <= -2 || subGrid[0][b] > 0 || subGrid[0][b] <= -2)
                     throw new IllegalArgumentException("Fleet cannot be moved that direction, ship located at North edge.");

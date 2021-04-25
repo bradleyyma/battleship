@@ -53,10 +53,10 @@ public class SpaceLaserTest {
 
     @Test
     public void testUseThenUndo(){
-        int testGrid[][] = new int[10][10];
+        int[][] testGrid = new int[10][10];
         testGrid[0][2] = 3;
         testGrid[0][0] = testGrid[0][1] = testGrid[0][3] = 2;
-        int testSubGrid[][] = new int[10][10];
+        int[][] testSubGrid = new int[10][10];
         testSubGrid[0][2] = testSubGrid[0][4] = testSubGrid[0][3] = testSubGrid[1][2] = 4;
         testSubGrid[0][1] = 5;
         assertArrayEquals(testGrid, lower.getGrid());

@@ -5,7 +5,6 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import edu.colorado.caterpillars.R;
-import edu.colorado.caterpillars.fleet.Ship;
 import edu.colorado.caterpillars.main.Game;
 
 public class AttackActivity extends AppCompatActivity {

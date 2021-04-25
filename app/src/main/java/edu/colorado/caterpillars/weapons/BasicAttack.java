@@ -25,7 +25,6 @@ public class BasicAttack extends Weapon {
             if(result.contains("SUNK") || result.equals("SURRENDER")){
                 Ship ship = fleet.getShipById(id);
                 int sid = ship.getID();
-//                int cid = ship.getCID();
                 int h = grid.length;
                 int w = grid[0].length;
                 for(int i = 0; i < h; i++){
@@ -33,9 +32,6 @@ public class BasicAttack extends Weapon {
                         if(grid[i][j] == sid) {
                             grid[i][j] = -sid;
                         }
-//                        else if(grid[i][j] == cid){
-//                            grid[i][j] = -cid;
-//                        }
                     }
                 }
 

@@ -40,7 +40,7 @@ public class Bomb extends Weapon implements PropertyChangeListener{
         if(endRow >= 10){
             endRow = 9;
         }
-        int width[] = {1, 3, 1};
+        int[] width = {1, 3, 1};
         int [][] grid = lower.getGrid();
         Fleet fleet = lower.getFleet();
         for(int i = startRow; i <= endRow; i ++){
@@ -104,7 +104,7 @@ public class Bomb extends Weapon implements PropertyChangeListener{
         if(endRow >= 10){
             endRow = 9;
         }
-        int width[] = {1, 3, 1};
+        int[] width = {1, 3, 1};
         int [][] grid = lower.getGrid();
         Fleet fleet = lower.getFleet();
         for(int i = startRow; i <= endRow; i ++){

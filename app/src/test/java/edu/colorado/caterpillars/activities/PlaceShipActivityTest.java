@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import edu.colorado.caterpillars.fleet.ships.Minesweeper;
@@ -18,7 +17,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import edu.colorado.caterpillars.R;
 
-import static org.junit.Assert.*;
 import static org.robolectric.Shadows.shadowOf;
 
 
@@ -55,9 +53,7 @@ public class PlaceShipActivityTest {
 
     @Test
     public void addShipWithNoRowOrCol(){
-        scenario.onActivity((activity -> {
-            activity.findViewById(R.id.btn_place).performClick();
-        }));
+        scenario.onActivity((activity -> activity.findViewById(R.id.btn_place).performClick()));
     }
 
     @Test

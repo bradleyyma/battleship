@@ -51,7 +51,6 @@ public class UpperGridTest {
     public void testUpperGridValues(){
         int [][] testGrid = new int[10][10];
         assertArrayEquals(testGrid, upperGrid.getGrid());
-        int shipId = 2; // equals id of ship created in @BeforeEach above
         // This is a hit
         upperGrid.sendAttack(0, 0);
         testGrid[0][0] = 1;
