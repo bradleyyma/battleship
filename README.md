@@ -1,4 +1,4 @@
-# CSCI4448-5448 Battleship Project
+# CSCI 4448-5448 Battleship Project
 #### Team Members : Bradley Ma, Maksim Vasilyev, Jaskrit Singh, Anusha Basavaraja,
 
 This github repo contains the code for a Java and Android implementation of the game Battleship. It was created for a 
