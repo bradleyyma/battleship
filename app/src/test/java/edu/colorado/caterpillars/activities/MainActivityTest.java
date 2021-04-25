@@ -2,6 +2,7 @@ package edu.colorado.caterpillars.activities;
 
 import android.content.Intent;
 import androidx.test.core.app.ActivityScenario;
+import edu.colorado.caterpillars.main.Game;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,10 @@ import static org.robolectric.Shadows.shadowOf;
 @RunWith(RobolectricTestRunner.class)
 public class MainActivityTest {
 
+    @After
+    public void tearDown() {
+        Game.endGame();
+    }
     @Test
     public void correctIntentForPlayButton(){
         ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class);

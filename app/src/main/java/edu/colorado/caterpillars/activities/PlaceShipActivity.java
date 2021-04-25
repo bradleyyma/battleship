@@ -47,21 +47,23 @@ public class PlaceShipActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SwapPlayerActivity.class);
             startActivity(intent);
         }
-        shipText.setText(game.getNextShip().getName());
-        int [] gridMap = getGridMap();
-        int[][] grid = game.getActivePlayer().getLower().getGrid();
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (grid[i][j] > 1) {
-                    int index = 10 * i + j;
-                    ImageView square = findViewById(gridMap[index]);
-                    square.setVisibility(ImageView.VISIBLE);
+        else {
+            shipText.setText(game.getNextShip().getName());
+            int[] gridMap = getGridMap();
+            int[][] grid = game.getActivePlayer().getLower().getGrid();
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (grid[i][j] > 1) {
+                        int index = 10 * i + j;
+                        ImageView square = findViewById(gridMap[index]);
+                        square.setVisibility(ImageView.VISIBLE);
+                    }
                 }
             }
-        }
 
-        Button btn_place = findViewById(R.id.btn_place);
-        btn_place.setOnClickListener((v) -> addShip());
+            Button btn_place = findViewById(R.id.btn_place);
+            btn_place.setOnClickListener((v) -> addShip());
+        }
 
 
     }
